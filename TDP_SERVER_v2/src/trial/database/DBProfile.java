@@ -1,4 +1,4 @@
-package com.nick.tdp.database;
+package trial.database;
 
 public abstract class DBProfile {
 	/**
@@ -19,4 +19,13 @@ public abstract class DBProfile {
 	public static final String TableName_RegistrationReceipt = "RegRec";
 	public static final String TableName_ClientParameters = "CliPara";
 	public static final String TableName_DeviceToDevicePairingExperiment = "DtoDPerTest";
+	public static final String TableName_WifiDirectPerformanceTest = "WifiDirectPerTest";
+	
+	
+	/**
+	 * type of performance test
+	 */
+	public static final int WifiDirect_ActiveScan = 1;
+	public static final int WifiDirect_Autonomous = 2;
+	public static final int WifiDirect_ServiceDiscovery = 3;
 }

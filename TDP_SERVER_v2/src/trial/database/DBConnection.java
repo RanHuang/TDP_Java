@@ -1,4 +1,4 @@
-package com.nick.tdp.database;
+package trial.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,16 +34,14 @@ public class DBConnection {
 	public Connection getConnection() {
 		try{
 			//调用Class.forName()方法加载驱动程序
-			Class.forName(dbDriver);
-//			System.out.println("Database Driver success");
+			Class.forName(dbDriver).newInstance();
 			//调用DriverManager对象的getConnection()方法，获得一个Connection对象
 			_connection = DriverManager.getConnection(connectionURL, userName, userPassword);
-//			System.out.println("Database Connection success!");
-		}catch(ClassNotFoundException e){
-			System.err.println("Database Driver failure");
+		}catch(InstantiationException | ClassNotFoundException | IllegalAccessException e){
+			System.err.println("Database Driver failure: " + e.getMessage());
 		}catch(SQLException e){
-			System.err.println("Database Connection failure");
-		}
+			System.err.println("Database Connection failure: " + e.getMessage());
+		} 
 		
 		return _connection;
 	}

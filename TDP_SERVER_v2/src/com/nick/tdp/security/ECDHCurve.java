@@ -2,14 +2,11 @@ package com.nick.tdp.security;
 
 import java.math.BigInteger;
 import java.util.Random;
-
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Hex;
 
-
 public class ECDHCurve {
-	public static final String TAG = "ecc curve";
 	
 	private static ECPoint _GEcPoint;
 	private static ECCurve.Fp _fpEccCurve;

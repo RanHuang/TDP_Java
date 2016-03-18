@@ -99,7 +99,7 @@ private static final String TAG = "TDP Client Service";
 			}
 			break;
 		case TDPConstants.PACKET_TYPE_REGISTRATION_KEYS_OK:
-			System.out.println(TAG + ": " + "send packet -- send client's keys.");
+			
 			/**
 			 * Generate device's public key and private key.
 			 * Send (PacketType, DeviceID, PrivateKey, PublicKey)
@@ -109,12 +109,14 @@ private static final String TAG = "TDP Client Service";
 			try {
 				jsonObject.put(TDPConstants.PACKET_TYPE, TDPConstants.PACKET_TYPE_REGISTRATION_KEYS_OK);
 				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_ID, DeviceClient._ID);				
-				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY, DeviceClient._x.toString());
+				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY, DeviceClient._x.toString(16));
 				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PUBLIC_KEY, Hex.toHexString(DeviceClient._Ppub.getEncoded(true)));				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}	
+			writeObject(jsonObject);
+			System.out.println(TAG + ": " + "send packet -- send client's keys.");
 			break;
 		default:
 			break;
@@ -137,20 +139,19 @@ private static final String TAG = "TDP Client Service";
 	private void messageHandler(Object object_)throws MySocketReadWriteException{
 		try {
 			JSONObject jsonObject = new JSONObject(object_.toString());
-			int packetType = jsonObject.getInt(TDPConstants.PACKET_TYPE);
-			
-			System.out.println("Receive a Packet.");
+			int packetType = jsonObject.getInt(TDPConstants.PACKET_TYPE);			
 			
 			switch (packetType) {
 			case TDPConstants.PACKET_TYPE_REGISTRATION_RECEIPT_OK:
+				System.out.println("Receive a Packet about the Receipt.");
 				/*
 				 * Create a strategy to store the Device Receipt from the Back End Server.
 				 * (x, Pub, r, d, R, Ppub_master, t)
 				 */
-				DeviceClient._x = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY));
+				DeviceClient._x = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY), 16);
 				DeviceClient._Ppub = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PUBLIC_KEY)));
-				DeviceClient._d = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_D));
-				DeviceClient._r = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_R));
+				DeviceClient._d = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_D), 16);
+				DeviceClient._r = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_R), 16);
 				DeviceClient._Rpub = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PUBLIC_R)));
 				DeviceClient._Ppub_master = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_SERVER_PUBLIC_KEY)));
 				DeviceClient._trustValue = jsonObject.getInt(TDPConstants.PACKET_PAYLOAD_DEVICE_TRUST_VALUE);
@@ -160,10 +161,10 @@ private static final String TAG = "TDP Client Service";
 				System.out.println("***************************************************************************************************\n"
 						+ "\t==== Device Received Receipt ====\n"
 						+ "\tID  : " + DeviceClient._ID + "\n"
-						+ "\tx   : " + DeviceClient._x.toString() + "\n"
+						+ "\tx   : " + DeviceClient._x.toString(16) + "\n"
 						+ "\tPpub: " + Hex.toHexString(DeviceClient._Ppub.getEncoded(true)) + "\n"
-						+ "\tr   : " + DeviceClient._r.toString() + "\n"
-						+ "\td   : " + DeviceClient._d.toString() + "\n"
+						+ "\tr   : " + DeviceClient._r.toString(16) + "\n"
+						+ "\td   : " + DeviceClient._d.toString(16) + "\n"
 						+ "\tRand: " + Hex.toHexString(DeviceClient._Rpub.getEncoded(true)) + "\n"						
 						+ "\tMaster Ppub: " + Hex.toHexString(DeviceClient._Ppub_master.getEncoded(true)) + "\n"
 						+ "\tTrust Value: " + String.valueOf(DeviceClient._trustValue) + "\n"
@@ -172,13 +173,13 @@ private static final String TAG = "TDP Client Service";
 				throw new MySocketReadWriteException("End of recving packet.");
 				
 			case TDPConstants.PACKET_TYPE_REGISTRATION_REQUEST_KEYS:
+				System.out.println("Received packet: Request Keys.");
 				sendPacket(TDPConstants.PACKET_TYPE_REGISTRATION_KEYS_OK);
 				break;
 			default:
 				throw new MySocketReadWriteException("Unknown type of received packet.");
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			cancelSocket();
 		}

@@ -1,4 +1,4 @@
-package com.nick.tdp.database;
+package trial.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,7 +57,7 @@ public class QueryRecord {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			done = false;
-			System.out.println("Update the trustValue error: " + e.getMessage());			
+			System.out.println("Query the record error: " + e.getMessage());			
 		}
 		
 		return done;
