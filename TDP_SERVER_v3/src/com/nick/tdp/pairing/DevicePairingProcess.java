@@ -1,13 +1,12 @@
-package com.nick.tdp.securityprocess;
+package com.nick.tdp.pairing;
 
 import java.math.BigInteger;
 import java.util.Random;
-
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Hex;
-
-import com.nick.tdp.ecdh.ECDHCurve;
-import com.nick.tdp.ecdh.HashFunction;
+import com.nick.tdp.security.AESCoder;
+import com.nick.tdp.security.ECDHCurve;
+import com.nick.tdp.security.HashFunction;
 
 public class DevicePairingProcess {
 	

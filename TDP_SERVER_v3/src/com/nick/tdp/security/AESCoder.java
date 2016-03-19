@@ -1,4 +1,4 @@
-package com.nick.tdp.securityprocess;
+package com.nick.tdp.security;
 
 import java.security.SecureRandom;
 

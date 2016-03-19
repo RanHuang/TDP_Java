@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.pairing;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -7,12 +7,9 @@ import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.net.Socket;
 import java.util.Random;
-
 import org.bouncycastle.math.ec.ECPoint;
 
-import com.nick.tdp.ecdh.ECDHCurve;
-import com.nick.tdp.securityprocess.BaseServerReceiptGenerator;
-import com.nick.tdp.securityprocess.DevicePairingProcess;
+import com.nick.tdp.security.ECDHCurve;
 
 public class DevicePairing implements Runnable {
 

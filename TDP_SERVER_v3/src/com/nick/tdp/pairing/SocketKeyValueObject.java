@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.pairing;
 
 import java.io.Serializable;
 
