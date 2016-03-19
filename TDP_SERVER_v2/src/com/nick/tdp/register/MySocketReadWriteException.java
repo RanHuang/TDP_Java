@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.register;
 
 public class MySocketReadWriteException extends Exception{
 	/**

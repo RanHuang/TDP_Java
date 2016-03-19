@@ -94,8 +94,7 @@ public class DevicePairing implements Runnable {
         	writeObject(_outSocketKeyValue);
         }
 
-        while (_isRunning){
-        	
+        while (_isRunning){        	
             try {	
             	
             	System.err.println(TAG + ":" + "Wait for a message.");
@@ -103,15 +102,11 @@ public class DevicePairing implements Runnable {
             	_inSocketKeyValue = (SocketKeyValueObject)_obj;
             	processing(_inSocketKeyValue);
             	
-			} catch (IOException e) {
+			} catch (IOException | ClassNotFoundException e) {
 				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
+			}catch (Exception e) {
 				e.printStackTrace();
 			}     
-
         }
         
         try {
@@ -203,8 +198,7 @@ public class DevicePairing implements Runnable {
 				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.MESSAGE_END, "$%^&Socket start$%^&");
 				_isRunning = false;
 			}
-		}
-		else if(stringKey.equals(KeyConstant.MESSAGE_END)){
+		}else if(stringKey.equals(KeyConstant.MESSAGE_END)){
         	_isRunning = false;
         	return;
         }else if(stringKey.equals(KeyConstant.MESSAGE_UNKNOWN)) {
@@ -216,8 +210,7 @@ public class DevicePairing implements Runnable {
         	writeObject(_outSocketKeyValue);
         }
 		
-		writeObject(_outSocketKeyValue);
-		
+		writeObject(_outSocketKeyValue);		
 	}
 
 }

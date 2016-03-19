@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.register;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +24,7 @@ import com.nick.tdp.security.BackendServerKey;
  * 	3. Return ( x, Pub, r, d, R, msterPub, tv) to the the registered device.
  * 	4. Store the Device's authenticated credential (ID, x, Pub, r, d, R, msterPub, tv) by database system.
  */
-public class BackendServer implements Runnable {
+public class Registrationerver implements Runnable {
 	private static final String TAG = "Backend Server Service";
 
 	private final ServerSocket _serverSocket;
@@ -32,7 +32,7 @@ public class BackendServer implements Runnable {
 	/**
 	 * Generate the server key. And listen to the port for incoming client.
 	 */
-	public BackendServer() {
+	public Registrationerver() {
 		BackendServerKey.getInstance();
 		System.out.println(
 				"***************************************************************************************************\n"
@@ -255,7 +255,7 @@ public class BackendServer implements Runnable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new Thread(new BackendServer()).start();
+		new Thread(new Registrationerver()).start();
 	}
 
 }

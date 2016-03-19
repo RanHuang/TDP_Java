@@ -1,9 +1,7 @@
 package com.nick.tdp.test;
 
 import java.math.BigInteger;
-
 import org.bouncycastle.math.ec.ECPoint;
-
 import com.nick.tdp.ecdh.ECDHCurve;
 import com.nick.tdp.securityprocess.BaseServerReceiptGenerator;
 import com.nick.tdp.securityprocess.DevicePairingProcess;

@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.register;
 
 /**
  * Created by Nick on 2015/7/21
@@ -49,16 +49,4 @@ public class TDPConstants {
     public static final String PACKET_PAYLOAD_REGISTRATION_PRIVATE_D = "registration_device_d_Pri";
     public static final String PACKET_PAYLOAD_REGISTRATION_SERVER_PUBLIC_KEY = "registration_server_Pub";
     public static final String PACKET_PAYLOAD_DEVICE_TRUST_VALUE = "device_trust_value";    
-    
-    /**
-     * For SharedPreferences - Device Encryption Parameters
-     * (ID, x, d, P, R, Pbs, t)
-     */
-    public static final String SP_DEVICE_ID = "sp_device_id";
-    public static final String SP_DEVICE_X = "sp_device_secret_key_x";
-    public static final String SP_DEVICE_D = "sp_device_secret_key_d";
-    public static final String SP_DEVICE_P = "sp_device_public_key_P";
-    public static final String SP_DEVICE_R = "sp_device_public_key_R";
-    public static final String SP_MASTER_P = "sp_master_public_key_P";
-    public static final String SP_DEVICE_T = "sp_device_trust_value_t";
  }

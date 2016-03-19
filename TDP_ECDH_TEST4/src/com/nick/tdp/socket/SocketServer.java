@@ -51,5 +51,13 @@ public class SocketServer implements Runnable{
             e.printStackTrace();
         }
     }
+    
+    /**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Thread(new SocketServer()).start();
+	}
 }
 

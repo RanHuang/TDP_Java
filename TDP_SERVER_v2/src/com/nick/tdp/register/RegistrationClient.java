@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.register;
 
 import java.math.BigInteger;
 import java.util.Random;
@@ -6,7 +6,7 @@ import org.bouncycastle.math.ec.ECPoint;
 
 import com.nick.tdp.security.ECDHCurve;
 
-public class DeviceClient {
+public class RegistrationClient {
 
 	public static String _ID;
 	public static BigInteger _x;
@@ -50,7 +50,7 @@ public class DeviceClient {
 		/*
 		 * Start the Client Socket to register in the back-end server.
 		 */
-		new Thread(new DeviceClientService()).start();
+		new Thread(new RegistrationClientService()).start();
 	}
 
 }

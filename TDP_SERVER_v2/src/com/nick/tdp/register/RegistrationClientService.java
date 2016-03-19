@@ -1,4 +1,4 @@
-package com.nick.tdp.socket;
+package com.nick.tdp.register;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import com.nick.tdp.security.ECDHCurve;
 
-public class DeviceClientService implements Runnable {
+public class RegistrationClientService implements Runnable {
 
 private static final String TAG = "TDP Client Service";
 	
@@ -22,7 +22,7 @@ private static final String TAG = "TDP Client Service";
 	private InputStream _inputStream;
 	private OutputStream _outputStream;
 	
-	public DeviceClientService(){
+	public RegistrationClientService(){
 
 	}
 	
@@ -33,10 +33,8 @@ private static final String TAG = "TDP Client Service";
 			_inputStream = _socket.getInputStream();
 			_outputStream = _socket.getOutputStream();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		/*
@@ -75,7 +73,6 @@ private static final String TAG = "TDP Client Service";
 			_outputStream.close();
 			_socket.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
@@ -92,7 +89,7 @@ private static final String TAG = "TDP Client Service";
 			jsonObject = new JSONObject();
 			try {
 				jsonObject.put(TDPConstants.PACKET_TYPE, TDPConstants.PACKET_TYPE_REGISTRATION_REQUEST_RECEIPT);
-				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_ID, DeviceClient._ID);				
+				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_ID, RegistrationClient._ID);				
 				writeObject(jsonObject);
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -104,15 +101,14 @@ private static final String TAG = "TDP Client Service";
 			 * Generate device's public key and private key.
 			 * Send (PacketType, DeviceID, PrivateKey, PublicKey)
 			 */
-			DeviceClient.generateKeys();
+			RegistrationClient.generateKeys();
 			jsonObject = new JSONObject();
 			try {
 				jsonObject.put(TDPConstants.PACKET_TYPE, TDPConstants.PACKET_TYPE_REGISTRATION_KEYS_OK);
-				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_ID, DeviceClient._ID);				
-				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY, DeviceClient._x.toString(16));
-				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PUBLIC_KEY, Hex.toHexString(DeviceClient._Ppub.getEncoded(true)));				
+				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_ID, RegistrationClient._ID);				
+				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY, RegistrationClient._x.toString(16));
+				jsonObject.put(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PUBLIC_KEY, Hex.toHexString(RegistrationClient._Ppub.getEncoded(true)));				
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 			writeObject(jsonObject);
@@ -148,26 +144,26 @@ private static final String TAG = "TDP Client Service";
 				 * Create a strategy to store the Device Receipt from the Back End Server.
 				 * (x, Pub, r, d, R, Ppub_master, t)
 				 */
-				DeviceClient._x = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY), 16);
-				DeviceClient._Ppub = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PUBLIC_KEY)));
-				DeviceClient._d = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_D), 16);
-				DeviceClient._r = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_R), 16);
-				DeviceClient._Rpub = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PUBLIC_R)));
-				DeviceClient._Ppub_master = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_SERVER_PUBLIC_KEY)));
-				DeviceClient._trustValue = jsonObject.getInt(TDPConstants.PACKET_PAYLOAD_DEVICE_TRUST_VALUE);
+				RegistrationClient._x = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PRIVATE_KEY), 16);
+				RegistrationClient._Ppub = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_DEVICE_PUBLIC_KEY)));
+				RegistrationClient._d = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_D), 16);
+				RegistrationClient._r = new BigInteger(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PRIVATE_R), 16);
+				RegistrationClient._Rpub = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_PUBLIC_R)));
+				RegistrationClient._Ppub_master = ECDHCurve.getInstance().decodeBytePoint(Hex.decode(jsonObject.getString(TDPConstants.PACKET_PAYLOAD_REGISTRATION_SERVER_PUBLIC_KEY)));
+				RegistrationClient._trustValue = jsonObject.getInt(TDPConstants.PACKET_PAYLOAD_DEVICE_TRUST_VALUE);
 				/*
 				 * Show the Registration Information.
 				 */
 				System.out.println("***************************************************************************************************\n"
 						+ "\t==== Device Received Receipt ====\n"
-						+ "\tID  : " + DeviceClient._ID + "\n"
-						+ "\tx   : " + DeviceClient._x.toString(16) + "\n"
-						+ "\tPpub: " + Hex.toHexString(DeviceClient._Ppub.getEncoded(true)) + "\n"
-						+ "\tr   : " + DeviceClient._r.toString(16) + "\n"
-						+ "\td   : " + DeviceClient._d.toString(16) + "\n"
-						+ "\tRand: " + Hex.toHexString(DeviceClient._Rpub.getEncoded(true)) + "\n"						
-						+ "\tMaster Ppub: " + Hex.toHexString(DeviceClient._Ppub_master.getEncoded(true)) + "\n"
-						+ "\tTrust Value: " + String.valueOf(DeviceClient._trustValue) + "\n"
+						+ "\tID  : " + RegistrationClient._ID + "\n"
+						+ "\tx   : " + RegistrationClient._x.toString(16) + "\n"
+						+ "\tPpub: " + Hex.toHexString(RegistrationClient._Ppub.getEncoded(true)) + "\n"
+						+ "\tr   : " + RegistrationClient._r.toString(16) + "\n"
+						+ "\td   : " + RegistrationClient._d.toString(16) + "\n"
+						+ "\tRand: " + Hex.toHexString(RegistrationClient._Rpub.getEncoded(true)) + "\n"						
+						+ "\tMaster Ppub: " + Hex.toHexString(RegistrationClient._Ppub_master.getEncoded(true)) + "\n"
+						+ "\tTrust Value: " + String.valueOf(RegistrationClient._trustValue) + "\n"
 						+ "***************************************************************************************************\n");
 				/*Terminate the loop of while-true in function sendPacket(int).*/
 				throw new MySocketReadWriteException("End of recving packet.");
