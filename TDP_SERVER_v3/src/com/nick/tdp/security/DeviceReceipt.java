@@ -13,7 +13,9 @@ import org.bouncycastle.util.encoders.Hex;
 public class DeviceReceipt {
 	
 	private static final int DefaultTrustValue = 20;
-	
+	/**
+	 * Receipt = (ID, r, R, d, P, t);
+	 */
 	private String _ID;
 	private BigInteger _rand;
 	private ECPoint _RandEcPoint; /* R = r*G */

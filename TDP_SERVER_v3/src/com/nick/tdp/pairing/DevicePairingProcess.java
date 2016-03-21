@@ -7,7 +7,11 @@ import org.bouncycastle.util.encoders.Hex;
 import com.nick.tdp.security.AESCoder;
 import com.nick.tdp.security.ECDHCurve;
 import com.nick.tdp.security.HashFunction;
-
+/**
+ * This class mainly does the calculations during the device pairing. 
+ * @author Nick
+ *
+ */
 public class DevicePairingProcess {
 	
 	private BigInteger _thisPrivateKey;
@@ -151,8 +155,5 @@ public class DevicePairingProcess {
 	
 	public byte[] getSecretKey(){
 		return _secretKeyByte; 
-	}
-	
-	
-	
+	}	
 }

@@ -31,18 +31,16 @@ public class SocketServer implements Runnable{
 
         System.out.println("Socket Server is waiting for incoming connections.");
         //Listening
-            Socket socket = null;
-            try{
-                socket = _serverSocket.accept();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
-            if(socket != null && socket.isConnected()){
-                //Start the top Application
-                new Thread(new DevicePairing(socket, true)).start();
-            }
-
+		Socket socket = null;
+		try {
+			socket = _serverSocket.accept();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (socket != null && socket.isConnected()) {
+			// Start the top Application
+			new Thread(new DeviceCommunication(socket, true)).start();
+		}
 
         try{
             System.out.println("server thread is stopped");

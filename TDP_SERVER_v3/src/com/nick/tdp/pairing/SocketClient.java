@@ -49,7 +49,7 @@ public class SocketClient implements Runnable {
         System.err.println(TAG + ":" + "Start the EncryptionController Thread.");
         
         
-        new Thread(new DevicePairing(socket, false)).start(); 
+        new Thread(new DeviceCommunication(socket, false)).start(); 
 
     }
 	/**

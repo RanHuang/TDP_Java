@@ -9,9 +9,17 @@ import java.net.Socket;
 import java.util.Random;
 import org.bouncycastle.math.ec.ECPoint;
 
+import com.nick.tdp.register.TDPConstants;
+import com.nick.tdp.security.BackendServerKey;
+import com.nick.tdp.security.DeviceReceipt;
 import com.nick.tdp.security.ECDHCurve;
-
-public class DevicePairing implements Runnable {
+/**
+ * There are two processes in this communication between two devices.
+ * The two processed are Device Pairing process and D2D Receipt Generation process. 
+ * @author Nick
+ *
+ */
+public class DeviceCommunication implements Runnable {
 
 	private static final String TAG = "Device Pairing";
 	private volatile boolean _isRunning;
@@ -42,9 +50,9 @@ public class DevicePairing implements Runnable {
 	private ECPoint _baseSeverPublicKey;
 	private BigInteger _thisPrivateKey;
 	private ECPoint _thisPublicKey;
-	private BaseServerReceiptGenerator _thisBaseServerReceipt;
+	private DeviceReceipt _thisDeviceReceipt;
 	    
-	public DevicePairing(Socket socket_, boolean isServer_){
+	public DeviceCommunication(Socket socket_, boolean isServer_){
 	    _isRunning = true;	        
 	    _socket = socket_; 
 	    _isServer = isServer_;
@@ -54,21 +62,21 @@ public class DevicePairing implements Runnable {
 	}
 	
 	protected void initialize(){
-		_baseServerPrivateKey = new BigInteger("de9ff58a22798adf2b31f33c8ca9324414257c1d2fa9cdbd", 16);
-		_baseSeverPublicKey = _ecdhCurve.generatePublicKeyEcPoint(_baseServerPrivateKey);
+		_baseServerPrivateKey = BackendServerKey.getInstance().getx();
+		_baseSeverPublicKey = BackendServerKey.OBJ_SERVER_KEY.getPpub();
 		
 		_thisDeviceID = "Android-" + String.valueOf(new Random());
 		_thisPrivateKey = _ecdhCurve.generatePrivateKeyBigInteger();
 		_thisPublicKey = _ecdhCurve.generatePublicKeyEcPoint(_thisPrivateKey);
-		_thisBaseServerReceipt = new BaseServerReceiptGenerator(_baseServerPrivateKey, _thisDeviceID, _thisPublicKey);
+		_thisDeviceReceipt = new DeviceReceipt(_thisDeviceID, _thisPublicKey);
 		try {
-			_thisBaseServerReceipt.generateReceipt();
+			_thisDeviceReceipt.generateReceipt(_baseServerPrivateKey);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
-		_devicePairingProcess = new DevicePairingProcess(_thisPrivateKey, _thisBaseServerReceipt.get_desc(), _baseSeverPublicKey);
+		_devicePairingProcess = new DevicePairingProcess(_thisPrivateKey, _thisDeviceReceipt.get_d(), _baseSeverPublicKey);
 	}
 	@Override
 	public void run() {
@@ -87,7 +95,7 @@ public class DevicePairing implements Runnable {
 		
 
         if(!_isServer){ //The start of Encryption Logic
-        	_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.MESSAGE_BEGIN, "^%&$Start Encryption Process");
+        	_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.MESSAGE_BEGIN, "^%&$Start Encryption Process");
         	writeObject(_outSocketKeyValue);
         }
 
@@ -138,15 +146,15 @@ public class DevicePairing implements Runnable {
 		
 		String stringKey = socketKeyValue.get_key();
 		
-		if(stringKey.equals(KeyConstant.MESSAGE_BEGIN)){
+		if(stringKey.equals(TDPConstants.MESSAGE_BEGIN)){
 			if(_isServer){
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.MESSAGE_BEGIN, "$%^&Socket start$%^&");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.MESSAGE_BEGIN, "$%^&Socket start$%^&");
 				
 			}else{
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_RECEIPT_INFO, "Pair Device Base Server Receipt Info");
-				_outSocketKeyValue.setReceiptInfo(_thisDeviceID, _thisBaseServerReceipt.getRandomEcPoint().getEncoded(true), _thisPublicKey.getEncoded(true));										
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_RECEIPT_INFO, "Pair Device Base Server Receipt Info");
+				_outSocketKeyValue.setReceiptInfo(_thisDeviceID, _thisDeviceReceipt.getRandEcPoint().getEncoded(true), _thisPublicKey.getEncoded(true));										
 			}
-        }else if (stringKey.equals(KeyConstant.TDP_PAIR_RECEIPT_INFO)) {
+        }else if (stringKey.equals(TDPConstants.TDP_PAIR_RECEIPT_INFO)) {
         	String pairID = socketKeyValue.get_pairDeviceID();
         	byte[] pairRandomByte = socketKeyValue.get_pairDeviceRandomByte();
         	byte[] pairPublicKeyByte = socketKeyValue.get_pairDevicePublicKeyByte();
@@ -156,54 +164,54 @@ public class DevicePairing implements Runnable {
 			_devicePairingProcess.setPairDeviceReceiptInfo(pairID, pairRandomEcPoint, pairPublicKeyEcPoint);
      	
 			if(_isServer){								
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_RECEIPT_INFO, "Pair Device Base Server Receipt Info");
-				_outSocketKeyValue.setReceiptInfo(_thisDeviceID, _thisBaseServerReceipt.getRandomEcPoint().getEncoded(true), _thisPublicKey.getEncoded(true));							
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_RECEIPT_INFO, "Pair Device Base Server Receipt Info");
+				_outSocketKeyValue.setReceiptInfo(_thisDeviceID, _thisDeviceReceipt.getRandEcPoint().getEncoded(true), _thisPublicKey.getEncoded(true));							
 			}else{
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_U, "Pair Device Data U");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_U, "Pair Device Data U");
 				_outSocketKeyValue.set_Ubyte(_devicePairingProcess.getUnixEcPoint().getEncoded(true));
 			}
-		}else if(stringKey.equals(KeyConstant.TDP_PAIR_U)){
+		}else if(stringKey.equals(TDPConstants.TDP_PAIR_U)){
 			_UEcPointPair = socketKeyValue.get_Ubyte();
 			_devicePairingProcess.calculateCat(_UEcPointPair);
 
 			if(_isServer){
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_U, "Pair Device Data U");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_U, "Pair Device Data U");
 				_outSocketKeyValue.set_Ubyte(_devicePairingProcess.getUnixEcPoint().getEncoded(true));
 			}else {
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_C, "Pair Device Data C");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_C, "Pair Device Data C");
 				_outSocketKeyValue.set_Cbyte(_devicePairingProcess.getCat());
 			}
-		}else if (stringKey.equals(KeyConstant.TDP_PAIR_C)) {
+		}else if (stringKey.equals(TDPConstants.TDP_PAIR_C)) {
 			_CbytePair = socketKeyValue.get_Cbyte();			
 			_devicePairingProcess.calculateFsck(_CbytePair);
 			
 			if(_isServer){
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_C, "Pair Device Data C");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_C, "Pair Device Data C");
 				_outSocketKeyValue.set_Cbyte(_devicePairingProcess.getCat());				
 			}else {
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_F, "Pair Device Data F");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_F, "Pair Device Data F");
 				_outSocketKeyValue.set_Fbyte(_devicePairingProcess.getFsck());				
 			}			
-		}else if(stringKey.equals(KeyConstant.TDP_PAIR_F)){
+		}else if(stringKey.equals(TDPConstants.TDP_PAIR_F)){
 			_FbytePair = socketKeyValue.get_Fbyte();
 			_devicePairingProcess.calculateSecretKey(_FbytePair);
 			
 			if(_isServer){
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.TDP_PAIR_F, "Pair Device Data F");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.TDP_PAIR_F, "Pair Device Data F");
 				_outSocketKeyValue.set_Fbyte(_devicePairingProcess.getFsck());
 			}else {
-				_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.MESSAGE_END, "$%^&Socket start$%^&");
+				_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.MESSAGE_END, "$%^&Socket start$%^&");
 				_isRunning = false;
 			}
-		}else if(stringKey.equals(KeyConstant.MESSAGE_END)){
+		}else if(stringKey.equals(TDPConstants.MESSAGE_END)){
         	_isRunning = false;
         	return;
-        }else if(stringKey.equals(KeyConstant.MESSAGE_UNKNOWN)) {
-        	_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.MESSAGE_END, "$Data transmission is over.");
+        }else if(stringKey.equals(TDPConstants.MESSAGE_UNKNOWN)) {
+        	_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.MESSAGE_END, "$Data transmission is over.");
 			writeObject(_outSocketKeyValue);
 			_isRunning = false;
         }else {
-        	_outSocketKeyValue = new SocketKeyValueObject(KeyConstant.MESSAGE_UNKNOWN, "Do not know what to do. Start from the begining.");
+        	_outSocketKeyValue = new SocketKeyValueObject(TDPConstants.MESSAGE_UNKNOWN, "Do not know what to do. Start from the begining.");
         	writeObject(_outSocketKeyValue);
         }
 		

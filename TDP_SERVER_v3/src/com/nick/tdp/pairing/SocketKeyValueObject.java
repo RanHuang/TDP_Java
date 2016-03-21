@@ -28,6 +28,15 @@ public class SocketKeyValueObject implements Serializable {
 	 */
 	private byte[] _pairF;
 	
+	/**
+	 * 5th round, get the pair device's(ID, Index, Contact History)
+	 */
+	private int _genRecIndex;
+	private int _genRecQos;
+	private String _genRecContactHistoryIDs;
+	private String _genRecContactHistoryA; /* sum of positive contact evaluation.*/
+	private String _genRecContactHistoryB; /* Device contacted times.*/
+	
 	public SocketKeyValueObject(String key_, String payload_){
 		_index = 0;
 		_key = key_;
@@ -39,6 +48,12 @@ public class SocketKeyValueObject implements Serializable {
 		_pairU = null;
 		_pairC = null;
 		_pairF = null;
+		
+		_genRecIndex = -1;
+		_genRecQos = 0;
+		_genRecContactHistoryIDs = null;
+		_genRecContactHistoryA = null;
+		_genRecContactHistoryB = null;
 	}
 	
 	public void printBaseInfo(){
@@ -120,5 +135,42 @@ public class SocketKeyValueObject implements Serializable {
 	
 	public byte[] get_Fbyte(){
 		return _pairF;
+	}
+	/**
+	 * 5th round
+	 */
+	public void set_genRecIndex(int index_){
+		_genRecIndex = index_;
+	}	
+	public int get_genRecIndex(){
+		return _genRecIndex;
+	}
+	
+	public void set_genRecQos(int qos_){
+		_genRecQos = qos_;
+	}
+	public int get_genRecQos(){
+		return _genRecQos;
+	}
+	
+	public void set_genRecContactHistoryIDs(String contactHistoryIds_){
+		_genRecContactHistoryIDs = contactHistoryIds_;
+	}
+	public String get_genRecContactHistoryIDs(){
+		return _genRecContactHistoryIDs;
+	}
+	
+	public void set_genRecContactHistoryA(String contactHistoryA_){
+		_genRecContactHistoryA = contactHistoryA_;
+	}
+	public String get_genRecContactHistoryA(){
+		return _genRecContactHistoryA;
+	}
+	
+	public void set_genRecContactHistoryB(String contactHistoryB_){
+		_genRecContactHistoryB = contactHistoryB_;
+	}
+	public String get_genRecContactHistoryB(){
+		return _genRecContactHistoryB;
 	}
 }
