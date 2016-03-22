@@ -1,5 +1,7 @@
 package nick.xjtu.edu.cn;
 
+import org.bouncycastle.jcajce.provider.symmetric.ARC4.Base;
+
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 /**
  * AES安全编码组件测试
@@ -42,12 +44,14 @@ public class AESCoderTest {
 	
 	
 	public final static void keyTest() throws Exception {
-		String keyStr = "0177cda5061afaa706aab9567375f3df6ff826deb1";
+		String keyStr = "0177cda5061afaa706aab9567375f";
+		
 		System.err.println("密钥:\t" + keyStr);
 		
 		String inputStr = "月黑风高夜，杀人越货时。丑时三刻以火为号，同时动手，鸡犬不留。";
 		byte[] inputData = inputStr.getBytes();
 		
+//		inputData = Base64.decode("9RN7V+6VJvqZHRdxjCdoLw==");
 		//加密
 		byte[] keyEnc = AESCoder.initKey(keyStr);
 		inputData = AESCoder.encrypt(inputData, keyEnc);
@@ -57,6 +61,7 @@ public class AESCoderTest {
 		//解密
 		byte[] keyDec = AESCoder.initKey(keyStr);
 		byte[] outputData = AESCoder.decrypt(inputData, keyDec);
+//		System.out.println("解密后的明文:\t" + Base64.encode(outputData));	
 		String outputStr = new String(outputData);
 		System.err.println("解密密钥:\t" + Base64.encode(keyDec));
 		System.out.println("解密后的明文:\t" + outputStr);	

@@ -101,7 +101,7 @@ public class DevicePairingProcess {
 		_Sudobyte = vimBigInteger.xor(vimPairBigInteger).toByteArray();
 		
 		System.out.println("Sa: " + _Sudobyte);
-		
+		System.out.println("SudoKey: " + Hex.toHexString(_Sudobyte));
 		/**
 		 * Ca = Enc(Sa, na)
 		 */

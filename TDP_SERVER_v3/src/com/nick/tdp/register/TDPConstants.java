@@ -80,5 +80,6 @@ public class TDPConstants {
     /**
      * For the device to device receipt generation process.
      */
+    public static final int MAX_NUM_OF_DEVICES = 15;
     public static final String TDP_GEN_RECP_CH = "receipt_generation_contactHistory"; 
  }
