@@ -1,5 +1,7 @@
 package com.nick.tdp.pairing;
 
+import java.util.Arrays;
+
 import com.nick.tdp.register.TDPConstants;
 
 /**
@@ -20,6 +22,8 @@ public class ReceiptGenerationProcess{
 	private double hat_cre;
 	private double cre;
 	
+	private int r;
+	
 	private int effective_num_ofCH;
 	private String[] contact_history_ID = new String[TDPConstants.MAX_NUM_OF_DEVICES];
 	private int[] contact_history_positive = new int[TDPConstants.MAX_NUM_OF_DEVICES];
@@ -34,20 +38,52 @@ public class ReceiptGenerationProcess{
 	
 	
 	public ReceiptGenerationProcess(){
-		hat_cre = 0;
-		hat_qos = 0;
+		initialize();
 	}
 	
+	private void initialize(){
+		hat_cre = 0;
+		hat_qos = 0;
+		r = -1;
+		
+		effective_num_ofCH = 0;
+	}
 	/**
 	 * Initialize the data of contact history.
 	 * Get them from the data base.
 	 */
-	private void initializeSelfCHdata(){		
+	public void initializeSelfCHdata(double pre_qos, double pre_cre, String ids, String ch_positive, String ch_total){	
+		hat_qos = pre_qos;
+		hat_cre = pre_cre;
 		
-		effective_num_ofCH = 5;
+		String[] temp_ch_ids = ids.split(",");
+		effective_num_ofCH = temp_ch_ids.length;
+//		System.out.println("num of CH: " + effective_num_ofCH);
+//		System.out.println("IDs: " + Arrays.toString(temp_ch_ids));
+		
+		int[] temp_ch_positive = stringToIntArray(ch_positive);
+		int[] temp_ch_total = stringToIntArray(ch_total);
+		
 		for(int i=0; i<effective_num_ofCH; i++){
-			contact_history[i] = (double)contact_history_positive[i] / contact_history_total[i];
+			contact_history_ID[i] = temp_ch_ids[i].trim();
+			contact_history_positive[i] = temp_ch_positive[i];
+			contact_history_total[i] = temp_ch_total[i];
+			contact_history[i] = (double) contact_history_positive[i]/contact_history_total[i] ;
 		}
+		
+		PrintAllParemetersInfo();
+	}
+	
+	private void PrintAllParemetersInfo(){
+		System.out.println("\n***********************All Parameters Info****************************"
+				+ "\n\tpreQos: " + hat_qos + "\tQos: " + qos
+				+ "\n\tpreCre: " + hat_cre + "\tCre: " + cre
+				+ "\n\tNum of CH: " + effective_num_ofCH
+				+ "\n\tCH-IDs: " + Arrays.toString(contact_history_ID)
+				+ "\n\tCH-Positive: " + Arrays.toString(contact_history_positive)
+				+ "\n\tCH-Total: " + Arrays.toString(contact_history_total)
+				+ "\n\tCH: " + Arrays.toString(contact_history)
+				+"\n");
 	}
 	/**
 	 * All the parameters are from the paired device by socket.
@@ -61,12 +97,23 @@ public class ReceiptGenerationProcess{
 		pair_contact_history_ID = pairIDs.split(",");
 		pair_contact_history_positive = stringToIntArray(ch_positive);
 		pair_contact_history_total = stringToIntArray(ch_total);
+		pair_contact_history = new double[pair_contact_history_ID.length];
 		for(int i=0; i<pair_contact_history_ID.length; i++){
 			pair_contact_history_ID[i] = pair_contact_history_ID[i].trim();
 			pair_contact_history[i] = (double)pair_contact_history_positive[i] / pair_contact_history_total[i];
-		}		
+		}
+		
+		PrintPairCHInfo();
 	}
-	
+	private void PrintPairCHInfo(){
+		System.out.println("\n******************Paired Device Contact History Info********************"
+				+ "\n\tNum of CH: " + pair_contact_history_ID.length
+				+ "\n\tCH-IDs: " + Arrays.toString(pair_contact_history_ID)
+				+ "\n\tCH-Positive: " + Arrays.toString(pair_contact_history_positive)
+				+ "\n\tCH-Total: " + Arrays.toString(pair_contact_history_total)
+				+ "\n\tCH: " + Arrays.toString(pair_contact_history)
+				+"\n");
+	}
 	
 	private int[] stringToIntArray(String strIntArray_){
 		/**
@@ -87,14 +134,19 @@ public class ReceiptGenerationProcess{
 		return outInt;
 	}
 	
-	public void calculateQos(int rssi_wifi){
-		
-		/*The rssi of wifi is negative, make is positive to be QoS. QoS(0, 1) */
-		qos = rssi_wifi+200.0;//TODO
-		
-	}
 	/******************************************************************************/
-	public void calculateCredibility(){	
+	public void calculateQCR(int qos_pair){
+		/**
+		 * Calculate Q
+		 */
+		/*The rssi of wifi is negative, make is positive to be QoS. QoS(0, 1) */
+		int qos_self = -90; //Get a new one
+		qos = (qos_self + qos_pair)/2;
+		qos = (qos + 100.0)/100;
+		
+		/**
+		 * Calculate C
+		 */
 		/* calculate H(theda) */
 		double Htheta_self = calcuHtheta(contact_history, effective_num_ofCH);		
 		double Htheta_pair = calcuHtheta(pair_contact_history, pair_contact_history.length);
@@ -120,22 +172,67 @@ public class ReceiptGenerationProcess{
 				}
 			}
 		}
+//		System.out.println("\n******************Interseciton Contact History********************"
+//				+ "\n\tNum of Intersection CH: " + num
+//				+ "\n\tIntersection CH: " + Arrays.toString(intersectionOfCH_self)
+//				+"\n");
 		double s= 0;
-		//if num==0
-		for(int i=0; i<num; i++){
-			s += Math.pow(intersectionOfCH_pair[i] - intersectionOfCH_self[i], 2);
-		}
-		s = 1 - Math.sqrt(s/num);		
+		if(num != 0){
+			for(int i=0; i<num; i++){
+				s += Math.pow(intersectionOfCH_pair[i] - intersectionOfCH_self[i], 2);
+			}
+			s = 1 - Math.sqrt(s/num);
+		}	
 		
 		/* calculate w according to formulate 7.*/
 		double w = 0;
-		
+		int average_transaction = 31;
+		double cw = 0.5;
+		int compare = (int)Math.floor(Math.sqrt(1/cw)*average_transaction);
+		int pair_index = indexOfDeviceInCH(pair_ID, contact_history_ID);
+		if(pair_index < 0){
+			w = 1.0;
+		}else if (contact_history_total[pair_index] > compare) {
+			w = 0.0;
+		}else {
+			w = -cw * Math.pow(contact_history[pair_index]/average_transaction, 2) + 1;
+		}
 		
 		/* Calculate c(Credibility) according to formulate 3. */
 		cre = (ALPHA*s*s + (1-ALPHA)*d*d)*w;
+		
+		/**
+		 * Calculate R
+		 */
+		double tempBETA = BETA;
+		if(effective_num_ofCH == 0 || pair_contact_history.length == 0 || num == 0){
+			tempBETA = 1;
+		}
+		double a = tempBETA*qos*qos + (1-tempBETA)*cre*cre;
+		double pre_a = tempBETA*hat_qos*hat_qos + (1-tempBETA)*hat_cre*hat_cre;
+		if(a >= pre_a){
+			r = 1;
+		}else {
+			r = -1;
+		}
+		
+		updateContactHistory(r);
+		
+		PrintQCRCalculationInfo(num, intersectionOfCH_pair);		
+	}
+	private void PrintQCRCalculationInfo(int num, double[] contact_history_){
+		System.out.println("\n******************QCR Calculation Info********************"
+				+ "\n\tNum of Intersection CH: " + num
+				+ "\n\tIntersection CH: " + Arrays.toString(contact_history_)
+				+ "\n\t QoS: " + qos
+				+ "\n\t Cre: " + cre
+				+ "\n\t Rat: " + r
+				+"\n");
 	}
 	/* Calculate H(theda) according to formulate 6.*/
 	private double calcuHtheta(double[] contact_history_, int dim_){
+		if(dim_ == 0) return 0.0;
+		
 		double Htheta = 0;
 		for(int i=1; i<dim_; i++){
 			Htheta += Math.pow(contact_history_[i-1] - contact_history_[i], 2);
@@ -146,19 +243,9 @@ public class ReceiptGenerationProcess{
 		return Htheta;
 	}
 	
-	/******************************************************************************/
-	public int calculateRating(){
-		//if none item
-		double a = BETA*qos*qos + (1-BETA)*cre*cre;
-		double pre_a = BETA*hat_qos*hat_qos + (1-BETA)*hat_cre*hat_cre;
-		if(a >= pre_a){
-			return 1;
-		}else {
-			return -1;
-		}
-	}
+	
 	/******************************************************************************/	
-	public void updateContactHistory(int r){
+	private void updateContactHistory(int r){
 		hat_cre = THETA*cre + (1-THETA)*hat_cre;
 		hat_qos = THETA*qos + (1-THETA)*hat_qos;
 		
@@ -181,6 +268,9 @@ public class ReceiptGenerationProcess{
 			contact_history_total[index] += 1;
 			contact_history[index] = (double)contact_history_positive[index] / contact_history_total[index];
 		}
+		
+		PrintAllParemetersInfo();
+		
 		/* Store the contact history into the database. */
 		//TODO
 	}

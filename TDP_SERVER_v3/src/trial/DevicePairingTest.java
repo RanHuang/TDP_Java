@@ -4,7 +4,6 @@ import java.math.BigInteger;
 import org.bouncycastle.math.ec.ECPoint;
 
 import com.nick.tdp.pairing.DevicePairingProcess;
-import com.nick.tdp.pairing.ReceiptGenerationProcess;
 import com.nick.tdp.security.DeviceReceipt;
 import com.nick.tdp.security.ECDHCurve;
 
@@ -16,20 +15,8 @@ public class DevicePairingTest {
 	 */
 	public static void main(String[] args) throws Exception {
 		DevicePairingTest test = new DevicePairingTest();
-//		test.testDevicePairingProcess();
-		test.testReceiptGenerationProcess();
-	}
-	
-	private void testReceiptGenerationProcess(){
-		ReceiptGenerationProcess receiptGenerationProcess = new ReceiptGenerationProcess();
 		
-//		String[] strAndroidID = {"Android_1319752751", "Android_1864635234", "Android_239632920", "Android_131485814",
-//				 "Android_1792883326", "Android_1934807146", "Android_1475781389", "Android_74059307",
-//				 "Android_219157648", "Android_681387016"};
-//		String id = "Android_131485814"; /* 3 */
-//		System.out.println("Index of '" + id + "' is " + receiptGenerationProcess.indexOfDeviceInCH(id, strAndroidID));
-//		String notId = "hello";
-//		System.out.println("Index of '" + notId + "' is " + receiptGenerationProcess.indexOfDeviceInCH(notId, strAndroidID));
+		test.testDevicePairingProcess();
 	}
 	
 	private void testDevicePairingProcess() throws Exception{
