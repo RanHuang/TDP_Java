@@ -2,11 +2,14 @@ package com.nick.tdp.pairing;
 
 import java.math.BigInteger;
 import java.util.Random;
+
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Hex;
+
 import com.nick.tdp.security.AESCoder;
 import com.nick.tdp.security.ECDHCurve;
 import com.nick.tdp.security.HashFunction;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 /**
  * This class mainly does the calculations during the device pairing. 
  * @author Nick
@@ -33,6 +36,7 @@ public class DevicePairingProcess {
 	private ECPoint _VimEcPoint;
 	private ECPoint _VimPairEcPoint;
 	private byte[] _Sudobyte;	
+	private byte[] SudoKey;
 	private BigInteger _NiceBigInteger;	
 	private byte[] _secretKeyByte;
 	
@@ -101,12 +105,14 @@ public class DevicePairingProcess {
 		_Sudobyte = vimBigInteger.xor(vimPairBigInteger).toByteArray();
 		
 		System.out.println("Sa: " + _Sudobyte);
-		System.out.println("SudoKey: " + Hex.toHexString(_Sudobyte));
+		SudoKey = AESCoder.initKey(Hex.toHexString(_Sudobyte));
+		System.out.println("SudoKey: " + Hex.toHexString(SudoKey));
 		/**
 		 * Ca = Enc(Sa, na)
 		 */
 		_NiceBigInteger = new BigInteger(32, new Random());
-		_CatByte = AESCoder.encrypt(_Sudobyte, _NiceBigInteger.toByteArray());
+		_CatByte = AESCoder.encrypt(_NiceBigInteger.toByteArray(), SudoKey);
+		System.out.println("C-Self: " + Base64.encode(_CatByte));
 	}
 	
 	public byte[] getCat(){
@@ -121,12 +127,13 @@ public class DevicePairingProcess {
 		/**
 		 * nb = Dec(Sa, Cb)
 		 */
-		byte[] nanoByte = AESCoder.decrypt(_Sudobyte, catPair_);
+		System.out.println("C-Pair: " + Base64.encode(catPair_));
+		byte[] nanoByte = AESCoder.decrypt(catPair_, SudoKey);
 		BigInteger nanoBigInteger = new BigInteger(nanoByte);
 		/**
 		 * Fa = Enc(Sa, nb + 1)
 		 */
-		_FsckByte = AESCoder.encrypt(_Sudobyte,nanoBigInteger.add(new BigInteger("1", 10)).toByteArray());
+		_FsckByte = AESCoder.encrypt(nanoBigInteger.add(new BigInteger("1", 10)).toByteArray(), SudoKey);
 		
 	}
 	
@@ -139,7 +146,7 @@ public class DevicePairingProcess {
 		 *  IF Dec(Sa, Fb) = na +1
 		 *  	Kab = Sa
 		 */
-		byte[] checkByte = AESCoder.decrypt(_Sudobyte, fsckPair_);
+		byte[] checkByte = AESCoder.decrypt(fsckPair_, SudoKey);
 		BigInteger checkBigInteger = new BigInteger(checkByte);
 		
 		if(checkBigInteger.compareTo(_NiceBigInteger.add(new BigInteger("1", 10))) == 0){
