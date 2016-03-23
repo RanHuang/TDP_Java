@@ -8,15 +8,12 @@ import java.util.Random;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Hex;
 
-import com.mysql.fabric.xmlrpc.Client;
-import com.nick.tdp.register.RegistrationClient;
 import com.nick.tdp.register.TDPConstants;
 import com.nick.tdp.security.AESCoder;
 import com.nick.tdp.security.BackendServerKey;
 import com.nick.tdp.security.DeviceReceipt;
 import com.nick.tdp.security.ECDHCurve;
 import com.nick.tdp.security.HashFunction;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 
 /**
  * This class mainly does the calculations during the D2D Receipt Generation. 
@@ -376,7 +373,7 @@ public class ReceiptGenerationProcess{
 		a_T2 = T2.getEncoded(true);
 		a_T3 = T3.getEncoded(true);
 		
-//		PrintSignaturaInfo(self_ID, a_enc_r, a_Snumerator, a_Sdenominator, a_T1, a_T2, a_T3);
+		PrintSignaturaInfo(self_ID, a_enc_r, a_Snumerator, a_Sdenominator, a_T1, a_T2, a_T3);
 	}
 	
 	private void PrintSignaturaInfo(String id, byte[] er, byte[] Snum, byte[] Sden, byte[] t1, byte[] t2, byte[] t3){
@@ -453,7 +450,6 @@ public class ReceiptGenerationProcess{
 		ECPoint Left = BackendServerKey.getInstance().getPpub().multiply(HashFunction.hashZero(strHash)).add(keysForGenRec.pair_Pub).add(keysForGenRec.pair_R)
 				.multiply(keysForGenRec.self_d).multiply(hb).multiply(new BigInteger(b_Snumerator));
 
-		ECPoint T2 = ECDHCurve.getInstance().decodeBytePoint(a_T2);
 		System.out.println("\n***********Calc Receipt**************"
 				 + "\n  ID: " + self_ID
 				 + "\n  Left:  " + Hex.toHexString(Left.getEncoded(true))

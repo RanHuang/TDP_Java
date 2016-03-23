@@ -4,7 +4,6 @@ import java.math.BigInteger;
 import java.util.Arrays;
 
 import org.bouncycastle.math.ec.ECPoint;
-import org.bouncycastle.util.encoders.Hex;
 
 import com.nick.tdp.pairing.DevicePairingProcess;
 import com.nick.tdp.pairing.ReceiptGenerationProcess;
