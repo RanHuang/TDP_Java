@@ -1,8 +1,22 @@
 package com.nick.tdp.pairing;
 
+import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Random;
 
+import org.bouncycastle.math.ec.ECPoint;
+import org.bouncycastle.util.encoders.Hex;
+
+import com.mysql.fabric.xmlrpc.Client;
+import com.nick.tdp.register.RegistrationClient;
 import com.nick.tdp.register.TDPConstants;
+import com.nick.tdp.security.AESCoder;
+import com.nick.tdp.security.BackendServerKey;
+import com.nick.tdp.security.DeviceReceipt;
+import com.nick.tdp.security.ECDHCurve;
+import com.nick.tdp.security.HashFunction;
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 
 /**
  * This class mainly does the calculations during the D2D Receipt Generation. 
@@ -24,6 +38,7 @@ public class ReceiptGenerationProcess{
 	
 	private int r;
 	
+	private String self_ID;
 	private int effective_num_ofCH;
 	private String[] contact_history_ID = new String[TDPConstants.MAX_NUM_OF_DEVICES];
 	private int[] contact_history_positive = new int[TDPConstants.MAX_NUM_OF_DEVICES];
@@ -35,7 +50,6 @@ public class ReceiptGenerationProcess{
 	private int[] pair_contact_history_positive;
 	private int[] pair_contact_history_total;
 	private double[] pair_contact_history;
-	
 	
 	public ReceiptGenerationProcess(){
 		initialize();
@@ -52,9 +66,10 @@ public class ReceiptGenerationProcess{
 	 * Initialize the data of contact history.
 	 * Get them from the data base.
 	 */
-	public void initializeSelfCHdata(double pre_qos, double pre_cre, String ids, String ch_positive, String ch_total){	
+	public void initializeSelfCHdata(double pre_qos, double pre_cre, String id, String ids, String ch_positive, String ch_total){	
 		hat_qos = pre_qos;
 		hat_cre = pre_cre;
+		self_ID = id;
 		
 		String[] temp_ch_ids = ids.split(",");
 		effective_num_ofCH = temp_ch_ids.length;
@@ -71,7 +86,7 @@ public class ReceiptGenerationProcess{
 			contact_history[i] = (double) contact_history_positive[i]/contact_history_total[i] ;
 		}
 		
-		PrintAllParemetersInfo();
+//		PrintAllParemetersInfo();
 	}
 	
 	private void PrintAllParemetersInfo(){
@@ -83,7 +98,7 @@ public class ReceiptGenerationProcess{
 				+ "\n\tCH-Positive: " + Arrays.toString(contact_history_positive)
 				+ "\n\tCH-Total: " + Arrays.toString(contact_history_total)
 				+ "\n\tCH: " + Arrays.toString(contact_history)
-				+"\n");
+				+"");
 	}
 	/**
 	 * All the parameters are from the paired device by socket.
@@ -112,7 +127,7 @@ public class ReceiptGenerationProcess{
 				+ "\n\tCH-Positive: " + Arrays.toString(pair_contact_history_positive)
 				+ "\n\tCH-Total: " + Arrays.toString(pair_contact_history_total)
 				+ "\n\tCH: " + Arrays.toString(pair_contact_history)
-				+"\n");
+				+"");
 	}
 	
 	private int[] stringToIntArray(String strIntArray_){
@@ -181,7 +196,7 @@ public class ReceiptGenerationProcess{
 			for(int i=0; i<num; i++){
 				s += Math.pow(intersectionOfCH_pair[i] - intersectionOfCH_self[i], 2);
 			}
-			s = 1 - Math.sqrt(s/num);
+			s = 1 - Math.sqrt((double)s/num);
 		}	
 		
 		/* calculate w according to formulate 7.*/
@@ -221,13 +236,13 @@ public class ReceiptGenerationProcess{
 		PrintQCRCalculationInfo(num, intersectionOfCH_pair);		
 	}
 	private void PrintQCRCalculationInfo(int num, double[] contact_history_){
-		System.out.println("\n******************QCR Calculation Info********************"
+		System.out.println("\n**********************QCR Calculation Info************************"
 				+ "\n\tNum of Intersection CH: " + num
 				+ "\n\tIntersection CH: " + Arrays.toString(contact_history_)
 				+ "\n\t QoS: " + qos
 				+ "\n\t Cre: " + cre
 				+ "\n\t Rat: " + r
-				+"\n");
+				+"");
 	}
 	/* Calculate H(theda) according to formulate 6.*/
 	private double calcuHtheta(double[] contact_history_, int dim_){
@@ -292,4 +307,252 @@ public class ReceiptGenerationProcess{
 		}
 		return result;
 	}
+	
+	/************************************************************************************/
+	private byte[] a_enc_r;
+	private byte[] a_Snumerator;
+	private byte[] a_Sdenominator;
+	private byte[] a_T1;
+	private byte[] a_T2;
+	private byte[] a_T3;
+	
+	private byte[] b_enc_r;
+	private byte[] b_Snumerator;
+	private byte[] b_Sdenominator;
+	private byte[] b_T1;
+	private byte[] b_T2;
+	private byte[] b_T3;
+	
+	private KeysForGenRec keysForGenRec = new KeysForGenRec();
+	private static final int[] TransactionType = {1, 2, 3};
+	
+	public void setClientSelfKeys(BigInteger x, BigInteger d){
+		keysForGenRec.self_x = x;
+		keysForGenRec.self_d = d;
+	}
+	public void setClientPairKeys(ECPoint pub, ECPoint rPub){
+		keysForGenRec.pair_Pub = pub;
+		keysForGenRec.pair_R = rPub;
+	}
+	
+	public void calcSignature() throws Exception{
+		/**
+		 * er_ab = Enc(d_a, r_ab)
+		 */
+		byte[] key_d = AESCoder.initKey(Hex.toHexString(keysForGenRec.self_d.toByteArray()));
+		a_enc_r = AESCoder.encrypt(String.valueOf(r).getBytes(), key_d);
+		/**
+		 * ha = h2(er_ab||c_ab||q_ab||type_ab)
+		 */
+		String catStr = Hex.toHexString(a_enc_r) 
+					  + Hex.toHexString(String.valueOf(cre).getBytes())
+					  + Hex.toHexString(String.valueOf(qos).getBytes())
+					  + Hex.toHexString(String.valueOf(TransactionType[1]).getBytes());
+		BigInteger ha = HashFunction.hashTwo(catStr);
+		System.out.println("hash_a: " + Hex.toHexString(ha.toByteArray()));
+		/**
+		 * Sa = t0_a/(x_a + d_a)
+		 * Sa = Sa_numerator/Sa_denominator
+		 */
+		BigInteger t0 = new BigInteger(32, new Random());
+		BigInteger Sa_numerator = t0;
+		BigInteger Sa_denominator = keysForGenRec.self_x.add(keysForGenRec.self_d);	
+		
+		a_Snumerator = Sa_numerator.toByteArray();
+		a_Sdenominator = Sa_denominator.toByteArray();
+		/**
+		 * T1a = t0*ha*( Rb + h0(b||R_b||P_b)Ppub )
+		 * T2a = t0aG
+		 * T3a = t0aPb
+		 */
+		String strHash = Hex.toHexString(pair_ID.getBytes())
+					  + Hex.toHexString(keysForGenRec.pair_R.getEncoded(true))
+					  + Hex.toHexString(keysForGenRec.pair_Pub.getEncoded(true));
+		ECPoint T1 = BackendServerKey.getInstance().getPpub().multiply(HashFunction.hashZero(strHash)).add(keysForGenRec.pair_R).multiply(t0).multiply(ha);
+		ECPoint T2 = ECDHCurve.getInstance().getBasePoint().multiply(t0);
+		ECPoint T3 = keysForGenRec.pair_Pub.multiply(t0);
+		
+		a_T1 = T1.getEncoded(true);
+		a_T2 = T2.getEncoded(true);
+		a_T3 = T3.getEncoded(true);
+		
+//		PrintSignaturaInfo(self_ID, a_enc_r, a_Snumerator, a_Sdenominator, a_T1, a_T2, a_T3);
+	}
+	
+	private void PrintSignaturaInfo(String id, byte[] er, byte[] Snum, byte[] Sden, byte[] t1, byte[] t2, byte[] t3){
+		System.out.println("\n**********************Signature Info************************"
+						 + "\n  ID: " + id
+						 + "\n  er: " + Hex.toHexString(er)
+						 + "\n  Sn: " + Hex.toHexString(Snum)
+						 + "\n  Sd: " + Hex.toHexString(Sden)
+						 + "\n  t1: " + Hex.toHexString(t1)
+						 + "\n  t2: " + Hex.toHexString(t2)
+						 + "\n  t3: " + Hex.toHexString(t3)
+						 + "");
+	}
+	
+	public byte[] get_er(){
+		return a_enc_r;
+	}
+	public byte[] get_Snumerator(){
+		return a_Snumerator;
+	}
+	public byte[] get_Sdenominator(){
+		return a_Sdenominator;
+	}
+	public byte[] get_T(int n) throws Exception{
+		switch(n){
+			case 1:
+				return a_T1;
+			case 2:
+				return a_T2;
+			case 3:
+				return a_T3;
+			default:				
+				throw new Exception("return Tn error(1 <= n <= 3): " + n);
+		}
+	}
+	/**
+	 * Calculation Receipt
+	 */
+	public void set_PairSignature(byte[] er, byte[] Snum, byte[] Sden, byte[] t1, byte[] t2, byte[] t3){
+		b_enc_r = er;
+		b_Snumerator = Snum;
+		b_Sdenominator = Sden;
+		b_T1 = t1;
+		b_T2 = t2;
+		b_T3 = t3;
+		
+//		PrintSignaturaInfo(pair_ID, b_enc_r, b_Snumerator, b_Sdenominator, b_T1, b_T2, b_T3);
+	}
+	
+	public boolean calcReceipt() throws NoSuchAlgorithmException{
+		boolean result = false;
+		/**
+		 * hb = h2(er_ba||c_ab||q_ab||type_ab)
+		 */
+		String catStr = Hex.toHexString(b_enc_r)
+				 	  + Hex.toHexString(String.valueOf(cre).getBytes())
+				 	  + Hex.toHexString(String.valueOf(qos).getBytes())
+				 	  + Hex.toHexString(String.valueOf(TransactionType[1]).getBytes());
+		BigInteger hb = HashFunction.hashTwo(catStr);		
+		System.out.println("hash_b: " + Hex.toHexString(hb.toByteArray()));
+		
+		ECPoint T1b = ECDHCurve.getInstance().decodeBytePoint(b_T1);
+		ECPoint T2b = ECDHCurve.OBJ_ECDH_CUVE.decodeBytePoint(b_T2);
+		ECPoint T3b = ECDHCurve.OBJ_ECDH_CUVE.decodeBytePoint(b_T3);
+		/**
+		 * Right = T1b*Sb_denominator
+		 * Left = d_a*hb*Sb_numerator*( Pb + Rb + h0(b||R_b||P_b)Ppub )
+		 */
+		ECPoint Right = T1b.multiply(new BigInteger(b_Sdenominator));
+		System.out.println("b_Sden: " + Hex.toHexString(new BigInteger(b_Sdenominator).toByteArray()));
+		String strHash = Hex.toHexString(pair_ID.getBytes())
+				  + Hex.toHexString(keysForGenRec.pair_R.getEncoded(true))
+				  + Hex.toHexString(keysForGenRec.pair_Pub.getEncoded(true));
+		ECPoint Left = BackendServerKey.getInstance().getPpub().multiply(HashFunction.hashZero(strHash)).add(keysForGenRec.pair_Pub).add(keysForGenRec.pair_R)
+				.multiply(keysForGenRec.self_d).multiply(hb).multiply(new BigInteger(b_Snumerator));
+
+		ECPoint T2 = ECDHCurve.getInstance().decodeBytePoint(a_T2);
+		System.out.println("\n***********Calc Receipt**************"
+				 + "\n  ID: " + self_ID
+				 + "\n  Left:  " + Hex.toHexString(Left.getEncoded(true))
+				 + "\n  Right: " + Hex.toHexString(Right.getEncoded(true))
+				 + "\n  xa*T2b:  " + Hex.toHexString(T2b.multiply(keysForGenRec.self_x).getEncoded(true))
+				 + "\n  T3:    " + Hex.toHexString(T3b.getEncoded(true))
+				 + "");
+		
+		if(Left.equals(Right) && T2b.multiply(keysForGenRec.self_x).equals(T3b)){
+			result = true;
+			System.out.println("\n$%%^^*&$#$@ Receipt is generated. $%%^^*&$#$@");
+			
+		}else {
+			System.err.println("\n$%%&$#$  Generate Receipt failed. *&$#$@");	
+		}
+		return result;
+	}	
+	
+	public void CalcTest() throws Exception {
+		BigInteger baseServerPrivateKey = BackendServerKey.getInstance().getx();
+//		ECPoint baseServerPublicKey = BackendServerKey.OBJ_SERVER_KEY.getPpub();
+		ECDHCurve ecdhCurve = new ECDHCurve();
+		String ID = "Android_239632920";
+		BigInteger x = ecdhCurve.generatePrivateKeyBigInteger();
+		ECPoint pub = ecdhCurve.generatePublicKeyEcPoint(x);
+		DeviceReceipt receipt = new DeviceReceipt(ID, pub);
+		receipt.generateReceipt(baseServerPrivateKey);
+		/**
+		 * er_ab = Enc(d_a, r_ab)
+		 */
+		byte[] key_d = AESCoder.initKey(Hex.toHexString(receipt.get_d().toByteArray()));
+		a_enc_r = AESCoder.encrypt(String.valueOf(1).getBytes(), key_d);
+		/**
+		 * ha = h2(er_ab||c_ab||q_ab||type_ab)
+		 */
+		String catStr = Hex.toHexString(a_enc_r) + Hex.toHexString(String.valueOf(0.5).getBytes())
+				+ Hex.toHexString(String.valueOf(0.4).getBytes())
+				+ Hex.toHexString(String.valueOf(1).getBytes());
+		BigInteger ha = HashFunction.hashTwo(catStr);
+		System.out.println("hash_a: " + Hex.toHexString(ha.toByteArray()));
+		/**
+		 * Sa = t0_a/(x_a + d_a) Sa = Sa_numerator/Sa_denominator
+		 */
+		BigInteger t0 = new BigInteger("12345678910");
+		BigInteger Sa_numerator = t0;
+		BigInteger Sa_denominator = x.add(receipt.get_d());
+		/**
+		 * T1a = t0*ha*( Rb + h0(b||R_b||P_b)Ppub )
+		 */
+		String strHash = Hex.toHexString(ID.getBytes()) + Hex.toHexString(receipt.getRandEcPoint().getEncoded(true))
+				+ Hex.toHexString(pub.getEncoded(true));
+		ECPoint T1 = BackendServerKey.getInstance().getPpub().multiply(HashFunction.hashZero(strHash))
+				.add(receipt.getRandEcPoint()).multiply(t0).multiply(ha);
+		ECPoint T2 = ECDHCurve.getInstance().getBasePoint().multiply(t0);
+		ECPoint T3 = pub.multiply(t0);
+
+		String catStrB = Hex.toHexString(a_enc_r) + Hex.toHexString(String.valueOf(0.5).getBytes())
+				+ Hex.toHexString(String.valueOf(0.4).getBytes())
+				+ Hex.toHexString(String.valueOf(1).getBytes());
+		BigInteger hb = HashFunction.hashTwo(catStrB);
+
+//		System.out.println("hash_b: " + Hex.toHexString(hb.toByteArray()));
+
+		/**
+		 * Right = T1b*Sb_denominator Left = d_a*hb*Sb_numerator*( Pb + Rb +
+		 * h0(b||R_b||P_b)Ppub )
+		 */
+
+		ECPoint Right = T1.multiply(Sa_denominator);
+
+		String strHashB = Hex.toHexString(ID.getBytes()) + Hex.toHexString(receipt.getRandEcPoint().getEncoded(true))
+				+ Hex.toHexString(pub.getEncoded(true));
+		ECPoint Left = BackendServerKey.getInstance().getPpub().multiply(HashFunction.hashZero(strHashB)).add(pub)
+				.add(receipt.getRandEcPoint()).multiply(receipt.get_d()).multiply(hb).multiply(Sa_numerator);
+
+		System.out.println("\n***********Calc Receipt**************" 
+				+ "\n  ID: " + ID 
+				+ "\n  Left:  "
+				+ Hex.toHexString(Left.getEncoded(true)) 
+				+ "\n  Right: " + Hex.toHexString(Right.getEncoded(true))
+				+ "\n  x*T2:  " + Hex.toHexString(T2.multiply(x).getEncoded(true)) 
+				+ "\n  T3:    "
+				+ Hex.toHexString(T3.getEncoded(true)) 
+				+ "");
+		if (Left.equals(Right) && T2.multiply(x).equals(T3)) {
+			System.out.println("\n$%%^^*&$#$@ Receipt is generated. $%%^^*&$#$@");
+		} else {
+			System.err.println("\n$%%&$#$  Generate Receipt failed. *&$#$@");
+		}
+
+	}
+
+	private class KeysForGenRec{
+		public BigInteger self_x;
+		public BigInteger self_d;
+		
+		public ECPoint pair_Pub;
+		public ECPoint pair_R;
+	}
+
 }
+

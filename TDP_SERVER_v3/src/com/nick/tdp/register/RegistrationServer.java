@@ -24,7 +24,7 @@ import com.nick.tdp.security.BackendServerKey;
  * 	3. Return ( x, Pub, r, d, R, msterPub, tv) to the the registered device.
  * 	4. Store the Device's authenticated credential (ID, x, Pub, r, d, R, msterPub, tv) by database system.
  */
-public class Registrationerver implements Runnable {
+public class RegistrationServer implements Runnable {
 	private static final String TAG = "Backend Server Service";
 
 	private final ServerSocket _serverSocket;
@@ -32,7 +32,7 @@ public class Registrationerver implements Runnable {
 	/**
 	 * Generate the server key. And listen to the port for incoming client.
 	 */
-	public Registrationerver() {
+	public RegistrationServer() {
 		BackendServerKey.getInstance();
 		System.out.println(
 				"***************************************************************************************************\n"
@@ -255,7 +255,7 @@ public class Registrationerver implements Runnable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new Thread(new Registrationerver()).start();
+		new Thread(new RegistrationServer()).start();
 	}
 
 }

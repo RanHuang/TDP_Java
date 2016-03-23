@@ -50,7 +50,14 @@ public abstract class HashFunction {
 	
 	/**
 	 * h2: {0, 1}* --> Z*
-	 * 
+	 * The same as hashZero()
 	 */
-	
+	public static BigInteger hashTwo(String clear)throws NoSuchAlgorithmException{
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
+		messageDigest.update(clear.getBytes());		
+		byte[] digest = messageDigest.digest();
+		BigInteger intVal = new BigInteger(digest); 
+		
+		return intVal;
+	}	 	
 }

@@ -30,8 +30,7 @@ public class RegistrationClient {
 //					+ "\n\tPublic Key: " + Hex.toHexString(_Ppub.getEncoded(true)) 
 //					+ "\n");
 //		}
-	}
-	
+	}	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -52,5 +51,5 @@ public class RegistrationClient {
 		 */
 		new Thread(new RegistrationClientService()).start();
 	}
-
+	
 }
