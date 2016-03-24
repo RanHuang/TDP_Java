@@ -17,8 +17,16 @@ import com.nick.tdp.security.HashFunction;
 
 /**
  * This class mainly does the calculations during the D2D Receipt Generation. 
+ * 1. If necessary get the Contact History Data from database, then setSelfCHdata()
+ * 2. Get the CH-data of paired device, then setSelfCHdata()
+ * 3-1. Generate the QoS of this device and send it to the paired device; 
+ * 3-2. Get the QoS of the paired device, then calculateQCR()
+ * 4. Before calculate the signature, setClientSelfKeys(x, d) && setClientPairKeys(Pub, R), then calcSignature()
+ * 5. Send the signature to the paired device and get the paired device's signature, then setPairSignature()
+ * 6. Generate the Receipt, calcReceipt()
+ * 7. Send the receipt to the Back-end Server.
  * @author Nick
- * 2016-03-21
+ * Created: 2016-03-21
  */
 
 public class ReceiptGenerationProcess{
@@ -63,24 +71,25 @@ public class ReceiptGenerationProcess{
 	 * Initialize the data of contact history.
 	 * Get them from the data base.
 	 */
-	public void initializeSelfCHdata(double pre_qos, double pre_cre, String id, String ids, String ch_positive, String ch_total){	
+	public void setSelfCHdata(double pre_qos, double pre_cre, String id, String ids, String ch_positive, String ch_total){	
 		hat_qos = pre_qos;
 		hat_cre = pre_cre;
 		self_ID = id;
-		
-		String[] temp_ch_ids = ids.split(",");
-		effective_num_ofCH = temp_ch_ids.length;
-//		System.out.println("num of CH: " + effective_num_ofCH);
-//		System.out.println("IDs: " + Arrays.toString(temp_ch_ids));
-		
-		int[] temp_ch_positive = stringToIntArray(ch_positive);
-		int[] temp_ch_total = stringToIntArray(ch_total);
-		
-		for(int i=0; i<effective_num_ofCH; i++){
-			contact_history_ID[i] = temp_ch_ids[i].trim();
-			contact_history_positive[i] = temp_ch_positive[i];
-			contact_history_total[i] = temp_ch_total[i];
-			contact_history[i] = (double) contact_history_positive[i]/contact_history_total[i] ;
+		if(ids != null){
+			String[] temp_ch_ids = ids.split(",");
+			effective_num_ofCH = temp_ch_ids.length;
+
+			int[] temp_ch_positive = stringToIntArray(ch_positive);
+			int[] temp_ch_total = stringToIntArray(ch_total);
+
+			for (int i = 0; i < effective_num_ofCH; i++) {
+				contact_history_ID[i] = temp_ch_ids[i].trim();
+				contact_history_positive[i] = temp_ch_positive[i];
+				contact_history_total[i] = temp_ch_total[i];
+				contact_history[i] = (double) contact_history_positive[i] / contact_history_total[i];
+			}
+		}else {
+			effective_num_ofCH = 0;
 		}
 		
 //		PrintAllParemetersInfo();
@@ -88,6 +97,7 @@ public class ReceiptGenerationProcess{
 	
 	private void PrintAllParemetersInfo(){
 		System.out.println("\n***********************All Parameters Info****************************"
+				+ "\n\tID: " + self_ID
 				+ "\n\tpreQos: " + hat_qos + "\tQos: " + qos
 				+ "\n\tpreCre: " + hat_cre + "\tCre: " + cre
 				+ "\n\tNum of CH: " + effective_num_ofCH
@@ -104,21 +114,23 @@ public class ReceiptGenerationProcess{
 	 * @param ch_positive e.g: "[a, b, c, e, f]" -- integer array to string
 	 * @param ch_total    e.g: "[m, n, o, p, q]" -- integer array to string
 	 */
-	public void initializePairCHdata(String id, String pairIDs, String ch_positive, String ch_total){
+	public void setPairCHdata(String id, String pairIDs, String ch_positive, String ch_total){
 		pair_ID = id;
-		pair_contact_history_ID = pairIDs.split(",");
-		pair_contact_history_positive = stringToIntArray(ch_positive);
-		pair_contact_history_total = stringToIntArray(ch_total);
-		pair_contact_history = new double[pair_contact_history_ID.length];
-		for(int i=0; i<pair_contact_history_ID.length; i++){
-			pair_contact_history_ID[i] = pair_contact_history_ID[i].trim();
-			pair_contact_history[i] = (double)pair_contact_history_positive[i] / pair_contact_history_total[i];
-		}
-		
-		PrintPairCHInfo();
+		if (pairIDs != null && pairIDs.length() != 0) {
+			pair_contact_history_ID = pairIDs.split(",");
+			pair_contact_history_positive = stringToIntArray(ch_positive);
+			pair_contact_history_total = stringToIntArray(ch_total);
+			pair_contact_history = new double[pair_contact_history_ID.length];
+			for (int i = 0; i < pair_contact_history_ID.length; i++) {
+				pair_contact_history_ID[i] = pair_contact_history_ID[i].trim();
+				pair_contact_history[i] = (double) pair_contact_history_positive[i] / pair_contact_history_total[i];
+			}			
+			PrintPairCHInfo();
+		}		
 	}
 	private void PrintPairCHInfo(){
 		System.out.println("\n******************Paired Device Contact History Info********************"
+				+ "\n\tPair ID: " + pair_ID
 				+ "\n\tNum of CH: " + pair_contact_history_ID.length
 				+ "\n\tCH-IDs: " + Arrays.toString(pair_contact_history_ID)
 				+ "\n\tCH-Positive: " + Arrays.toString(pair_contact_history_positive)
@@ -156,46 +168,51 @@ public class ReceiptGenerationProcess{
 		qos = (qos_self + qos_pair)/2;
 		qos = (qos + 100.0)/100;
 		
-		/**
-		 * Calculate C
-		 */
 		/* calculate H(theda) */
-		double Htheta_self = calcuHtheta(contact_history, effective_num_ofCH);		
-		double Htheta_pair = calcuHtheta(pair_contact_history, pair_contact_history.length);
-		
-		/* calculate d according to formulate 5.*/
-		double d = 1 - Math.abs(Htheta_self - Htheta_pair);
-		
-		/**
-		 *  Calculate s according to formulate 4.
-		 *  1. Get intersection of the two devices' contact history.
-		 *  2. calculate s  
-		 */
-		double[] intersectionOfCH_self = new double[TDPConstants.MAX_NUM_OF_DEVICES];
-		double[] intersectionOfCH_pair = new double[TDPConstants.MAX_NUM_OF_DEVICES];
-		int num = 0;
-		for(int i=0; i<effective_num_ofCH; i++){
-			for(int j=0; j<pair_contact_history.length; j++){
-				if(contact_history_ID[i].equals(pair_contact_history_ID[j])){
-					intersectionOfCH_self[num] = contact_history[i];
-					intersectionOfCH_pair[num] = pair_contact_history[j];
-					num++;
-					break;
+		double Htheta_self = calcuHtheta(contact_history, effective_num_ofCH);
+		double Htheta_pair = 0.0;
+		double s= 0;
+		int num = 0; /* The number of intersection of Contact History. */
+		if (pair_contact_history != null && pair_contact_history.length != 0) {
+			Htheta_pair = calcuHtheta(pair_contact_history, pair_contact_history.length);
+			/**
+			 * Calculate s according to formulate 4. 
+			 * 1. Get intersection of the two devices' contact history. 
+			 * 2. calculate s
+			 */
+			double[] intersectionOfCH_self = new double[TDPConstants.MAX_NUM_OF_DEVICES];
+			double[] intersectionOfCH_pair = new double[TDPConstants.MAX_NUM_OF_DEVICES];			
+			for (int i = 0; i < effective_num_ofCH; i++) {
+				for (int j = 0; j < pair_contact_history.length; j++) {
+					if (contact_history_ID[i].equals(pair_contact_history_ID[j])) {
+						intersectionOfCH_self[num] = contact_history[i];
+						intersectionOfCH_pair[num] = pair_contact_history[j];
+						num++;
+						break;
+					}
 				}
 			}
+//			System.out.println("\n******************Interseciton Contact History********************"
+//					+ "\n\tNum of Intersection CH: " + num + "\n\tIntersection CH: "
+//					+ Arrays.toString(intersectionOfCH_self) + "\n");
+			/* calculate s  */		
+			if(num != 0){
+				for(int i=0; i<num; i++){
+					s += Math.pow(intersectionOfCH_pair[i] - intersectionOfCH_self[i], 2);
+				}
+				s = 1 - Math.sqrt((double)s/num);
+				
+				System.out.println("\n*********QCR Calculation Info -- Intersection of Contact History********"
+						+ "\n\tID: " + self_ID
+						+ "\n\tNum of Intersection CH: " + num
+						+ "\n\tIntersection CH: " + Arrays.toString(intersectionOfCH_pair)
+						+"");
+			}	
+			
 		}
-//		System.out.println("\n******************Interseciton Contact History********************"
-//				+ "\n\tNum of Intersection CH: " + num
-//				+ "\n\tIntersection CH: " + Arrays.toString(intersectionOfCH_self)
-//				+"\n");
-		double s= 0;
-		if(num != 0){
-			for(int i=0; i<num; i++){
-				s += Math.pow(intersectionOfCH_pair[i] - intersectionOfCH_self[i], 2);
-			}
-			s = 1 - Math.sqrt((double)s/num);
-		}	
-		
+		/* calculate d according to formulate 5.*/
+		double d = 1 - Math.abs(Htheta_self - Htheta_pair);
+				
 		/* calculate w according to formulate 7.*/
 		double w = 0;
 		int average_transaction = 31;
@@ -217,7 +234,7 @@ public class ReceiptGenerationProcess{
 		 * Calculate R
 		 */
 		double tempBETA = BETA;
-		if(effective_num_ofCH == 0 || pair_contact_history.length == 0 || num == 0){
+		if(num == 0 || effective_num_ofCH == 0 || pair_contact_history.length == 0){
 			tempBETA = 1;
 		}
 		double a = tempBETA*qos*qos + (1-tempBETA)*cre*cre;
@@ -228,18 +245,12 @@ public class ReceiptGenerationProcess{
 			r = -1;
 		}
 		
-		updateContactHistory(r);
-		
-		PrintQCRCalculationInfo(num, intersectionOfCH_pair);		
-	}
-	private void PrintQCRCalculationInfo(int num, double[] contact_history_){
-		System.out.println("\n**********************QCR Calculation Info************************"
-				+ "\n\tNum of Intersection CH: " + num
-				+ "\n\tIntersection CH: " + Arrays.toString(contact_history_)
+		System.out.println("\n**********************QCR Calculation Info -- QCR************************"
 				+ "\n\t QoS: " + qos
 				+ "\n\t Cre: " + cre
 				+ "\n\t Rat: " + r
 				+"");
+		updateContactHistory(r);
 	}
 	/* Calculate H(theda) according to formulate 6.*/
 	private double calcuHtheta(double[] contact_history_, int dim_){
@@ -346,7 +357,7 @@ public class ReceiptGenerationProcess{
 					  + Hex.toHexString(String.valueOf(qos).getBytes())
 					  + Hex.toHexString(String.valueOf(TransactionType[1]).getBytes());
 		BigInteger ha = HashFunction.hashTwo(catStr);
-		System.out.println("hash_a: " + Hex.toHexString(ha.toByteArray()));
+//		System.out.println("hash_a: " + Hex.toHexString(ha.toByteArray()));
 		/**
 		 * Sa = t0_a/(x_a + d_a)
 		 * Sa = Sa_numerator/Sa_denominator
@@ -373,9 +384,10 @@ public class ReceiptGenerationProcess{
 		a_T2 = T2.getEncoded(true);
 		a_T3 = T3.getEncoded(true);
 		
-		PrintSignaturaInfo(self_ID, a_enc_r, a_Snumerator, a_Sdenominator, a_T1, a_T2, a_T3);
+//		PrintSignaturaInfo(self_ID, a_enc_r, a_Snumerator, a_Sdenominator, a_T1, a_T2, a_T3);
 	}
 	
+	@SuppressWarnings("unused")
 	private void PrintSignaturaInfo(String id, byte[] er, byte[] Snum, byte[] Sden, byte[] t1, byte[] t2, byte[] t3){
 		System.out.println("\n**********************Signature Info************************"
 						 + "\n  ID: " + id
@@ -412,7 +424,7 @@ public class ReceiptGenerationProcess{
 	/**
 	 * Calculation Receipt
 	 */
-	public void set_PairSignature(byte[] er, byte[] Snum, byte[] Sden, byte[] t1, byte[] t2, byte[] t3){
+	public void setPairSignature(byte[] er, byte[] Snum, byte[] Sden, byte[] t1, byte[] t2, byte[] t3){
 		b_enc_r = er;
 		b_Snumerator = Snum;
 		b_Sdenominator = Sden;
@@ -433,7 +445,7 @@ public class ReceiptGenerationProcess{
 				 	  + Hex.toHexString(String.valueOf(qos).getBytes())
 				 	  + Hex.toHexString(String.valueOf(TransactionType[1]).getBytes());
 		BigInteger hb = HashFunction.hashTwo(catStr);		
-		System.out.println("hash_b: " + Hex.toHexString(hb.toByteArray()));
+//		System.out.println("hash_b: " + Hex.toHexString(hb.toByteArray()));
 		
 		ECPoint T1b = ECDHCurve.getInstance().decodeBytePoint(b_T1);
 		ECPoint T2b = ECDHCurve.OBJ_ECDH_CUVE.decodeBytePoint(b_T2);
@@ -443,7 +455,7 @@ public class ReceiptGenerationProcess{
 		 * Left = d_a*hb*Sb_numerator*( Pb + Rb + h0(b||R_b||P_b)Ppub )
 		 */
 		ECPoint Right = T1b.multiply(new BigInteger(b_Sdenominator));
-		System.out.println("b_Sden: " + Hex.toHexString(new BigInteger(b_Sdenominator).toByteArray()));
+//		System.out.println("b_Sden: " + Hex.toHexString(new BigInteger(b_Sdenominator).toByteArray()));
 		String strHash = Hex.toHexString(pair_ID.getBytes())
 				  + Hex.toHexString(keysForGenRec.pair_R.getEncoded(true))
 				  + Hex.toHexString(keysForGenRec.pair_Pub.getEncoded(true));
@@ -470,7 +482,6 @@ public class ReceiptGenerationProcess{
 	
 	public void CalcTest() throws Exception {
 		BigInteger baseServerPrivateKey = BackendServerKey.getInstance().getx();
-//		ECPoint baseServerPublicKey = BackendServerKey.OBJ_SERVER_KEY.getPpub();
 		ECDHCurve ecdhCurve = new ECDHCurve();
 		String ID = "Android_239632920";
 		BigInteger x = ecdhCurve.generatePrivateKeyBigInteger();
@@ -510,36 +521,27 @@ public class ReceiptGenerationProcess{
 				+ Hex.toHexString(String.valueOf(0.4).getBytes())
 				+ Hex.toHexString(String.valueOf(1).getBytes());
 		BigInteger hb = HashFunction.hashTwo(catStrB);
-
-//		System.out.println("hash_b: " + Hex.toHexString(hb.toByteArray()));
-
 		/**
 		 * Right = T1b*Sb_denominator Left = d_a*hb*Sb_numerator*( Pb + Rb +
 		 * h0(b||R_b||P_b)Ppub )
 		 */
-
 		ECPoint Right = T1.multiply(Sa_denominator);
-
 		String strHashB = Hex.toHexString(ID.getBytes()) + Hex.toHexString(receipt.getRandEcPoint().getEncoded(true))
 				+ Hex.toHexString(pub.getEncoded(true));
 		ECPoint Left = BackendServerKey.getInstance().getPpub().multiply(HashFunction.hashZero(strHashB)).add(pub)
 				.add(receipt.getRandEcPoint()).multiply(receipt.get_d()).multiply(hb).multiply(Sa_numerator);
-
 		System.out.println("\n***********Calc Receipt**************" 
 				+ "\n  ID: " + ID 
-				+ "\n  Left:  "
-				+ Hex.toHexString(Left.getEncoded(true)) 
+				+ "\n  Left:  " + Hex.toHexString(Left.getEncoded(true)) 
 				+ "\n  Right: " + Hex.toHexString(Right.getEncoded(true))
 				+ "\n  x*T2:  " + Hex.toHexString(T2.multiply(x).getEncoded(true)) 
-				+ "\n  T3:    "
-				+ Hex.toHexString(T3.getEncoded(true)) 
+				+ "\n  T3:    " + Hex.toHexString(T3.getEncoded(true)) 
 				+ "");
 		if (Left.equals(Right) && T2.multiply(x).equals(T3)) {
 			System.out.println("\n$%%^^*&$#$@ Receipt is generated. $%%^^*&$#$@");
 		} else {
 			System.err.println("\n$%%&$#$  Generate Receipt failed. *&$#$@");
 		}
-
 	}
 
 	private class KeysForGenRec{

@@ -90,15 +90,27 @@ public class ReceiptGenerationTest {
 		int[] beta_ch_positive = {3, 4, 3, 2, 1};
 		int[] beta_ch_total = {4, 4, 4, 3, 3};
 //		*/
+		
+		
+//		double pre_q = 0.4;
+//		double pre_c = 0.6;
+//		String strAlphaIDs = null;
+//		int[] alpha_ch_positive = null;
+//		int[] alpha_ch_total = null;
+//			
+//		String strBetaIDs = null;
+//		int[] beta_ch_positive = null;
+//		int[] beta_ch_total = null;
+		
 		/**
 		 * 坑爹的ID，这里的selfID和pairID对计算过程产生影响(在计算hash-0的时候)，对应的ID必须和设备注册时用于产生d的ID相同。
 		 */
-		alphaRecGenProc.initializeSelfCHdata(pre_q, pre_c, alpha_ID, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
-		alphaRecGenProc.initializePairCHdata(beta_ID, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));		
+		alphaRecGenProc.setSelfCHdata(pre_q, pre_c, alpha_ID, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
+		alphaRecGenProc.setPairCHdata(beta_ID, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));		
 		alphaRecGenProc.calculateQCR(-80);
 		
-		betaRecGenProc.initializeSelfCHdata(pre_q-0.2, pre_c+0.1, beta_ID, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));
-		betaRecGenProc.initializePairCHdata(alpha_ID, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
+		betaRecGenProc.setSelfCHdata(pre_q-0.2, pre_c+0.1, beta_ID, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));
+		betaRecGenProc.setPairCHdata(alpha_ID, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
 		betaRecGenProc.calculateQCR(-80);
 		
 		alphaRecGenProc.setClientSelfKeys(alphaPrivateKey,alphaReceipt.get_d());
@@ -109,8 +121,8 @@ public class ReceiptGenerationTest {
 		betaRecGenProc.setClientPairKeys(alphaPublicKey,  alphaReceipt.getRandEcPoint());
 		betaRecGenProc.calcSignature();
 		
-		alphaRecGenProc.set_PairSignature(betaRecGenProc.get_er(), betaRecGenProc.get_Snumerator(), betaRecGenProc.get_Sdenominator(), betaRecGenProc.get_T(1), betaRecGenProc.get_T(2), betaRecGenProc.get_T(3));
-		betaRecGenProc.set_PairSignature(alphaRecGenProc.get_er(), alphaRecGenProc.get_Snumerator(), alphaRecGenProc.get_Sdenominator(), alphaRecGenProc.get_T(1), alphaRecGenProc.get_T(2), alphaRecGenProc.get_T(3));
+		alphaRecGenProc.setPairSignature(betaRecGenProc.get_er(), betaRecGenProc.get_Snumerator(), betaRecGenProc.get_Sdenominator(), betaRecGenProc.get_T(1), betaRecGenProc.get_T(2), betaRecGenProc.get_T(3));
+		betaRecGenProc.setPairSignature(alphaRecGenProc.get_er(), alphaRecGenProc.get_Snumerator(), alphaRecGenProc.get_Sdenominator(), alphaRecGenProc.get_T(1), alphaRecGenProc.get_T(2), alphaRecGenProc.get_T(3));
 		alphaRecGenProc.calcReceipt();
 		betaRecGenProc.calcReceipt();
 		
