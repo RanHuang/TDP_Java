@@ -82,4 +82,5 @@ public class TDPConstants {
      */
     public static final int MAX_NUM_OF_DEVICES = 15;
     public static final String TDP_GEN_RECP_CH = "receipt_generation_contactHistory"; 
+    public static final String TDP_GEN_RECP_SIG = "receipt_generation_signature";
  }

@@ -65,8 +65,8 @@ public class ReceiptGenerationTest {
 		betaDevicePairing.calculateSecretKey(Fa);
 		
 		
-		ReceiptGenerationProcess alphaRecGenProc = new ReceiptGenerationProcess();
-		ReceiptGenerationProcess betaRecGenProc = new ReceiptGenerationProcess();
+		ReceiptGenerationProcess alphaRecGenProc = new ReceiptGenerationProcess(alpha_ID);
+		ReceiptGenerationProcess betaRecGenProc = new ReceiptGenerationProcess(beta_ID);
 //		*/
 		/**
 		 * Test the calculation of Q, C, R			
@@ -105,13 +105,17 @@ public class ReceiptGenerationTest {
 		/**
 		 * 坑爹的ID，这里的selfID和pairID对计算过程产生影响(在计算hash-0的时候)，对应的ID必须和设备注册时用于产生d的ID相同。
 		 */
-		alphaRecGenProc.setSelfCHdata(pre_q, pre_c, alpha_ID, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
-		alphaRecGenProc.setPairCHdata(beta_ID, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));		
-		alphaRecGenProc.calculateQCR(-80);
+		alphaRecGenProc.setSelfCHdata(pre_q, pre_c, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
+		alphaRecGenProc.setQoS(-90);
+		betaRecGenProc.setSelfCHdata(pre_q-0.2, pre_c+0.1, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));
+		betaRecGenProc.setQoS(-80);
 		
-		betaRecGenProc.setSelfCHdata(pre_q-0.2, pre_c+0.1, beta_ID, strBetaIDs, Arrays.toString(beta_ch_positive), Arrays.toString(beta_ch_total));
-		betaRecGenProc.setPairCHdata(alpha_ID, strAlphaIDs, Arrays.toString(alpha_ch_positive), Arrays.toString(alpha_ch_total));
-		betaRecGenProc.calculateQCR(-80);
+		alphaRecGenProc.setPairID(beta_ID);
+		alphaRecGenProc.setPairCHdata(betaRecGenProc.get_CHIDs(), betaRecGenProc.get_CHPositive(), betaRecGenProc.get_CHTotal());	
+		betaRecGenProc.setPairID(alpha_ID);
+		betaRecGenProc.setPairCHdata(alphaRecGenProc.get_CHIDs(), alphaRecGenProc.get_CHPositive(), alphaRecGenProc.get_CHTotal());
+		alphaRecGenProc.calculateQCR(-80);
+		betaRecGenProc.calculateQCR(-90);
 		
 		alphaRecGenProc.setClientSelfKeys(alphaPrivateKey,alphaReceipt.get_d());
 		alphaRecGenProc.setClientPairKeys(betaPublicKey,  betaReceipt.getRandEcPoint());

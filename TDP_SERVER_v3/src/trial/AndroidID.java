@@ -29,6 +29,7 @@ public class AndroidID {
 			String _ID = strAndroidID[r];
 			System.out.println(String.valueOf(r) + ": " + _ID);
 		}
+		System.out.println("90 : " + String.valueOf(90) + "\t -90: " + String.valueOf(-90));
 	}
 
 }

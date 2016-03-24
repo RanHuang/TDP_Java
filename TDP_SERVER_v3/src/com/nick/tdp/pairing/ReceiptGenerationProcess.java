@@ -19,6 +19,7 @@ import com.nick.tdp.security.HashFunction;
  * This class mainly does the calculations during the D2D Receipt Generation. 
  * 1. If necessary get the Contact History Data from database, then setSelfCHdata()
  * 2. Get the CH-data of paired device, then setSelfCHdata()
+ * 	(PairId, Qos, CH-IDs, CH-positive, CH-total) 
  * 3-1. Generate the QoS of this device and send it to the paired device; 
  * 3-2. Get the QoS of the paired device, then calculateQCR()
  * 4. Before calculate the signature, setClientSelfKeys(x, d) && setClientPairKeys(Pub, R), then calcSignature()
@@ -34,6 +35,8 @@ public class ReceiptGenerationProcess{
 	private static final double ALPHA=0.5; /*To calculate credibility { c = (alpha*S^2 + (1-alpha)d^2)*w } according to formula 3. */
 	private static final double BETA = 0.5;/* To calculate QoS { q = (beta*pre_q + (1-beta)*q. }. */
 	private static final double THETA=0.6;
+	
+	private int QoS_Rssi;
 	
 	private double hat_qos;
 	private double qos;
@@ -56,7 +59,8 @@ public class ReceiptGenerationProcess{
 	private int[] pair_contact_history_total;
 	private double[] pair_contact_history;
 	
-	public ReceiptGenerationProcess(){
+	public ReceiptGenerationProcess(String id){
+		self_ID = id;
 		initialize();
 	}
 	
@@ -64,17 +68,20 @@ public class ReceiptGenerationProcess{
 		hat_cre = 0;
 		hat_qos = 0;
 		r = -1;
-		
+		QoS_Rssi = 0;
 		effective_num_ofCH = 0;
+	}
+	
+	public void setQoS(int qos_rssi){
+		QoS_Rssi = qos_rssi;
 	}
 	/**
 	 * Initialize the data of contact history.
 	 * Get them from the data base.
 	 */
-	public void setSelfCHdata(double pre_qos, double pre_cre, String id, String ids, String ch_positive, String ch_total){	
+	public void setSelfCHdata(double pre_qos, double pre_cre, String ids, String ch_positive, String ch_total){	
 		hat_qos = pre_qos;
 		hat_cre = pre_cre;
-		self_ID = id;
 		if(ids != null){
 			String[] temp_ch_ids = ids.split(",");
 			effective_num_ofCH = temp_ch_ids.length;
@@ -95,18 +102,6 @@ public class ReceiptGenerationProcess{
 //		PrintAllParemetersInfo();
 	}
 	
-	private void PrintAllParemetersInfo(){
-		System.out.println("\n***********************All Parameters Info****************************"
-				+ "\n\tID: " + self_ID
-				+ "\n\tpreQos: " + hat_qos + "\tQos: " + qos
-				+ "\n\tpreCre: " + hat_cre + "\tCre: " + cre
-				+ "\n\tNum of CH: " + effective_num_ofCH
-				+ "\n\tCH-IDs: " + Arrays.toString(contact_history_ID)
-				+ "\n\tCH-Positive: " + Arrays.toString(contact_history_positive)
-				+ "\n\tCH-Total: " + Arrays.toString(contact_history_total)
-				+ "\n\tCH: " + Arrays.toString(contact_history)
-				+"");
-	}
 	/**
 	 * All the parameters are from the paired device by socket.
 	 * @param id   ID of paired device.
@@ -114,8 +109,10 @@ public class ReceiptGenerationProcess{
 	 * @param ch_positive e.g: "[a, b, c, e, f]" -- integer array to string
 	 * @param ch_total    e.g: "[m, n, o, p, q]" -- integer array to string
 	 */
-	public void setPairCHdata(String id, String pairIDs, String ch_positive, String ch_total){
-		pair_ID = id;
+	public void setPairID(String pairId){
+		pair_ID = pairId;
+	}
+	public void setPairCHdata(String pairIDs, String ch_positive, String ch_total){
 		if (pairIDs != null && pairIDs.length() != 0) {
 			pair_contact_history_ID = pairIDs.split(",");
 			pair_contact_history_positive = stringToIntArray(ch_positive);
@@ -159,15 +156,30 @@ public class ReceiptGenerationProcess{
 	}
 	
 	/******************************************************************************/
+	/**
+	 * Get the index of an device's data in the contact history.
+	 * Use the index to whether this is a new device, if not get data from the contact history arrays.
+	 * @param ID_
+	 * @param contact_history_IDs_
+	 * @return
+	 */
+	private int indexOfDeviceInCH(String ID_, String[] contact_history_IDs_){
+		int result = -1;
+		for(int i=0; i<contact_history_IDs_.length; i++){
+			if(ID_.equals(contact_history_IDs_[i])){
+				result = i;
+				break;
+			}
+		}
+		return result;
+	}
 	public void calculateQCR(int qos_pair){
 		/**
 		 * Calculate Q
 		 */
 		/*The rssi of wifi is negative, make is positive to be QoS. QoS(0, 1) */
-		int qos_self = -90; //Get a new one
-		qos = (qos_self + qos_pair)/2;
+		qos = (QoS_Rssi + qos_pair)/2;
 		qos = (qos + 100.0)/100;
-		
 		/* calculate H(theda) */
 		double Htheta_self = calcuHtheta(contact_history, effective_num_ofCH);
 		double Htheta_pair = 0.0;
@@ -192,9 +204,6 @@ public class ReceiptGenerationProcess{
 					}
 				}
 			}
-//			System.out.println("\n******************Interseciton Contact History********************"
-//					+ "\n\tNum of Intersection CH: " + num + "\n\tIntersection CH: "
-//					+ Arrays.toString(intersectionOfCH_self) + "\n");
 			/* calculate s  */		
 			if(num != 0){
 				for(int i=0; i<num; i++){
@@ -265,8 +274,7 @@ public class ReceiptGenerationProcess{
 		Htheta = Math.sqrt(Htheta/dim_);
 		return Htheta;
 	}
-	
-	
+		
 	/******************************************************************************/	
 	private void updateContactHistory(int r){
 		hat_cre = THETA*cre + (1-THETA)*hat_cre;
@@ -298,22 +306,36 @@ public class ReceiptGenerationProcess{
 		//TODO
 	}
 	
-	/**
-	 * Get the index of an device's data in the contact history.
-	 * Use the index to whether this is a new device, if not get data from the contact history arrays.
-	 * @param ID_
-	 * @param contact_history_IDs_
-	 * @return
-	 */
-	private int indexOfDeviceInCH(String ID_, String[] contact_history_IDs_){
-		int result = -1;
-		for(int i=0; i<contact_history_IDs_.length; i++){
-			if(ID_.equals(contact_history_IDs_[i])){
-				result = i;
-				break;
-			}
-		}
-		return result;
+	private void PrintAllParemetersInfo(){
+		System.out.println("\n***********************All Parameters Info****************************"
+				+ "\n\tID: " + self_ID
+				+ "\n\tpreQos: " + hat_qos + "\tQos: " + qos
+				+ "\n\tpreCre: " + hat_cre + "\tCre: " + cre
+				+ "\n\tNum of CH: " + effective_num_ofCH
+				+ "\n\tCH-IDs: " + Arrays.toString(contact_history_ID)
+				+ "\n\tCH-Positive: " + Arrays.toString(contact_history_positive)
+				+ "\n\tCH-Total: " + Arrays.toString(contact_history_total)
+				+ "\n\tCH: " + Arrays.toString(contact_history)
+				+"");
+	}
+
+	public String get_CHIDs(){
+		if(effective_num_ofCH == 0) return null;
+		String strIDs = contact_history_ID[0];
+		for(int i=1; i<effective_num_ofCH; i++){
+			strIDs += ", " + contact_history_ID[i]; 
+		}		
+		return strIDs;
+	}
+	
+	public String get_CHPositive(){
+		if(effective_num_ofCH == 0) return null;
+		return Arrays.toString(contact_history_positive);
+	}
+	
+	public String get_CHTotal(){
+		if(effective_num_ofCH == 0) return null;
+		return Arrays.toString(contact_history_total);
 	}
 	
 	/************************************************************************************/
@@ -399,7 +421,7 @@ public class ReceiptGenerationProcess{
 						 + "\n  t3: " + Hex.toHexString(t3)
 						 + "");
 	}
-	
+	/*Get (er, Snum, Sden, T1, T2, T3)*/
 	public byte[] get_er(){
 		return a_enc_r;
 	}

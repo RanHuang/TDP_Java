@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class SocketClient implements Runnable {
-
 	
 	private static final String TAG = "Socket Client";
 
@@ -47,10 +46,8 @@ public class SocketClient implements Runnable {
         }
         //Start the top Application
         System.err.println(TAG + ":" + "Start the EncryptionController Thread.");
-        
-        
+                
         new Thread(new DeviceCommunication(socket, false)).start(); 
-
     }
 	/**
 	 * @param args
@@ -59,6 +56,5 @@ public class SocketClient implements Runnable {
 		// TODO Auto-generated method stub
 		new Thread(new SocketClient("localhost")).start();
 	}
-
 }
 
