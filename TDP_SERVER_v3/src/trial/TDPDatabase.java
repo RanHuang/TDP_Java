@@ -1,5 +1,6 @@
 package trial;
 
+import com.nick.tdp.database.ContackHistoryDatabase;
 import com.nick.tdp.database.DBProfile;
 import com.nick.tdp.database.RegistrationDatabase;
 import com.nick.tdp.database.RegistrationReceipt;
@@ -7,7 +8,16 @@ import com.nick.tdp.database.RegistrationReceipt;
 public class TDPDatabase {
 
 	public static void main(String[] args) {
-		
+		TDPDatabase dbtest = new TDPDatabase();
+//		dbtest.testReceiptGenerationDB();
+		dbtest.testContactHistoryDB();
+	}
+	public void testContactHistoryDB(){
+		ContackHistoryDatabase.createTable();
+//		ContackHistoryDatabase.deleteTable();
+	}
+	
+	public void testReceiptGenerationDB(){
 		String tableName = DBProfile.TableName_RegistrationReceipt;
 		System.out.println("Table: " + tableName);
 //		RegistrationDatabase.deleteTable(tableName);

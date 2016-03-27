@@ -17,6 +17,6 @@ public abstract class DBProfile {
 	 * tables' name
 	 */
 	public static final String TableName_RegistrationReceipt = "RegRec";
-	public static final String TableName_ClientParameters = "CliPara";
-	public static final String TableName_DeviceToDevicePairingExperiment = "DtoDPerTest";
+	public static final String TableName_ContactHistory = "ConHis";
+	public static final String TableName_DeviceToDeviceReceipt = "DtoDRec";
 }
