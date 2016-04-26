@@ -16,6 +16,10 @@ public class ReadLogText {
 	private static String strLogFileName = "AudioNoise_Location_Log.txt";
 	
 	private static ArrayList<Recorder> recordList = new ArrayList<Recorder>();
+	
+	private static ArrayList<Double> latitudeList = new ArrayList<Double>();
+	private static ArrayList<Double> longitudeList = new ArrayList<Double>();
+	private static ArrayList<Double> noiseLevelList = new ArrayList<Double>();
 
 	public static void main(String[] args) {
 		try {
@@ -45,10 +49,13 @@ public class ReadLogText {
 					if(strArrays.length > 1){
 						if(strArrays[0].equals("Longitude")){
 							longitude = Double.valueOf(strArrays[1].trim());
+							longitudeList.add(longitude);
 						}else if (strArrays[0].equals("Latitude")) {
 							latitude = Double.valueOf(strArrays[1].trim());
+							latitudeList.add(latitude);
 						}else if (strArrays[0].equals("NoiseLevel")) {
 							noiseLevel = Double.valueOf(strArrays[1].trim());
+							noiseLevelList.add(noiseLevel);
 							
 							Recorder recorder = new Recorder(longitude, latitude, noiseLevel);
 							recordList.add(recorder);
@@ -58,9 +65,9 @@ public class ReadLogText {
 			}
 			
 			System.out.println("Number of Record: " + recordList.size());
-			System.out.println("Longitude: " + recordList.get(0).longitude);
-			System.out.println("Latitude: " + recordList.get(0).latitude);
-			System.out.println("NoiseLevel: " + recordList.get(0).noiseLevel);
+			System.out.println("var arrayLongitude = " + longitudeList + ";");
+			System.out.println("var arrayLatitude = " + latitudeList + ";");
+			System.out.println("var arrayNoiseLevel = " + noiseLevelList + ";");
 		} catch (FileNotFoundException e) {
 			System.out.println("找不到指定文件");
 		} catch (IOException e) {
