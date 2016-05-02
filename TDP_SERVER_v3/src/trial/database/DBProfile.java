@@ -20,6 +20,7 @@ public abstract class DBProfile {
 	public static final String TableName_ClientParameters = "CliPara";
 	public static final String TableName_DeviceToDevicePairingExperiment = "DtoDPerTest";
 	public static final String TableName_WifiDirectPerformanceTest = "WifiDirectPerTest";
+	public static final String TableName_MobileCrowdsensingData = "SensingData";
 	
 	
 	/**

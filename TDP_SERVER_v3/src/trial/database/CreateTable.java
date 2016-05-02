@@ -136,6 +136,37 @@ public class CreateTable {
 		return result;
 	}
 	
+	/**
+	 * Create Registration Receipt Table
+	 * Table fields: SerialNumber  PrivateKey  PublicKey   r   d   R   ServerPublicKey  TrustValue
+	 * 				     ID	 		  x			  Pub	   r   d   bR		sPub			tv
+	 * @return
+	 */
+	public boolean createCrowdsensingDataTable(){
+		String pSQL = "CREATE TABLE if not exists " + DBProfile.TableName_MobileCrowdsensingData + " ("
+				+ "Number INT auto_increment primary key,"
+				+ "ID 	char(200),"
+				+ "time datetime,"
+				+ "longitude	decimal(9,6),"
+				+ "latitude 	decimal(9,6),"
+				+ "noiseLevel	decimal(6,3),"
+				+ "fileDir char(100)"
+				+ ")";
+		boolean result = true;
+		_connection = _dbConnection.getConnection();
+		try{
+			_statement = _connection.createStatement(); //Statement对象将SQL语句发送到数据库
+			_statement.executeUpdate(pSQL); //Execute the SQL command
+			
+			_statement.close(); //释放Statement连接的数据库及JDBC资源
+			_connection.close(); //Close the database connection
+		}catch(SQLException e){
+			System.err.println("Failed: DB delete table - " + DBProfile.TableName_RegistrationReceipt + "\n\tError Message: " + e.getMessage());
+			result = false;
+		}
+		return result;
+	}
+	
 	
 	
 	public void deleteAllRecords(String tableName_){		
@@ -154,7 +185,7 @@ public class CreateTable {
 	
 	public void deleteTable(String tableName_){
 		_connection = _dbConnection.getConnection();		
-		String pSQL = "DROP TABLE " + tableName_;
+		String pSQL = "DROP TABLE if exists " + tableName_;
 		try{
 			_statement = _connection.createStatement(); 
 			_statement.executeUpdate(pSQL); 
@@ -175,7 +206,10 @@ public class CreateTable {
 		
 //		boolean isSuccess = createTable.createRegistrationReceiptTable();
 //		boolean isSuccess = createTable.createClientParametersTable();
-		boolean isSuccess = createTable.createDeviceToDevicePairingExperimentTable();
+//		boolean isSuccess = createTable.createDeviceToDevicePairingExperimentTable();
+		createTable.deleteTable(DBProfile.TableName_MobileCrowdsensingData);
+		
+		boolean isSuccess = createTable.createCrowdsensingDataTable();
 		if(isSuccess){
 			System.out.println("The table " + tableName +" is created.");
 		}else {
@@ -183,7 +217,7 @@ public class CreateTable {
 		}
 		
 //		createTable.deleteAllRecords(tableName);
-		
+//		
 //		createTable.deleteTable(tableName);
 	}
 	
