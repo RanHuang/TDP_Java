@@ -1,0 +1,261 @@
+$ mkdir ~/bin
+$ PATH=~/bin:$PATH
+$ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+$ chmod a+x ~/bin/repo
+
+$ mkdir -p src/aosp/mirror
+$ cd src/aosp/mirror/
+$ repo init -u https://android.googlesource.com/mirror/manifest --mirror
+$ repo sync
+
+
+nick@nick-T410:~/android-build-4.4.4$ export USE_CCACHE=1
+nick@nick-T410:~/android-build-4.4.4$ prebuilts/misc/linux-x86/ccache/ccache -M 50G
+Set cache size limit to 83886080k
+nick@nick-T410:~/android-build-4.4.4$ watch -n1 -d prebuilts/misc/linux-x86/ccache/ccache -s
+
+nick@nick-T410:~/device-android/driverForNexus5KTU84P$ ls
+broadcom-hammerhead-ktu84p-5a5bf60e.tgz  qcom-hammerhead-ktu84p-f159eadf.tgz
+lge-hammerhead-ktu84p-49419c39.tgz
+nick@nick-T410:~/device-android/driverForNexus5KTU84P$ tar zxvf qcom-hammerhead-ktu84p-f159eadf.tgz 
+extract-qcom-hammerhead.sh
+nick@nick-T410:~/device-android/driverForNexus5KTU84P$ ll
+总用量 35104
+drwx------ 2 nick nick     4096  3月 30 10:06 ./
+drwxrwxr-x 6 nick nick     4096  3月 30 10:00 ../
+-rw------- 1 nick nick    39545  3月 30 09:50 broadcom-hammerhead-ktu84p-5a5bf60e.tgz
+-rwxr-x--x 1 nick nick 17869516  6月 15  2014 extract-qcom-hammerhead.sh*
+-rw------- 1 nick nick   323523  3月 30 09:50 lge-hammerhead-ktu84p-49419c39.tgz
+-rw------- 1 nick nick 17700335  3月 30 09:51 qcom-hammerhead-ktu84p-f159eadf.tgz
+$ mv extract-*.sh ~/android-build-4.4.4/
+$ cd ~/android-build-4.4.4/
+$ ./extract-broadcom-hammerhead.sh 
+$ ./extract-lge-hammerhead.sh 
+$ ./extract-qcom-hammerhead.sh 
+$ rm extract-*
+
+
+
+nick@nick-T410:~/android-build-4.4.4$ source build/envsetup.sh 
+including device/generic/x86/vendorsetup.sh
+including device/generic/mips/vendorsetup.sh
+including device/generic/armv7-a-neon/vendorsetup.sh
+including device/lge/mako/vendorsetup.sh
+including device/lge/hammerhead/vendorsetup.sh
+including device/samsung/manta/vendorsetup.sh
+including device/asus/flo/vendorsetup.sh
+including device/asus/tilapia/vendorsetup.sh
+including device/asus/deb/vendorsetup.sh
+including device/asus/grouper/vendorsetup.sh
+including sdk/bash_completion/adb.bash
+nick@nick-T410:~/android-build-4.4.4$ lunch 
+
+You're building on Linux
+
+Lunch menu... pick a combo:
+     1. aosp_arm-eng
+     2. aosp_x86-eng
+     3. aosp_mips-eng
+     4. vbox_x86-eng
+     5. mini_x86-userdebug
+     6. mini_mips-userdebug
+     7. mini_armv7a_neon-userdebug
+     8. aosp_mako-userdebug
+     9. aosp_hammerhead-userdebug
+     10. aosp_manta-userdebug
+     11. aosp_flo-userdebug
+     12. aosp_tilapia-userdebug
+     13. aosp_deb-userdebug
+     14. aosp_grouper-userdebug
+
+Which would you like? [aosp_arm-eng] 9
+
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=4.4.4
+TARGET_PRODUCT=aosp_hammerhead
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_BUILD_APPS=
+TARGET_ARCH=arm
+TARGET_ARCH_VARIANT=armv7-a-neon
+TARGET_CPU_VARIANT=krait
+HOST_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-3.19.0-25-generic-x86_64-with-Ubuntu-14.04-trusty
+HOST_BUILD_TYPE=release
+BUILD_ID=KTU84P
+OUT_DIR=out
+============================================
+
+nick@nick-T410:~/android-build-4.4.4$ make -j4
+
+
+
+nick@nick-T410:~/android-build-4.4.4$ make framework
+...
+target Jar: framework2 (out/target/common/obj/JAVA_LIBRARIES/framework2_intermediates/javalib.jar)
+Notice file: frameworks/base/NOTICE -- out/target/product/hammerhead/obj/NOTICE_FILES/src//system/framework/framework2.jar.txt
+Install: out/target/product/hammerhead/system/framework/framework2.jar
+Install: out/target/product/hammerhead/system/framework/framework.jar
+nick@nick-T410:~/android-build-4.4.4$ cd out/target/product/hammerhead/system/framework/
+nick@nick-T410:~/android-build-4.4.4/out/target/product/hammerhead/system/framework$ ll
+总用量 20208
+drwxrwxr-x 2 nick nick     4096  3月 29 17:22 ./
+drwxrwxr-x 3 nick nick     4096  3月 29 17:22 ../
+-rw-rw-r-- 1 nick nick   584000  3月 29 17:22 framework2.jar
+-rw-rw-r-- 1 nick nick  3669277  3月 29 17:22 framework.jar
+-rw-rw-r-- 1 nick nick 16426974  3月 29 17:22 framework-res.apk
+
+
+nick@nick-T410:~/device-android/build-4.4.4-primary$ lsusb 
+Bus 002 Device 003: ID 046d:c01f Logitech, Inc. 
+Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 005: ID 17ef:480f Lenovo Integrated Webcam [R5U877]
+Bus 001 Device 003: ID 147e:2016 Upek Biometric Touchchip/Touchstrip Fingerprint Sensor
+Bus 001 Device 006: ID 18d1:4ee2 Google Inc. Nexus 4 (debug)
+Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+$ make fastboot adb
+nick@nick-T410:~/android-build-4.4.4$ adb devices -l
+List of devices attached 
+037ea5a108ea795f       device usb:1-1.2 product:hammerhead model:Nexus_5 device:hammerhead
+
+nick@nick-T410:~/android-build-4.4.4$ adb remount 
+remount failed: Permission denied
+nick@nick-T410:~/android-build-4.4.4$ adb shell 
+shell@hammerhead:/ $ su
+root@hammerhead:/ # mount                                                      
+rootfs / rootfs ro,relatime 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600 0 0
+/dev/block/platform/msm_sdcc.1/by-name/system /system ext4 ro,seclabel,relatime,data=ordered 0 0
+/dev/block/platform/msm_sdcc.1/by-name/userdata /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,errors=panic,data=ordered 0 0
+/dev/block/platform/msm_sdcc.1/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,errors=panic,data=ordered 0 0
+/dev/block/platform/msm_sdcc.1/by-name/persist /persist ext4 rw,seclabel,nosuid,nodev,relatime,nomblk_io_submit,nodelalloc,errors=panic,data=ordered 0 0
+/dev/block/platform/msm_sdcc.1/by-name/modem /firmware vfat ro,relatime,uid=1000,gid=1000,fmask=0337,dmask=0227,codepage=cp437,iocharset=iso8859-1,shortname=lower,errors=remount-ro 0 0
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+root@hammerhead:/ # mount -o rw,remount -t ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system
+root@hammerhead:/ # chmod 777 /system                                          
+root@hammerhead:/ # chmod 777 /system/framework
+root@hammerhead:/ # exit
+shell@hammerhead:/ $ exit
+nick@nick-T410:~/android-build-4.4.4$
+
+nick@nick-T410:~/android-build-4.4.4/out/target/product/generic/system/framework$ ls
+framework2.jar   framework.jar   framework-res.apk
+framework2.odex  framework.odex
+nick@nick-T410:~/android-build-4.4.4/out/target/product/generic/system/framework$ adb push framework.jar /system/framework
+2582 KB/s (3669277 bytes in 1.387s)
+nick@nick-T410:~/android-build-4.4.4/out/target/product/generic/system/framework$ adb push framework2.jar /system/framework
+2461 KB/s (583994 bytes in 0.231s)
+nick@nick-T410:~/android-build-4.4.4/out/target/product/generic/system/framework$ adb push framework.odex /system/framework
+2982 KB/s (9545296 bytes in 3.125s)
+nick@nick-T410:~/android-build-4.4.4/out/target/product/generic/system/framework$ adb push framework2.odex /system/framework
+3676 KB/s (1593816 bytes in 0.423s)
+nick@nick-T410:~/android-build-4.4.4/out/target/product/generic/system/framework$ adb reboot
+
+$ adb reboot bootloader
+
+nick@nick-T410:~/android-build-4.4.4$ time make -j4
+...
+824 -a system out/target/product/hammerhead/obj/PACKAGING/systemimage_intermediates/system.img out/target/product/hammerhead/system
+Creating filesystem with parameters:
+    Size: 1073741824
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 4096
+    Label: 
+    Blocks: 262144
+    Block groups: 8
+    Reserved block group size: 63
+Created filesystem with 1232/65536 inodes and 67786/262144 blocks
++ '[' 0 -ne 0 ']'
+Install system fs image: out/target/product/hammerhead/system.img
+out/target/product/hammerhead/system.img+out/target/product/hammerhead/obj/PACKAGING/recovery_patch_intermediates/recovery_from_boot.p maxsize=1096212480 blocksize=135168 total=262399906 reserve=11083776
+
+real	312m58.108s
+user	1074m47.764s
+sys	44m5.104s
+
+
+
+文件系统        容量  已用  可用 已用% 挂载点
+/dev/sda1       290G  149G  126G   55% /
+文件系统        容量  已用  可用 已用% 挂载点
+/dev/sda1       290G  181G   95G   66% /
+
+
+nick@nick-T410:~/android-build-4.4.4$ adb reboot bootloader
+nick@nick-T410:~/android-build-4.4.4$ cd out/target/product/hammerhead/
+nick@nick-T410:~/android-build-4.4.4/out/target/product/hammerhead$ ls
+android-info.txt  data                 previous_build_config.mk  root
+boot.img          fake_packages        ramdisk.img               symbols
+cache             installed-files.txt  ramdisk-recovery.img      system
+cache.img         kernel               recovery                  system.img
+clean_steps.mk    obj                  recovery.img              userdata.img
+nick@nick-T410:~/android-build-4.4.4/out/target/product/hammerhead$ fastboot flashall -w
+--------------------------------------------
+Bootloader Version...: HHZ11k
+Baseband Version.....: M8974A-2.0.50.1.16
+Serial Number........: 060ea4a93443b702
+--------------------------------------------
+checking product...
+OKAY [  0.100s]
+sending 'boot' (8700 KB)...
+OKAY [  0.640s]
+writing 'boot'...
+OKAY [  0.748s]
+sending 'recovery' (9284 KB)...
+OKAY [  0.722s]
+writing 'recovery'...
+OKAY [  0.786s]
+erasing 'system'...
+OKAY [  0.965s]
+sending 'system' (255813 KB)...
+OKAY [ 13.022s]
+writing 'system'...
+OKAY [ 18.471s]
+erasing 'userdata'...
+OKAY [  7.567s]
+formatting 'userdata' partition...
+Creating filesystem with parameters:
+    Size: 13725835264
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8144
+    Inode size: 256
+    Journal blocks: 32768
+    Label: 
+    Blocks: 3351034
+    Block groups: 103
+    Reserved block group size: 823
+Created filesystem with 11/838832 inodes and 93654/3351034 blocks
+sending 'userdata' (137318 KB)...
+writing 'userdata'...
+OKAY [ 16.466s]
+erasing 'cache'...
+OKAY [  0.558s]
+formatting 'cache' partition...
+Creating filesystem with parameters:
+    Size: 734003200
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 7472
+    Inode size: 256
+    Journal blocks: 2800
+    Label: 
+    Blocks: 179200
+    Block groups: 6
+    Reserved block group size: 47
+Created filesystem with 11/44832 inodes and 5813/179200 blocks
+sending 'cache' (13348 KB)...
+writing 'cache'...
+OKAY [  2.160s]
+rebooting...
+
+finished. total time: 62.730s
