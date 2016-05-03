@@ -1,0 +1,4 @@
+产生指定大小文件：
+	Linux使用dd命令创建特定大小文件最简单的方法及文件杂谈：
+	http://www.2cto.com/os/201307/228741.html
+~$ dd if=/dev/zero of=1M.txt bs=1M count=1

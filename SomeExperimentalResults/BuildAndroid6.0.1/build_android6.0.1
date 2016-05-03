@@ -1,0 +1,119 @@
+# Setting up ccache
+export USE_CCACHE=1
+export CCACHE_DIR=~/src/.ccache
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
+watch -n1 -d prebuilts/misc/linux-x86/ccache/ccache -s
+
+source build/envsetup.sh
+lunch aosp_hammerhead-userdebug
+make fastboot adb
+time make -j4
+
+#Press and hold both Volume Up and Volume Down, then press and hold Power
+#adb reboot bootloader
+#fastboot oem unlock
+#fastboot flashall -w
+
+
+nick@nickYLab:~/src/android6.0.1MMB29V$ source build/envsetup.sh 
+including device/asus/deb/vendorsetup.sh
+including device/asus/flo/vendorsetup.sh
+including device/asus/fugu/vendorsetup.sh
+including device/generic/mini-emulator-arm64/vendorsetup.sh
+including device/generic/mini-emulator-armv7-a-neon/vendorsetup.sh
+including device/generic/mini-emulator-mips/vendorsetup.sh
+including device/generic/mini-emulator-x86_64/vendorsetup.sh
+including device/generic/mini-emulator-x86/vendorsetup.sh
+including device/htc/flounder/vendorsetup.sh
+including device/huawei/angler/vendorsetup.sh
+including device/lge/bullhead/vendorsetup.sh
+including device/lge/hammerhead/vendorsetup.sh
+including device/moto/shamu/vendorsetup.sh
+including sdk/bash_completion/adb.bash
+nick@nickYLab:~/src/android6.0.1MMB29V$ lunch 
+
+You're building on Linux
+
+Lunch menu... pick a combo:
+     1. aosp_arm-eng
+     2. aosp_arm64-eng
+     3. aosp_mips-eng
+     4. aosp_mips64-eng
+     5. aosp_x86-eng
+     6. aosp_x86_64-eng
+     7. aosp_deb-userdebug
+     8. aosp_flo-userdebug
+     9. full_fugu-userdebug
+     10. aosp_fugu-userdebug
+     11. mini_emulator_arm64-userdebug
+     12. m_e_arm-userdebug
+     13. mini_emulator_mips-userdebug
+     14. mini_emulator_x86_64-userdebug
+     15. mini_emulator_x86-userdebug
+     16. aosp_flounder-userdebug
+     17. aosp_angler-userdebug
+     18. aosp_bullhead-userdebug
+     19. aosp_hammerhead-userdebug
+     20. aosp_hammerhead_fp-userdebug
+     21. aosp_shamu-userdebug
+
+Which would you like? [aosp_arm-eng] 19
+
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=6.0.1
+TARGET_PRODUCT=aosp_hammerhead
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_BUILD_APPS=
+TARGET_ARCH=arm
+TARGET_ARCH_VARIANT=armv7-a-neon
+TARGET_CPU_VARIANT=krait
+TARGET_2ND_ARCH=
+TARGET_2ND_ARCH_VARIANT=
+TARGET_2ND_CPU_VARIANT=
+HOST_ARCH=x86_64
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-3.19.0-25-generic-x86_64-with-Ubuntu-14.04-trusty
+HOST_BUILD_TYPE=release
+BUILD_ID=MMB29V
+OUT_DIR=out
+============================================
+
+nick@nickYLab:~/src/android6.0.1MMB29V$ lunch aosp_hammerhead-userdebug 
+
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=6.0.1
+TARGET_PRODUCT=aosp_hammerhead
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_BUILD_APPS=
+TARGET_ARCH=arm
+TARGET_ARCH_VARIANT=armv7-a-neon
+TARGET_CPU_VARIANT=krait
+TARGET_2ND_ARCH=
+TARGET_2ND_ARCH_VARIANT=
+TARGET_2ND_CPU_VARIANT=
+HOST_ARCH=x86_64
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-3.19.0-25-generic-x86_64-with-Ubuntu-14.04-trusty
+HOST_BUILD_TYPE=release
+BUILD_ID=MMB29V
+OUT_DIR=out
+============================================
+
+nick@nickYLab:~/src/aosp/rom/hammerhead-mmb29s$ ls
+bootloader-hammerhead-hhz12k.img  flash-base.sh
+flash-all.bat                     image-hammerhead-mmb29s.zip
+flash-all.sh                      radio-hammerhead-m8974a-2.0.50.2.28.img
+nick@nickYLab:~/src/aosp/rom/hammerhead-mmb29s$ ll -h
+总用量 595M
+drwxr-x--- 2 nick nick 4.0K 12月 17 07:16 ./
+drwxrwxr-x 5 nick nick 4.0K  3月 31 14:44 ../
+-rw-r----- 1 nick nick 3.1M 12月 17 07:16 bootloader-hammerhead-hhz12k.img
+-rw-r----- 1 nick nick  974 12月 17 07:16 flash-all.bat
+-rwxr-x--x 1 nick nick  845 12月 17 07:16 flash-all.sh*
+-rwxr-x--x 1 nick nick  798 12月 17 07:16 flash-base.sh*
+-rw-r----- 1 nick nick 548M 12月 17 07:16 image-hammerhead-mmb29s.zip
+-rw-r----- 1 nick nick  45M 12月 17 07:16 radio-hammerhead-m8974a-2.0.50.2.28.img

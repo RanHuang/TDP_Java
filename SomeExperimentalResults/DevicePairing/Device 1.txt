@@ -1,0 +1,496 @@
+04-23 03:11:54.367 823-27643/? I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.xjtu.ylab.nick.tdpv2/.MainActivity bnds=[540,554][804,853]} from pid 1113
+04-23 03:11:54.387 184-882/? D/audio_hw_primary: select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-23 03:11:54.427 14593-14593/? D/dalvikvm: Late-enabling CheckJNI
+04-23 03:11:54.427 823-987/? I/ActivityManager: Start proc com.xjtu.ylab.nick.tdpv2 for activity com.xjtu.ylab.nick.tdpv2/.MainActivity: pid=14593 uid=10093 gids={50093, 3003, 1028, 1015}
+04-23 03:11:54.517 14593-14593/? I/dalvikvm: Could not find method android.content.res.TypedArray.getChangingConfigurations, referenced from method android.support.v7.internal.widget.TintTypedArray.getChangingConfigurations
+04-23 03:11:54.517 14593-14593/? W/dalvikvm: VFY: unable to resolve virtual method 416: Landroid/content/res/TypedArray;.getChangingConfigurations ()I
+04-23 03:11:54.517 14593-14593/? D/dalvikvm: VFY: replacing opcode 0x6e at 0x0002
+04-23 03:11:54.517 14593-14593/? I/dalvikvm: Could not find method android.content.res.TypedArray.getType, referenced from method android.support.v7.internal.widget.TintTypedArray.getType
+04-23 03:11:54.517 14593-14593/? W/dalvikvm: VFY: unable to resolve virtual method 438: Landroid/content/res/TypedArray;.getType (I)I
+04-23 03:11:54.517 14593-14593/? D/dalvikvm: VFY: replacing opcode 0x6e at 0x0002
+04-23 03:11:54.547 823-833/? D/WifiService: setWifiEnabled: true pid=14593, uid=10093
+04-23 03:11:54.567 173-593/? D/SoftapController: Softap fwReload - Ok
+04-23 03:11:54.577 173-593/? D/CommandListener: Setting iface cfg
+04-23 03:11:54.577 173-593/? D/CommandListener: Trying to bring down wlan0
+04-23 03:11:54.577 14593-14593/? I/PairDiscovery: PairDiscovery initialize.
+04-23 03:11:54.587 14619-14619/? I/wpa_supplicant: Successfully initialized wpa_supplicant
+04-23 03:11:54.607 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 227K, 2% free 17015K/17276K, paused 2ms+2ms, total 23ms
+04-23 03:11:54.637 14619-14619/? I/wpa_supplicant: rfkill: Cannot open RFKILL control device
+04-23 03:11:54.677 823-921/? D/WifiMonitor: startMonitoring(wlan0) with mConnected = false
+04-23 03:11:54.677 12477-12477/? D/BluetoothAdapter: 1113551688: getState() :  mService = null. Returning STATE_OFF
+04-23 03:11:54.687 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 297K, 2% free 17224K/17560K, paused 1ms+5ms, total 23ms
+04-23 03:11:54.687 14593-14593/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 8ms
+04-23 03:11:54.757 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 484K, 4% free 17210K/17752K, paused 2ms+5ms, total 20ms
+04-23 03:11:54.817 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 478K, 3% free 17220K/17752K, paused 1ms+5ms, total 17ms
+04-23 03:11:54.877 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 489K, 4% free 17222K/17764K, paused 1ms+3ms, total 16ms
+04-23 03:11:54.937 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 494K, 4% free 17225K/17768K, paused 1ms+5ms, total 19ms
+04-23 03:11:55.007 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 498K, 4% free 17225K/17772K, paused 2ms+5ms, total 20ms
+04-23 03:11:55.007 14593-14593/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 12ms
+04-23 03:11:55.027 14593-14593/? D/BroadcastReceiver: Received a disconnect action.
+04-23 03:11:55.027 14593-14593/? D/BroadcastReceiver: Wi-Fi Direct OFF
+04-23 03:11:55.047 14593-14593/? D/dalvikvm: GC_FOR_ALLOC freed 383K, 4% free 17090K/17772K, paused 10ms, total 10ms
+04-23 03:11:55.057 14593-14593/? D/TDP?Main?Activity: Log Text View was bound successfully.
+04-23 03:11:55.097 14593-14593/? I/Adreno-EGL: <qeglDrvAPI_eglInitialize:320>: EGL 1.4 QUALCOMM Build: I0404c4692afb8623f95c43aeb6d5e13ed4b30ddbDate: 11/06/13
+04-23 03:11:55.117 14593-14593/? D/OpenGLRenderer: Enabling debug mode 0
+04-23 03:11:55.127 14593-14593/? D/dalvikvm: GC_FOR_ALLOC freed 99K, 4% free 17084K/17772K, paused 9ms, total 9ms
+04-23 03:11:55.137 14593-14593/? I/TDP?Main?Activity: Wi-Fi P2P is Disconnected.
+04-23 03:11:55.147 14593-14593/? D/dalvikvm: GC_FOR_ALLOC freed 12K, 4% free 17085K/17772K, paused 8ms, total 8ms
+04-23 03:11:55.147 14593-14593/? I/dalvikvm-heap: Grow heap (frag case) to 16.722MB for 7168-byte allocation
+04-23 03:11:55.157 14593-14602/? D/dalvikvm: GC_FOR_ALLOC freed <1K, 4% free 17092K/17780K, paused 11ms, total 11ms
+04-23 03:11:55.167 14593-14593/? D/dalvikvm: GC_FOR_ALLOC freed 12K, 4% free 17099K/17780K, paused 8ms, total 8ms
+04-23 03:11:55.167 14593-14593/? I/dalvikvm-heap: Grow heap (frag case) to 16.749MB for 20752-byte allocation
+04-23 03:11:55.187 14593-14602/? D/dalvikvm: GC_FOR_ALLOC freed <1K, 4% free 17119K/17804K, paused 12ms, total 12ms
+04-23 03:11:55.227 823-861/? I/ActivityManager: Displayed com.xjtu.ylab.nick.tdpv2/.MainActivity: +823ms
+04-23 03:11:55.367 823-877/? D/Tethering: sendTetherStateChangedBroadcast 1, 0, 0
+04-23 03:11:55.397 14619-14619/? I/wpa_supplicant: rfkill: Cannot open RFKILL control device
+04-23 03:11:55.407 823-921/? D/WifiConfigStore: Loading config and enabling all networks
+04-23 03:11:55.417 12477-12477/? D/BluetoothAdapter: 1113551688: getState() :  mService = null. Returning STATE_OFF
+04-23 03:11:55.427 173-593/? D/CommandListener: Setting iface cfg
+04-23 03:11:55.427 173-593/? D/CommandListener: Trying to bring up p2p0
+04-23 03:11:55.427 823-920/? D/WifiMonitor: startMonitoring(p2p0) with mConnected = true
+04-23 03:11:55.427 14593-14593/? D/BroadcastReceiver: Wi-Fi Direct On
+04-23 03:11:55.427 14593-14593/? D/BroadcastReceiver: Received a disconnect action.
+04-23 03:11:55.427 14593-14593/? I/TDP?Main?Activity: Wi-Fi P2P is Disconnected.
+04-23 03:11:56.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:11:56.927 14619-14619/? I/wpa_supplicant: wlan0: Trying to associate with 04:a1:51:b3:f7:94 (SSID='YLab8' freq=2412 MHz)
+04-23 03:11:56.997 14619-14619/? I/wpa_supplicant: wlan0: Associated with 04:a1:51:b3:f7:94
+04-23 03:11:57.037 14619-14619/? I/wpa_supplicant: wlan0: WPA: Key negotiation completed with 04:a1:51:b3:f7:94 [PTK=CCMP GTK=CCMP]
+04-23 03:11:57.037 14619-14619/? I/wpa_supplicant: wlan0: CTRL-EVENT-CONNECTED - Connection to 04:a1:51:b3:f7:94 completed (auth) [id=0 id_str=]
+04-23 03:11:57.127 823-921/? E/WifiStateMachine: scanCount==0 - aborting
+04-23 03:11:57.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:11:58.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:11:58.747 823-921/? D/WifiStateMachine: VerifyingLinkState enter
+04-23 03:11:58.757 823-921/? D/WifiStateMachine: VerifyingLinkState GOOD_LINK_DETECTED: transition to captive portal check
+04-23 03:11:58.757 823-921/? D/WifiStateMachine: CaptivePortalCheckState enter
+04-23 03:11:58.757 823-923/? D/ConnectivityService: Captive portal check NetworkInfo: type: WIFI[], state: CONNECTING/CAPTIVE_PORTAL_CHECK, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:11:58.757 823-923/? D/ConnectivityService: handleCaptivePortalTrackerCheck: call captivePortalCheckComplete ni=NetworkInfo: type: WIFI[], state: CONNECTING/CAPTIVE_PORTAL_CHECK, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:11:58.767 823-921/? D/WifiStateMachine: CaptivePortalCheckState CMD_CAPTIVE_CHECK_COMPLETE
+04-23 03:11:58.787 823-923/? D/ConnectivityService: ConnectivityChange for WIFI: CONNECTED/CONNECTED
+04-23 03:11:58.787 823-923/? E/ConnectivityService: Unexpected mtu value: android.net.wifi.WifiStateTracker@4263ba18
+04-23 03:11:58.807 823-923/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:11:59.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:11:59.787 823-923/? D/ConnectivityService: NetTransition Wakelock for ConnectedState released by timeout
+04-23 03:12:00.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:00.517 823-923/? D/ConnectivityService: handleConnectivityChange: addresses changed linkProperty[1]: resetMask=0
+                                                       car=removed=[] added=[fe80::faa9:d0ff:fe67:9c4c/64,]
+04-23 03:12:00.517 823-923/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:12:01.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:01.827 823-999/? D/CaptivePortalTracker: NoActiveNetworkState{ when=-5ms what=1 obj=NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false target=com.android.internal.util.StateMachine$SmHandler }
+04-23 03:12:01.827 823-877/? D/Tethering: MasterInitialState.processMessage what=3
+04-23 03:12:01.907 27943-27947/? D/dalvikvm: GC_CONCURRENT freed 672K, 5% free 18141K/18932K, paused 2ms+1ms, total 25ms
+04-23 03:12:01.937 1167-1167/? D/GCM: GcmService start Intent { act=android.net.conn.CONNECTIVITY_CHANGE flg=0x4000010 cmp=com.google.android.gms/.gcm.GcmService (has extras) } android.net.conn.CONNECTIVITY_CHANGE
+04-23 03:12:01.957 5578-14716/? D/dalvikvm: GC_EXPLICIT freed 755K, 8% free 17122K/18496K, paused 3ms+2ms, total 29ms
+04-23 03:12:02.057 823-923/? D/ConnectivityService: handleConnectivityChange: addresses changed linkProperty[1]: resetMask=0
+                                                       car=removed=[] added=[2001:250:1001:1712:c1a:94d:238c:b658/64,]
+04-23 03:12:02.057 823-923/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:12:02.127 823-923/? D/ConnectivityService: handleConnectivityChange: addresses changed linkProperty[1]: resetMask=0
+                                                       car=removed=[] added=[2001:250:1001:1712:faa9:d0ff:fe67:9c4c/64,]
+04-23 03:12:02.127 823-923/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:12:02.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:03.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:03.287 1409-1413/? D/dalvikvm: GC_CONCURRENT freed 940K, 12% free 19888K/22596K, paused 2ms+1ms, total 41ms
+04-23 03:12:04.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:04.487 1167-4101/? I/EventLogService: Aggregate from 1461379321901 (log), 1461379321901 (data)
+04-23 03:12:04.567 1167-1169/? D/dalvikvm: GC_CONCURRENT freed 396K, 4% free 17167K/17868K, paused 1ms+1ms, total 11ms
+04-23 03:12:05.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:05.427 30679-30683/? D/dalvikvm: GC_CONCURRENT freed 376K, 4% free 17526K/18124K, paused 2ms+1ms, total 12ms
+04-23 03:12:06.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:06.967 14593-14593/? D/TDP?Main?Activity: Start Register Client!
+04-23 03:12:06.987 184-882/? D/audio_hw_primary: select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-23 03:12:07.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:08.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:09.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:09.587 14593-14751/? D/TDP?Registration?Client: Send a packet.
+04-23 03:12:09.587 14593-14751/? I/System.out: TDP Registration Client: send packet -- request receipt.
+04-23 03:12:10.007 14593-14751/? D/TDP?Registration?Client: Received a Packet
+04-23 03:12:10.007 14593-14751/? I/System.out: Receive a Packet about the Receipt.
+04-23 03:12:10.027 14593-14751/? I/System.out: ***************************************************************************************************
+04-23 03:12:10.027 14593-14751/? I/System.out: 	==== Device Received Receipt ====
+04-23 03:12:10.027 14593-14751/? I/System.out: 	ID  : 352584063215518
+04-23 03:12:10.027 14593-14751/? I/System.out: 	x   : 3dbe454fa319bb6100ef51b0daaa33f2945b53bc8c01e32a
+04-23 03:12:10.027 14593-14751/? I/System.out: 	Ppub: 03f3eff410aac03205e17e3084d2b1e83aaac1720d
+04-23 03:12:10.027 14593-14751/? I/System.out: 	r   : 21416f514fb7638a6a355ddc045ab889db2bcee54350bf89
+04-23 03:12:10.027 14593-14751/? I/System.out: 	d   : -146ec40c71ebba1feeeaa3f2f9d0c333785ec00f16988a3fa7df3f51bef504d6a606d4bfc22d83eb0c808feb
+04-23 03:12:10.027 14593-14751/? I/System.out: 	Rand: 02d00e836b8fa538ed04c8738e4f8e076ac859c572
+04-23 03:12:10.027 14593-14751/? I/System.out: 	Master Ppub: 02ebfa91c4d14aadbef157a2f3b9875496216e3aea
+04-23 03:12:10.027 14593-14751/? I/System.out: 	Trust Value: 20
+04-23 03:12:10.027 14593-14751/? I/System.out: ***************************************************************************************************
+04-23 03:12:10.027 14593-14751/? W/System.err: Get the Receipt.
+04-23 03:12:10.027 14593-14751/? W/System.err: com.xjtu.ylab.nick.tdpv2.register.MySocketReadWriteException: Get the Receipt.
+04-23 03:12:10.027 14593-14751/? W/System.err:     at com.xjtu.ylab.nick.tdpv2.register.RegisterDeviceClient.messageHandler(RegisterDeviceClient.java:185)
+04-23 03:12:10.027 14593-14751/? W/System.err:     at com.xjtu.ylab.nick.tdpv2.register.RegisterDeviceClient.run(RegisterDeviceClient.java:60)
+04-23 03:12:10.027 14593-14751/? W/System.err:     at java.lang.Thread.run(Thread.java:841)
+04-23 03:12:10.027 14593-14593/? I/TDP?Main?Activity: Registration success.
+04-23 03:12:10.117 14593-14593/? D/TDP?Device?Pairing: Constructor DevicePairingService()
+04-23 03:12:10.117 14593-14593/? D/TDP?Device?Pairing: onCreate()
+04-23 03:12:10.117 14593-14593/? I/TDP?Device?Pairing: Custom Service Started.
+04-23 03:12:10.117 14593-14758/? D/TDP?Device?Pairing: Start Broadcast.
+04-23 03:12:10.117 14593-14758/? D/TDP?Device?Pairing: Hello, Pairing Service.
+04-23 03:12:10.117 14593-14593/? I/TDP?Main?Activity: Broadcasting success.
+04-23 03:12:10.117 14593-14593/? I/TDP?Device?Pairing: onDestroy()
+04-23 03:12:10.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:10.417 14593-14759/? D/TDP?Device?Pairing: Run Broadcast Task.
+04-23 03:12:10.427 14593-14759/? D/PairDiscovery: Add Local Service: Broadcast Trust Value.
+04-23 03:12:10.437 14593-14593/? D/WifiP2pManager: Ignored { when=0 what=139313 target=android.net.wifi.p2p.WifiP2pManager$Channel$P2pHandler }
+04-23 03:12:10.437 14593-14759/? D/PairDiscovery: Clear Local Service & Add Local Service & start DiscoverService
+04-23 03:12:11.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:11.297 14619-14619/? I/wpa_supplicant: P2P-DEVICE-FOUND be:f5:ac:ff:3e:e1 p2p_dev_addr=be:f5:ac:ff:3e:e1 pri_dev_type=10-0050F204-5 name='Android_3522' config_methods=0x188 dev_capab=0x25 group_capab=0x0
+04-23 03:12:11.837 823-999/? D/CaptivePortalTracker: DelayedCaptiveCheckState{ when=-3ms what=2 arg1=38 target=com.android.internal.util.StateMachine$SmHandler }
+04-23 03:12:11.837 823-999/? D/ConnectivityService: setProvNotificationVisible: E visible=false networkType=1 extraInfo=null url=null
+04-23 03:12:11.897 823-999/? D/CaptivePortalTracker: Checking http://74.125.23.138/generate_204
+04-23 03:12:12.217 14593-14593/? D/PairDiscovery: DnsSdTxtRecordAvailable - {trust_value=20}
+04-23 03:12:12.217 14593-14593/? D/PairDiscovery: Pair Device discovered: Android_3522 & 20
+04-23 03:12:12.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:13.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:13.357 14593-14593/? D/TDP?Device?Pairing: Constructor DevicePairingService()
+04-23 03:12:13.357 14593-14593/? D/TDP?Device?Pairing: onCreate()
+04-23 03:12:13.357 14593-14593/? I/TDP?Device?Pairing: Custom Service Started.
+04-23 03:12:13.357 14593-14772/? D/TDP?Device?Pairing: Start Discovery.
+04-23 03:12:13.357 14593-14772/? D/PairDiscovery: Stop Local Service.
+04-23 03:12:13.357 14593-14593/? I/TDP?Main?Activity: Discovery success.
+04-23 03:12:13.357 14593-14593/? I/TDP?Device?Pairing: onDestroy()
+04-23 03:12:13.367 184-882/? D/audio_hw_primary: select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-23 03:12:14.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:15.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:15.357 14593-14773/? D/Pair?Selector: PairSelector, the Selected Device: be:f5:ac:ff:3e:e1
+04-23 03:12:15.357 14593-14773/? D/PairDiscovery: can connect, stop Local Service.
+04-23 03:12:15.357 14593-14773/? D/Connect?to?Pair?Device: Connecting to be:f5:ac:ff:3e:e1
+04-23 03:12:15.357 14619-14619/? I/wpa_supplicant: P2P-FIND-STOPPED 
+04-23 03:12:15.547 14619-14619/? I/wpa_supplicant: P2P-PROV-DISC-PBC-RESP be:f5:ac:ff:3e:e1
+04-23 03:12:16.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:17.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:17.507 14619-14619/? I/wpa_supplicant: P2P-GO-NEG-SUCCESS role=GO freq=2412 ht40=0 peer_dev=be:f5:ac:ff:3e:e1 peer_iface=be:f5:ac:ff:be:e1 wps_method=PBC
+04-23 03:12:17.517 14619-14619/? I/wpa_supplicant: rfkill: Cannot open RFKILL control device
+04-23 03:12:17.627 14619-14619/? E/wpa_supplicant: Using interface p2p-p2p0-0 with hwaddr fa:a9:d0:67:1c:4c and ssid "DIRECT-ma-Android_c072"
+04-23 03:12:17.637 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-CONNECTED - Connection to fa:a9:d0:67:1c:4c completed (auth) [id=0 id_str=]
+04-23 03:12:17.647 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: WPS-PBC-ACTIVE 
+04-23 03:12:17.887 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-STARTED be:f5:ac:ff:be:e1
+04-23 03:12:17.887 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-PROPOSED-METHOD vendor=0 method=1
+04-23 03:12:17.917 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-PROPOSED-METHOD vendor=14122 method=254
+04-23 03:12:18.157 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: WPS-REG-SUCCESS be:f5:ac:ff:be:e1 e91e2b8e-53c0-5698-8631-6b251a34b4e4
+04-23 03:12:18.157 14619-14619/? I/wpa_supplicant: P2P-GROUP-FORMATION-SUCCESS 
+04-23 03:12:18.157 14619-14619/? I/wpa_supplicant: P2P-GROUP-STARTED p2p-p2p0-0 GO ssid="DIRECT-ma-Android_c072" freq=2412 passphrase="hcxSSg3C" go_dev_addr=fa:a9:d0:67:9c:4c [PERSISTENT]
+04-23 03:12:18.157 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: WPS-PBC-DISABLE 
+04-23 03:12:18.157 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: WPS-SUCCESS 
+04-23 03:12:18.157 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-FAILURE be:f5:ac:ff:be:e1
+04-23 03:12:18.177 173-593/? D/CommandListener: Setting iface cfg
+04-23 03:12:18.177 173-593/? D/CommandListener: Trying to bring up p2p-p2p0-0
+04-23 03:12:18.177 173-593/? D/TetherController: Starting tethering services
+04-23 03:12:18.177 173-593/? D/TetherController: Tethering services running
+04-23 03:12:18.177 823-920/? D/WifiP2pService: Started Dhcp server on p2p-p2p0-0
+04-23 03:12:18.187 14779-14779/? I/dnsmasq: started, version 2.51 cachesize 150
+04-23 03:12:18.187 14779-14779/? I/dnsmasq: compile time options: no-IPv6 GNU-getopt no-DBus no-I18N DHCP no-scripts no-TFTP
+04-23 03:12:18.187 14779-14779/? W/dnsmasq: warning: no upstream servers configured
+04-23 03:12:18.187 14779-14779/? I/dnsmasq: DHCP, IP range 192.168.49.2 -- 192.168.49.254, lease time 1h
+04-23 03:12:18.187 14779-14779/? I/dnsmasq: read /etc/hosts - 1 addresses
+04-23 03:12:18.217 14619-14619/? I/wpa_supplicant: p2p-p2p0-0: AP-STA-CONNECTED be:f5:ac:ff:be:e1 p2p_dev_addr=be:f5:ac:ff:3e:e1
+04-23 03:12:18.217 14619-14619/? I/wpa_supplicant: AP-STA-CONNECTED be:f5:ac:ff:be:e1 p2p_dev_addr=be:f5:ac:ff:3e:e1
+04-23 03:12:18.217 14593-14593/? E/BroadcastReceiver: Connected.
+04-23 03:12:18.217 14593-14593/? I/TDP?Main?Activity: Wi-Fi P2P connected successfully.
+04-23 03:12:18.217 14593-14593/? D/ConnectionInfoListener: I am the Group Owner
+04-23 03:12:18.217 14593-14593/? D/ConnectionInfoListener: Group Owner Address: 192.168.49.1
+04-23 03:12:18.217 14593-14593/? I/TDP?Main?Activity: Group formed and is Group Owner.
+04-23 03:12:18.217 14593-14775/? I/Connecting?Timer: Connecting Timeout Timer failed.
+04-23 03:12:18.217 14593-14780/? I/Socket?Server: Start Socket Server task ...
+04-23 03:12:18.217 14593-14780/? D/Socket?Server: Start Socket Server.
+04-23 03:12:18.217 14593-14780/? D/Socket?Server: Socket Server is waiting for incoming connections.
+04-23 03:12:18.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:18.537 14779-14779/? I/dnsmasq: DHCPREQUEST(p2p-p2p0-0) 192.168.49.158 be:f5:ac:ff:be:e1 
+04-23 03:12:18.537 14779-14779/? I/dnsmasq: DHCPACK(p2p-p2p0-0) 192.168.49.158 be:f5:ac:ff:be:e1 android-35220ef83cdc8e09
+04-23 03:12:19.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:19.907 14593-14780/? D/Socket?Server: A client Socket is ready.
+04-23 03:12:19.997 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 213K, 3% free 17323K/17800K, paused 2ms+6ms, total 19ms
+04-23 03:12:20.087 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 305K, 2% free 17490K/17840K, paused 1ms+22ms, total 32ms
+04-23 03:12:20.157 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 459K, 3% free 17460K/17972K, paused 2ms+4ms, total 18ms
+04-23 03:12:20.237 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 499K, 4% free 17446K/18000K, paused 1ms+6ms, total 28ms
+04-23 03:12:20.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:20.307 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 462K, 4% free 17420K/18000K, paused 2ms+4ms, total 20ms
+04-23 03:12:20.357 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 427K, 4% free 17409K/18000K, paused 2ms+3ms, total 15ms
+04-23 03:12:20.427 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 426K, 4% free 17420K/18000K, paused 2ms+3ms, total 15ms
+04-23 03:12:20.497 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 451K, 4% free 17433K/18000K, paused 2ms+4ms, total 15ms
+04-23 03:12:20.557 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 461K, 4% free 17434K/18000K, paused 1ms+4ms, total 14ms
+04-23 03:12:20.617 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 460K, 4% free 17436K/18000K, paused 1ms+2ms, total 13ms
+04-23 03:12:20.677 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 463K, 4% free 17436K/18000K, paused 1ms+2ms, total 13ms
+04-23 03:12:20.747 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 470K, 4% free 17445K/18000K, paused 1ms+4ms, total 16ms
+04-23 03:12:20.807 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 484K, 4% free 17450K/18000K, paused 2ms+5ms, total 19ms
+04-23 03:12:20.867 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 466K, 4% free 17422K/18000K, paused 2ms+3ms, total 21ms
+04-23 03:12:20.907 14593-14780/? D/Socket?Server: server thread is stopped
+04-23 03:12:20.907 14593-14788/? I/System.out: Device Pairing:Start Socket Object Test. 1
+04-23 03:12:20.907 14593-14788/? I/System.out: TDP Calculation Started: 1461381140909
+04-23 03:12:20.917 14593-14788/? D/dalvikvm: GC_FOR_ALLOC freed 365K, 4% free 17330K/18000K, paused 12ms, total 12ms
+04-23 03:12:20.917 14593-14788/? I/dalvikvm-heap: Grow heap (frag case) to 16.962MB for 8208-byte allocation
+04-23 03:12:20.927 14593-14788/? D/dalvikvm: GC_FOR_ALLOC freed 48K, 5% free 17289K/18012K, paused 9ms, total 9ms
+04-23 03:12:20.937 14593-14788/? I/System.out: Device Pairing:Start Encryption Controller. 2
+04-23 03:12:20.937 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:20.937 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:20.937 14593-14788/? I/System.out: Index: 1
+04-23 03:12:20.937 14593-14788/? I/System.out: Key: msg_begin
+04-23 03:12:20.937 14593-14788/? I/System.out: Payload: ^%&$Start Encryption Process
+04-23 03:12:20.937 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42685a98
+04-23 03:12:20.937 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:21.067 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:21.067 14593-14788/? I/System.out: Index: 2
+04-23 03:12:21.067 14593-14788/? I/System.out: Key: device_pair_base_server_receipt_infomation
+04-23 03:12:21.067 14593-14788/? I/System.out: Payload: Pair Device Base Server Receipt Info
+04-23 03:12:21.067 14593-14788/? E/Device?Pairing: Round 1 Pair ID: 358239053732360
+04-23 03:12:21.067 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@425fe4b8
+04-23 03:12:21.067 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:21.157 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:21.157 14593-14788/? I/System.out: Index: 3
+04-23 03:12:21.157 14593-14788/? I/System.out: Key: device_pair_unix
+04-23 03:12:21.157 14593-14788/? I/System.out: Payload: Pair Device Data U
+04-23 03:12:21.157 14593-14788/? E/Device?Pairing: Round 2, Pair U: 03ed87e1a53990b4316aae6a8003be762c95b46c33
+04-23 03:12:21.157 14593-14788/? I/System.out: ##### In calculate V #####
+04-23 03:12:21.157 14593-14788/? I/System.out:       358239053732360
+04-23 03:12:21.157 14593-14788/? I/System.out: hashZero: 333538323339303533373332333630030815b4511b23dc9fdcc88f94a89fea10548ec52a0212ce0da8ad71b84706d18aada143ace21dfea142
+04-23 03:12:21.157 14593-14788/? I/System.out: Ppub: 02ebfa91c4d14aadbef157a2f3b9875496216e3aea
+04-23 03:12:21.157 14593-14788/? I/System.out: R: 030815b4511b23dc9fdcc88f94a89fea10548ec52a
+04-23 03:12:21.157 14593-14788/? I/System.out: P: 0212ce0da8ad71b84706d18aada143ace21dfea142
+04-23 03:12:21.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:21.277 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 317K, 3% free 17484K/18012K, paused 3ms+9ms, total 52ms
+04-23 03:12:21.287 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 12ms
+04-23 03:12:21.347 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 338K, 3% free 17623K/18012K, paused 1ms+12ms, total 30ms
+04-23 03:12:21.417 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 504K, 4% free 17588K/18148K, paused 2ms+3ms, total 20ms
+04-23 03:12:21.477 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 476K, 4% free 17503K/18148K, paused 2ms+3ms, total 16ms
+04-23 03:12:21.537 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 425K, 4% free 17538K/18148K, paused 2ms+3ms, total 14ms
+04-23 03:12:21.607 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 428K, 4% free 17505K/18148K, paused 2ms+3ms, total 16ms
+04-23 03:12:21.677 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 426K, 4% free 17540K/18148K, paused 1ms+3ms, total 18ms
+04-23 03:12:21.737 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 455K, 4% free 17543K/18148K, paused 2ms+3ms, total 19ms
+04-23 03:12:21.807 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 460K, 4% free 17544K/18148K, paused 1ms+3ms, total 16ms
+04-23 03:12:21.867 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 425K, 4% free 17504K/18148K, paused 2ms+2ms, total 14ms
+04-23 03:12:21.907 823-999/? D/CaptivePortalTracker: Probably not a portal: exception java.net.SocketTimeoutException: failed to connect to /74.125.23.138 (port 80) after 10000ms
+04-23 03:12:21.907 823-999/? D/CaptivePortalTracker: Don't send network conditions - lacking user consent.
+04-23 03:12:21.907 823-999/? D/CaptivePortalTracker: Not captive network NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:12:21.907 823-999/? D/CaptivePortalTracker: notifyPortalCheckCompleted: captive=false ni=NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:12:21.907 823-999/? D/ConnectivityService: captivePortalCheckCompleted: ni=NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false captive=false
+04-23 03:12:21.937 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 424K, 4% free 17545K/18148K, paused 1ms+3ms, total 20ms
+04-23 03:12:21.987 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 431K, 4% free 17511K/18148K, paused 2ms+2ms, total 14ms
+04-23 03:12:22.067 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 392K, 4% free 17580K/18148K, paused 2ms+11ms, total 25ms
+04-23 03:12:22.137 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 477K, 4% free 17603K/18148K, paused 1ms+8ms, total 32ms
+04-23 03:12:22.197 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 484K, 4% free 17504K/18148K, paused 2ms+2ms, total 14ms
+04-23 03:12:22.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:22.267 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 431K, 4% free 17552K/18148K, paused 1ms+3ms, total 16ms
+04-23 03:12:22.337 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 470K, 4% free 17548K/18148K, paused 2ms+4ms, total 21ms
+04-23 03:12:22.427 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 485K, 4% free 17566K/18148K, paused 1ms+7ms, total 30ms
+04-23 03:12:22.487 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 486K, 4% free 17549K/18148K, paused 2ms+3ms, total 19ms
+04-23 03:12:22.567 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 439K, 3% free 17626K/18148K, paused 2ms+6ms, total 31ms
+04-23 03:12:22.657 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 502K, 4% free 17624K/18172K, paused 2ms+3ms, total 21ms
+04-23 03:12:22.677 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 18ms
+04-23 03:12:22.727 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 519K, 4% free 17533K/18172K, paused 1ms+3ms, total 15ms
+04-23 03:12:22.797 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 409K, 4% free 17508K/18172K, paused 2ms+2ms, total 14ms
+04-23 03:12:22.867 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 423K, 4% free 17551K/18172K, paused 1ms+3ms, total 13ms
+04-23 03:12:22.937 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 471K, 4% free 17561K/18172K, paused 1ms+5ms, total 20ms
+04-23 03:12:23.007 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 473K, 4% free 17554K/18172K, paused 1ms+4ms, total 21ms
+04-23 03:12:23.067 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 467K, 4% free 17554K/18172K, paused 2ms+4ms, total 18ms
+04-23 03:12:23.127 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 437K, 4% free 17529K/18172K, paused 2ms+3ms, total 16ms
+04-23 03:12:23.197 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 435K, 4% free 17560K/18172K, paused 2ms+2ms, total 17ms
+04-23 03:12:23.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:23.287 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 485K, 4% free 17586K/18172K, paused 1ms+6ms, total 29ms
+04-23 03:12:23.287 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+04-23 03:12:23.367 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 495K, 4% free 17568K/18172K, paused 2ms+4ms, total 26ms
+04-23 03:12:23.427 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 466K, 4% free 17558K/18172K, paused 2ms+3ms, total 16ms
+04-23 03:12:23.487 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 464K, 4% free 17569K/18172K, paused 1ms+3ms, total 15ms
+04-23 03:12:23.547 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 433K, 4% free 17523K/18172K, paused 2ms+3ms, total 15ms
+04-23 03:12:23.647 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 428K, 4% free 17566K/18172K, paused 1ms+5ms, total 18ms
+04-23 03:12:23.697 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 434K, 4% free 17527K/18172K, paused 2ms+3ms, total 16ms
+04-23 03:12:23.777 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 431K, 4% free 17563K/18172K, paused 0ms+3ms, total 19ms
+04-23 03:12:23.837 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 466K, 4% free 17564K/18172K, paused 1ms+4ms, total 20ms
+04-23 03:12:23.897 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 467K, 4% free 17563K/18172K, paused 1ms+3ms, total 15ms
+04-23 03:12:23.977 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 452K, 4% free 17548K/18172K, paused 2ms+4ms, total 16ms
+04-23 03:12:23.987 14593-14788/? I/System.out: Secret Key: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:23.987 14593-14788/? E/Device?Pairing: Sudo: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:23.987 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42722110
+04-23 03:12:23.987 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:24.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:25.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:26.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:26.757 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:26.757 14593-14788/? I/System.out: Index: 4
+04-23 03:12:26.757 14593-14788/? I/System.out: Key: device_pair_cat
+04-23 03:12:26.757 14593-14788/? I/System.out: Payload: Pair Device Data C
+04-23 03:12:26.757 14593-14788/? E/Device?Pairing: Round 3, Pair C: d4406acc7fa09e75db211ec94fa4c94f
+04-23 03:12:26.757 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@4270dd40
+04-23 03:12:26.757 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:26.807 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:26.807 14593-14788/? I/System.out: Index: 5
+04-23 03:12:26.807 14593-14788/? I/System.out: Key: device_pair_fsck
+04-23 03:12:26.807 14593-14788/? I/System.out: Payload: Pair Device Data F
+04-23 03:12:26.807 14593-14788/? I/System.out: %#$$^%^^%# OK OK OK OK$#$^#%^#$%&Y#%^#
+04-23 03:12:26.807 14593-14788/? I/System.out: Key: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:26.807 14593-14593/? I/TDP?Main?Activity: Pairing success.
+04-23 03:12:26.817 14593-14788/? E/DevicePairingProcess: %#$$^%#OK OK O#$%&Y#%
+                                                         Secret Key: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:26.817 14593-14788/? I/System.out: Sudo String: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:26.827 14593-14788/? E/Device?Pairing: Round 4, Pair F: b598d75799861cb54348be03392a609c
+04-23 03:12:26.837 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42700078
+04-23 03:12:26.837 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:26.907 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:26.907 14593-14788/? I/System.out: Index: 6
+04-23 03:12:26.907 14593-14788/? I/System.out: Key: receipt_generation_contactHistory
+04-23 03:12:26.907 14593-14788/? I/System.out: Payload: Device's Contact History
+04-23 03:12:26.907 14593-14788/? E/Device?Pairing: Round 5, Pair CH-positive: null
+04-23 03:12:26.907 14593-14788/? I/System.out: **********************QCR Calculation Info -- QCR************************
+04-23 03:12:26.907 14593-14788/? I/System.out: 	 QoS: -1.0
+04-23 03:12:26.907 14593-14788/? I/System.out: 	 Cre: 0.5
+04-23 03:12:26.907 14593-14788/? I/System.out: 	 Rat: 1
+04-23 03:12:26.907 14593-14788/? I/System.out: ***********************All Parameters Info****************************
+04-23 03:12:26.907 14593-14788/? I/System.out: 	ID: 352584063215518
+04-23 03:12:26.907 14593-14788/? I/System.out: 	preQos: -0.6	Qos: -1.0
+04-23 03:12:26.907 14593-14788/? I/System.out: 	preCre: 0.3	Cre: 0.5
+04-23 03:12:26.907 14593-14788/? I/System.out: 	Num of CH: 1
+04-23 03:12:26.907 14593-14788/? I/System.out: 	CH-IDs: [358239053732360, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+04-23 03:12:26.907 14593-14788/? I/System.out: 	CH-Positive: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+04-23 03:12:26.907 14593-14788/? I/System.out: 	CH-Total: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+04-23 03:12:26.907 14593-14788/? I/System.out: 	CH: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+04-23 03:12:26.967 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 485K, 4% free 17545K/18172K, paused 1ms+4ms, total 34ms
+04-23 03:12:27.047 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 396K, 4% free 17619K/18172K, paused 2ms+12ms, total 30ms
+04-23 03:12:27.137 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 467K, 4% free 17622K/18172K, paused 1ms+3ms, total 24ms
+04-23 03:12:27.207 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 511K, 4% free 17579K/18172K, paused 1ms+2ms, total 14ms
+04-23 03:12:27.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:27.287 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 490K, 4% free 17600K/18172K, paused 0ms+3ms, total 18ms
+04-23 03:12:27.297 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 5ms
+04-23 03:12:27.367 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 510K, 4% free 17601K/18172K, paused 1ms+5ms, total 26ms
+04-23 03:12:27.367 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 13ms
+04-23 03:12:27.427 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 470K, 4% free 17562K/18172K, paused 2ms+4ms, total 16ms
+04-23 03:12:27.487 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 440K, 4% free 17574K/18172K, paused 2ms+2ms, total 15ms
+04-23 03:12:27.557 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 452K, 4% free 17578K/18172K, paused 1ms+3ms, total 17ms
+04-23 03:12:27.617 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 426K, 4% free 17546K/18172K, paused 2ms+2ms, total 15ms
+04-23 03:12:27.687 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 431K, 4% free 17582K/18172K, paused 0ms+3ms, total 17ms
+04-23 03:12:27.737 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 456K, 4% free 17571K/18172K, paused 2ms+3ms, total 14ms
+04-23 03:12:27.797 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 453K, 4% free 17573K/18172K, paused 2ms+2ms, total 15ms
+04-23 03:12:27.867 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 445K, 4% free 17561K/18172K, paused 2ms+3ms, total 16ms
+04-23 03:12:27.927 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 439K, 4% free 17565K/18172K, paused 2ms+4ms, total 20ms
+04-23 03:12:27.937 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@426f54c0
+04-23 03:12:27.937 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:28.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:29.097 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:29.097 14593-14788/? I/System.out: Index: 7
+04-23 03:12:29.097 14593-14788/? I/System.out: Key: receipt_generation_signature
+04-23 03:12:29.097 14593-14788/? I/System.out: Payload: Device's Signature
+04-23 03:12:29.097 14593-14788/? E/Device?Pairing: Round 6, Pair Signature-er: 0eeff7af96e882a5820a914ac4779609
+04-23 03:12:29.227 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 410K, 3% free 17633K/18172K, paused 2ms+2ms, total 26ms
+04-23 03:12:29.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:29.317 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 427K, 3% free 17673K/18172K, paused 2ms+3ms, total 24ms
+04-23 03:12:29.367 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 507K, 4% free 17628K/18184K, paused 2ms+4ms, total 16ms
+04-23 03:12:29.447 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 506K, 4% free 17593K/18184K, paused 1ms+4ms, total 16ms
+04-23 03:12:29.517 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 431K, 3% free 17648K/18184K, paused 2ms+12ms, total 25ms
+04-23 03:12:29.577 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 475K, 3% free 17671K/18192K, paused 2ms+10ms, total 21ms
+04-23 03:12:29.577 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 1ms
+04-23 03:12:29.657 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 532K, 4% free 17605K/18192K, paused 1ms+4ms, total 17ms
+04-23 03:12:29.727 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 481K, 4% free 17588K/18192K, paused 0ms+3ms, total 14ms
+04-23 03:12:29.787 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 470K, 4% free 17595K/18192K, paused 2ms+3ms, total 24ms
+04-23 03:12:29.857 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 476K, 4% free 17594K/18192K, paused 2ms+4ms, total 25ms
+04-23 03:12:29.927 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 477K, 4% free 17596K/18192K, paused 2ms+3ms, total 24ms
+04-23 03:12:30.007 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 455K, 4% free 17570K/18192K, paused 2ms+3ms, total 17ms
+04-23 03:12:30.077 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 447K, 4% free 17589K/18192K, paused 1ms+3ms, total 14ms
+04-23 03:12:30.157 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 485K, 4% free 17614K/18192K, paused 2ms+5ms, total 37ms
+04-23 03:12:30.217 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 489K, 4% free 17592K/18192K, paused 1ms+3ms, total 18ms
+04-23 03:12:30.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:30.287 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 473K, 4% free 17599K/18192K, paused 2ms+4ms, total 26ms
+04-23 03:12:30.357 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 477K, 4% free 17597K/18192K, paused 1ms+4ms, total 21ms
+04-23 03:12:30.427 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 487K, 4% free 17618K/18192K, paused 2ms+5ms, total 28ms
+04-23 03:12:30.477 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 458K, 4% free 17570K/18192K, paused 2ms+3ms, total 15ms
+04-23 03:12:30.557 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 430K, 4% free 17595K/18192K, paused 1ms+2ms, total 23ms
+04-23 03:12:30.627 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 475K, 4% free 17619K/18192K, paused 2ms+3ms, total 29ms
+04-23 03:12:30.687 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 447K, 4% free 17562K/18192K, paused 2ms+4ms, total 16ms
+04-23 03:12:30.747 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 435K, 4% free 17610K/18192K, paused 1ms+4ms, total 20ms
+04-23 03:12:30.807 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 469K, 4% free 17597K/18192K, paused 2ms+3ms, total 16ms
+04-23 03:12:30.877 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 464K, 4% free 17604K/18192K, paused 2ms+4ms, total 19ms
+04-23 03:12:30.947 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 469K, 4% free 17603K/18192K, paused 1ms+2ms, total 20ms
+04-23 03:12:30.997 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 436K, 4% free 17568K/18192K, paused 2ms+4ms, total 16ms
+04-23 03:12:31.057 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 438K, 4% free 17606K/18192K, paused 1ms+6ms, total 18ms
+04-23 03:12:31.137 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 471K, 4% free 17601K/18192K, paused 2ms+4ms, total 22ms
+04-23 03:12:31.187 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 435K, 4% free 17567K/18192K, paused 2ms+4ms, total 16ms
+04-23 03:12:31.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:31.257 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 437K, 4% free 17597K/18192K, paused 1ms+7ms, total 18ms
+04-23 03:12:31.327 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 463K, 4% free 17593K/18192K, paused 2ms+3ms, total 15ms
+04-23 03:12:31.397 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 460K, 4% free 17592K/18192K, paused 2ms+4ms, total 16ms
+04-23 03:12:31.457 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 461K, 4% free 17596K/18192K, paused 2ms+3ms, total 15ms
+04-23 03:12:31.527 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 467K, 4% free 17600K/18192K, paused 1ms+3ms, total 15ms
+04-23 03:12:31.597 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 480K, 4% free 17608K/18192K, paused 1ms+5ms, total 19ms
+04-23 03:12:31.667 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 492K, 4% free 17604K/18192K, paused 1ms+6ms, total 20ms
+04-23 03:12:31.717 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 460K, 4% free 17574K/18192K, paused 2ms+3ms, total 15ms
+04-23 03:12:31.787 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 430K, 4% free 17583K/18192K, paused 2ms+3ms, total 15ms
+04-23 03:12:31.847 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 453K, 4% free 17598K/18192K, paused 1ms+4ms, total 15ms
+04-23 03:12:31.917 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 483K, 4% free 17615K/18192K, paused 2ms+4ms, total 26ms
+04-23 03:12:31.997 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 484K, 4% free 17599K/18192K, paused 1ms+4ms, total 20ms
+04-23 03:12:32.047 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 440K, 4% free 17569K/18192K, paused 2ms+3ms, total 15ms
+04-23 03:12:32.107 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 406K, 4% free 17563K/18192K, paused 2ms+4ms, total 15ms
+04-23 03:12:32.137 14593-14788/? I/System.out: ***********Calc Receipt**************
+04-23 03:12:32.137 14593-14788/? I/System.out:   ID: 352584063215518
+04-23 03:12:32.137 14593-14788/? I/System.out:   Left:  021fb4c305af64dca53fa0ad9f084ed97fb0e1a4bc
+04-23 03:12:32.137 14593-14788/? I/System.out:   Right: 021fb4c305af64dca53fa0ad9f084ed97fb0e1a4bc
+04-23 03:12:32.137 14593-14788/? I/System.out:   xa*T2b:  02768f6936c061bc27862dd53cf18db7d1c8d556a0
+04-23 03:12:32.137 14593-14788/? I/System.out:   T3:    02768f6936c061bc27862dd53cf18db7d1c8d556a0
+04-23 03:12:32.187 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 434K, 4% free 17596K/18192K, paused 1ms+5ms, total 16ms
+04-23 03:12:32.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:32.247 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 487K, 4% free 17621K/18192K, paused 1ms+3ms, total 20ms
+04-23 03:12:32.247 14593-14788/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 7ms
+04-23 03:12:32.317 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 491K, 4% free 17596K/18192K, paused 1ms+4ms, total 15ms
+04-23 03:12:32.377 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 466K, 4% free 17598K/18192K, paused 1ms+4ms, total 15ms
+04-23 03:12:32.447 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 473K, 4% free 17604K/18192K, paused 2ms+4ms, total 25ms
+04-23 03:12:32.517 14593-14596/? D/dalvikvm: GC_CONCURRENT freed 479K, 4% free 17603K/18192K, paused 2ms+3ms, total 24ms
+04-23 03:12:32.547 14593-14788/? I/System.out: $%%^^*&$#$@ Receipt is generated. $%%^^*&$#$@
+04-23 03:12:32.547 14593-14788/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42664b30
+04-23 03:12:32.547 14593-14788/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:33.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:33.307 1409-1413/? D/dalvikvm: GC_CONCURRENT freed 939K, 12% free 19893K/22596K, paused 2ms+4ms, total 64ms
+04-23 03:12:34.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:35.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:36.107 14593-14788/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:36.107 14593-14788/? I/System.out: Index: 8
+04-23 03:12:36.107 14593-14788/? I/System.out: Key: msg_end
+04-23 03:12:36.107 14593-14788/? I/System.out: Payload: $%^& Server Socket End $%^&
+04-23 03:12:36.107 14593-14788/? E/Device?Pairing: Socket end!
+04-23 03:12:36.107 14593-14788/? W/System.err: TDP Calculation Duration: 15204
+04-23 03:12:36.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:37.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:38.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:38.767 14833-14833/? D/AndroidRuntime: CheckJNI is OFF
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/telephony-common.jar odex has stale dependencies
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/voip-common.jar odex has stale dependencies
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/mms-common.jar odex has stale dependencies
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/android.policy.jar odex has stale dependencies
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/services.jar odex has stale dependencies
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/apache-xml.jar odex has stale dependencies
+04-23 03:12:38.777 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.777 14833-14833/? E/dalvikvm: /system/framework/webviewchromium.jar odex has stale dependencies
+04-23 03:12:38.787 14833-14833/? D/dalvikvm: Trying to load lib libjavacore.so 0x0
+04-23 03:12:38.787 14833-14833/? D/dalvikvm: Added shared lib libjavacore.so 0x0
+04-23 03:12:38.787 14833-14833/? D/dalvikvm: Trying to load lib libnativehelper.so 0x0
+04-23 03:12:38.787 14833-14833/? D/dalvikvm: Added shared lib libnativehelper.so 0x0
+04-23 03:12:38.787 14833-14833/? D/dalvikvm: No JNI_OnLoad found in libnativehelper.so 0x0, skipping init
+04-23 03:12:38.797 14833-14833/? I/dalvikvm: DexOpt: mismatch dep signature for '/system/framework/framework.odex'
+04-23 03:12:38.797 14833-14833/? E/dalvikvm: /system/framework/am.jar odex has stale dependencies
+04-23 03:12:38.807 14833-14833/? D/dalvikvm: Note: class Landroid/app/ActivityManagerNative; has 179 unimplemented (abstract) methods
+04-23 03:12:38.937 14833-14833/? D/AndroidRuntime: Calling main entry com.android.commands.am.Am
+04-23 03:12:38.947 823-833/? I/ActivityManager: START u0 {flg=0x10000000 cmp=com.kingroot.kinguser/.activitys.SuNotifyActivity} from pid 14833
+04-23 03:12:38.967 823-868/? I/ProcessStatsService: Prepared write state in 4ms
+04-23 03:12:38.967 823-3011/? W/InputMethodManagerService: Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@43194650 attribute=null, token = android.os.BinderProxy@42ab6aa8
+04-23 03:12:38.977 14833-14833/? D/AndroidRuntime: Shutting down VM
+04-23 03:12:38.977 14833-14841/? D/dalvikvm: GC_CONCURRENT freed 95K, 15% free 586K/684K, paused 0ms+1ms, total 2ms
+04-23 03:12:39.207 1790-1796/? D/dalvikvm: GC_CONCURRENT freed 412K, 8% free 18188K/19736K, paused 6ms+1ms, total 23ms
+04-23 03:12:39.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:39.237 1409-2050/? W/Process: Unable to open /proc/14918/status
+04-23 03:12:39.337 1790-1796/? D/dalvikvm: GC_CONCURRENT freed 343K, 8% free 18303K/19736K, paused 2ms+3ms, total 29ms
+04-23 03:12:40.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:41.237 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:42.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:43.267 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:44.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:45.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:46.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:47.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:48.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:49.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:50.247 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:51.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:52.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:53.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface
+04-23 03:12:54.257 1409-2051/? W/Wifi: Failed to read packet and byte counts from wifi interface

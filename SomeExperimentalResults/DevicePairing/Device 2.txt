@@ -1,0 +1,363 @@
+04-23 03:11:52.927 820-1085/? I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.xjtu.ylab.nick.tdpv2/.MainActivity bnds=[540,554][804,853]} from pid 1105
+04-23 03:11:52.937 180-876/? D/audio_hw_primary: select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-23 03:11:52.977 19789-19789/? D/dalvikvm: Late-enabling CheckJNI
+04-23 03:11:52.977 820-880/? I/ActivityManager: Start proc com.xjtu.ylab.nick.tdpv2 for activity com.xjtu.ylab.nick.tdpv2/.MainActivity: pid=19789 uid=10091 gids={50091, 3003, 1028, 1015}
+04-23 03:11:53.047 19789-19789/? I/dalvikvm: Could not find method android.content.res.TypedArray.getChangingConfigurations, referenced from method android.support.v7.internal.widget.TintTypedArray.getChangingConfigurations
+04-23 03:11:53.047 19789-19789/? W/dalvikvm: VFY: unable to resolve virtual method 416: Landroid/content/res/TypedArray;.getChangingConfigurations ()I
+04-23 03:11:53.047 19789-19789/? D/dalvikvm: VFY: replacing opcode 0x6e at 0x0002
+04-23 03:11:53.047 19789-19789/? I/dalvikvm: Could not find method android.content.res.TypedArray.getType, referenced from method android.support.v7.internal.widget.TintTypedArray.getType
+04-23 03:11:53.047 19789-19789/? W/dalvikvm: VFY: unable to resolve virtual method 438: Landroid/content/res/TypedArray;.getType (I)I
+04-23 03:11:53.047 19789-19789/? D/dalvikvm: VFY: replacing opcode 0x6e at 0x0002
+04-23 03:11:53.077 820-831/? D/WifiService: setWifiEnabled: true pid=19789, uid=10091
+04-23 03:11:53.097 173-586/? D/SoftapController: Softap fwReload - Ok
+04-23 03:11:53.097 173-586/? D/CommandListener: Setting iface cfg
+04-23 03:11:53.097 173-586/? D/CommandListener: Trying to bring down wlan0
+04-23 03:11:53.107 820-918/? D/WifiMonitor: startMonitoring(wlan0) with mConnected = false
+04-23 03:11:53.117 19007-19007/? D/BluetoothAdapter: 1119889920: getState() :  mService = null. Returning STATE_OFF
+04-23 03:11:53.117 19789-19789/? I/PairDiscovery: PairDiscovery initialize.
+04-23 03:11:53.117 19810-19810/? I/wpa_supplicant: Successfully initialized wpa_supplicant
+04-23 03:11:53.127 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 201K, 2% free 16957K/17192K, paused 3ms+2ms, total 16ms
+04-23 03:11:53.157 19810-19810/? I/wpa_supplicant: rfkill: Cannot open RFKILL control device
+04-23 03:11:53.217 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 252K, 2% free 17218K/17504K, paused 2ms+7ms, total 37ms
+04-23 03:11:53.217 19789-19789/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 20ms
+04-23 03:11:53.297 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 474K, 3% free 17271K/17756K, paused 2ms+8ms, total 26ms
+04-23 03:11:53.357 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 489K, 4% free 17234K/17776K, paused 2ms+3ms, total 14ms
+04-23 03:11:53.437 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 499K, 4% free 17219K/17776K, paused 2ms+5ms, total 20ms
+04-23 03:11:53.487 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 450K, 4% free 17180K/17776K, paused 1ms+2ms, total 13ms
+04-23 03:11:53.557 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 425K, 4% free 17194K/17776K, paused 0ms+3ms, total 13ms
+04-23 03:11:53.617 19789-19789/? D/BroadcastReceiver: Received a disconnect action.
+04-23 03:11:53.617 19789-19789/? D/BroadcastReceiver: Wi-Fi Direct OFF
+04-23 03:11:53.647 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 422K, 4% free 17172K/17776K, paused 2ms+2ms, total 18ms
+04-23 03:11:53.667 19789-19789/? D/TDP?Main?Activity: Log Text View was bound successfully.
+04-23 03:11:53.707 19789-19789/? I/Adreno-EGL: <qeglDrvAPI_eglInitialize:320>: EGL 1.4 QUALCOMM Build: I0404c4692afb8623f95c43aeb6d5e13ed4b30ddbDate: 11/06/13
+04-23 03:11:53.727 19789-19789/? D/OpenGLRenderer: Enabling debug mode 0
+04-23 03:11:53.737 19789-19789/? I/TDP?Main?Activity: Wi-Fi P2P is Disconnected.
+04-23 03:11:53.787 820-855/? I/ActivityManager: Displayed com.xjtu.ylab.nick.tdpv2/.MainActivity: +817ms
+04-23 03:11:53.887 820-868/? D/Tethering: sendTetherStateChangedBroadcast 1, 0, 0
+04-23 03:11:53.907 19810-19810/? I/wpa_supplicant: rfkill: Cannot open RFKILL control device
+04-23 03:11:53.927 820-918/? D/WifiConfigStore: Loading config and enabling all networks
+04-23 03:11:53.937 19007-19007/? D/BluetoothAdapter: 1119889920: getState() :  mService = null. Returning STATE_OFF
+04-23 03:11:53.947 173-586/? D/CommandListener: Setting iface cfg
+04-23 03:11:53.957 173-586/? D/CommandListener: Trying to bring up p2p0
+04-23 03:11:53.957 820-917/? D/WifiMonitor: startMonitoring(p2p0) with mConnected = true
+04-23 03:11:53.957 19789-19789/? D/BroadcastReceiver: Wi-Fi Direct On
+04-23 03:11:53.967 19789-19789/? D/BroadcastReceiver: Received a disconnect action.
+04-23 03:11:53.967 19789-19789/? I/TDP?Main?Activity: Wi-Fi P2P is Disconnected.
+04-23 03:11:55.507 19810-19810/? I/wpa_supplicant: wlan0: Trying to associate with 04:a1:51:b3:f7:94 (SSID='YLab8' freq=2412 MHz)
+04-23 03:11:55.567 19810-19810/? I/wpa_supplicant: wlan0: Associated with 04:a1:51:b3:f7:94
+04-23 03:11:55.607 19810-19810/? I/wpa_supplicant: wlan0: WPA: Key negotiation completed with 04:a1:51:b3:f7:94 [PTK=CCMP GTK=CCMP]
+04-23 03:11:55.607 19810-19810/? I/wpa_supplicant: wlan0: CTRL-EVENT-CONNECTED - Connection to 04:a1:51:b3:f7:94 completed (auth) [id=0 id_str=]
+04-23 03:11:55.707 820-918/? E/WifiStateMachine: scanCount==0 - aborting
+04-23 03:11:57.117 820-918/? D/WifiStateMachine: VerifyingLinkState enter
+04-23 03:11:57.127 820-918/? D/WifiStateMachine: VerifyingLinkState GOOD_LINK_DETECTED: transition to captive portal check
+04-23 03:11:57.127 820-918/? D/WifiStateMachine: CaptivePortalCheckState enter
+04-23 03:11:57.127 820-918/? D/WifiStateMachine: CaptivePortalCheckState CMD_CAPTIVE_CHECK_COMPLETE
+04-23 03:11:57.127 820-920/? D/ConnectivityService: Captive portal check NetworkInfo: type: WIFI[], state: CONNECTING/CAPTIVE_PORTAL_CHECK, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:11:57.127 820-920/? D/ConnectivityService: handleCaptivePortalTrackerCheck: call captivePortalCheckComplete ni=NetworkInfo: type: WIFI[], state: CONNECTING/CAPTIVE_PORTAL_CHECK, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:11:57.137 820-920/? D/ConnectivityService: ConnectivityChange for WIFI: CONNECTED/CONNECTED
+04-23 03:11:57.137 820-920/? E/ConnectivityService: Unexpected mtu value: android.net.wifi.WifiStateTracker@42f404d8
+04-23 03:11:57.157 820-920/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:11:58.137 820-920/? D/ConnectivityService: NetTransition Wakelock for ConnectedState released by timeout
+04-23 03:11:58.897 820-920/? D/ConnectivityService: handleConnectivityChange: addresses changed linkProperty[1]: resetMask=0
+                                                       car=removed=[] added=[fe80::bef5:acff:feff:3ee1/64,]
+04-23 03:11:58.897 820-920/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:12:00.167 820-868/? D/Tethering: MasterInitialState.processMessage what=3
+04-23 03:12:00.167 820-999/? D/CaptivePortalTracker: NoActiveNetworkState{ when=-2ms what=1 obj=NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false target=com.android.internal.util.StateMachine$SmHandler }
+04-23 03:12:00.217 4410-4414/? D/dalvikvm: GC_CONCURRENT freed 670K, 7% free 18169K/19448K, paused 2ms+3ms, total 24ms
+04-23 03:12:00.237 1346-1346/? D/GCM: GcmService start Intent { act=android.net.conn.CONNECTIVITY_CHANGE flg=0x4000010 cmp=com.google.android.gms/.gcm.GcmService (has extras) } android.net.conn.CONNECTIVITY_CHANGE
+04-23 03:12:00.247 1172-1175/? D/dalvikvm: GC_CONCURRENT freed 425K, 6% free 17286K/18372K, paused 2ms+3ms, total 23ms
+04-23 03:12:00.557 820-920/? D/ConnectivityService: handleConnectivityChange: addresses changed linkProperty[1]: resetMask=0
+                                                       car=removed=[] added=[2001:250:1001:1712:bef5:acff:feff:3ee1/64,]
+04-23 03:12:00.557 820-920/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:12:00.787 820-920/? D/ConnectivityService: handleConnectivityChange: addresses changed linkProperty[1]: resetMask=0
+                                                       car=removed=[] added=[2001:250:1001:1712:b488:eb6d:ee08:89d7/64,]
+04-23 03:12:00.787 820-920/? D/Nat464Xlat: requiresClat: netType=1, hasIPv4Address=true
+04-23 03:12:03.347 20205-20206/? D/dalvikvm: GC_CONCURRENT freed 411K, 4% free 17509K/18132K, paused 4ms+2ms, total 38ms
+04-23 03:12:05.947 19789-19789/? D/TDP?Main?Activity: Start Register Client!
+04-23 03:12:05.947 180-876/? D/audio_hw_primary: select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+04-23 03:12:06.757 19789-19924/? D/TDP?Registration?Client: Send a packet.
+04-23 03:12:06.757 19789-19924/? I/System.out: TDP Registration Client: send packet -- request receipt.
+04-23 03:12:07.177 19789-19924/? D/TDP?Registration?Client: Received a Packet
+04-23 03:12:07.177 19789-19924/? I/System.out: Receive a Packet about the Receipt.
+04-23 03:12:07.187 19789-19924/? I/System.out: ***************************************************************************************************
+04-23 03:12:07.187 19789-19924/? I/System.out: 	==== Device Received Receipt ====
+04-23 03:12:07.187 19789-19924/? I/System.out: 	ID  : 358239053732360
+04-23 03:12:07.187 19789-19924/? I/System.out: 	x   : c3b129dad7d4f5d5c08925088366731eae102342f68c33a4
+04-23 03:12:07.187 19789-19924/? I/System.out: 	Ppub: 0212ce0da8ad71b84706d18aada143ace21dfea142
+04-23 03:12:07.187 19789-19924/? I/System.out: 	r   : c1fd2e6ccaf86b07b53f995552dca40a209466283aa349e8
+04-23 03:12:07.187 19789-19924/? I/System.out: 	d   : -6f163bc77c205ef02f9941c7a736c73db457c599188282838355d76fb3ef8d7a1b83f5bf70a6a212cc852e8b
+04-23 03:12:07.187 19789-19924/? I/System.out: 	Rand: 030815b4511b23dc9fdcc88f94a89fea10548ec52a
+04-23 03:12:07.187 19789-19924/? I/System.out: 	Master Ppub: 02ebfa91c4d14aadbef157a2f3b9875496216e3aea
+04-23 03:12:07.187 19789-19924/? I/System.out: 	Trust Value: 20
+04-23 03:12:07.187 19789-19924/? I/System.out: ***************************************************************************************************
+04-23 03:12:07.187 19789-19924/? W/System.err: Get the Receipt.
+04-23 03:12:07.187 19789-19924/? W/System.err: com.xjtu.ylab.nick.tdpv2.register.MySocketReadWriteException: Get the Receipt.
+04-23 03:12:07.187 19789-19924/? W/System.err:     at com.xjtu.ylab.nick.tdpv2.register.RegisterDeviceClient.messageHandler(RegisterDeviceClient.java:185)
+04-23 03:12:07.187 19789-19924/? W/System.err:     at com.xjtu.ylab.nick.tdpv2.register.RegisterDeviceClient.run(RegisterDeviceClient.java:60)
+04-23 03:12:07.187 19789-19924/? W/System.err:     at java.lang.Thread.run(Thread.java:841)
+04-23 03:12:07.187 19789-19789/? I/TDP?Main?Activity: Registration success.
+04-23 03:12:07.237 19789-19789/? D/TDP?Device?Pairing: Constructor DevicePairingService()
+04-23 03:12:07.247 19789-19789/? D/TDP?Device?Pairing: onCreate()
+04-23 03:12:07.247 19789-19789/? I/TDP?Device?Pairing: Custom Service Started.
+04-23 03:12:07.247 19789-19927/? D/TDP?Device?Pairing: Start Broadcast.
+04-23 03:12:07.247 19789-19927/? D/TDP?Device?Pairing: Hello, Pairing Service.
+04-23 03:12:07.247 19789-19789/? I/TDP?Main?Activity: Broadcasting success.
+04-23 03:12:07.247 19789-19789/? I/TDP?Device?Pairing: onDestroy()
+04-23 03:12:07.547 19789-19928/? D/TDP?Device?Pairing: Run Broadcast Task.
+04-23 03:12:07.547 19789-19928/? D/PairDiscovery: Add Local Service: Broadcast Trust Value.
+04-23 03:12:07.547 19789-19928/? D/PairDiscovery: Clear Local Service & Add Local Service & start DiscoverService
+04-23 03:12:07.557 19789-19789/? D/WifiP2pManager: Ignored { when=0 what=139313 target=android.net.wifi.p2p.WifiP2pManager$Channel$P2pHandler }
+04-23 03:12:10.177 820-999/? D/CaptivePortalTracker: DelayedCaptiveCheckState{ when=-12ms what=2 arg1=37 target=com.android.internal.util.StateMachine$SmHandler }
+04-23 03:12:10.177 820-999/? D/ConnectivityService: setProvNotificationVisible: E visible=false networkType=1 extraInfo=null url=null
+04-23 03:12:10.607 820-999/? D/CaptivePortalTracker: Checking http://74.125.23.138/generate_204
+04-23 03:12:14.477 19810-19810/? I/wpa_supplicant: P2P-DEVICE-FOUND fa:a9:d0:67:9c:4c p2p_dev_addr=fa:a9:d0:67:9c:4c pri_dev_type=10-0050F204-5 name='Android_c072' config_methods=0x188 dev_capab=0x25 group_capab=0x0
+04-23 03:12:14.507 19789-19789/? D/PairDiscovery: DnsSdTxtRecordAvailable - {trust_value=20}
+04-23 03:12:14.507 19789-19789/? D/PairDiscovery: Pair Device discovered: Android_c072 & 20
+04-23 03:12:19.157 19810-19810/? I/wpa_supplicant: P2P-PROV-DISC-PBC-REQ fa:a9:d0:67:9c:4c p2p_dev_addr=fa:a9:d0:67:9c:4c pri_dev_type=10-0050F204-5 name='Android_c072' config_methods=0x188 dev_capab=0x25 group_capab=0x0
+04-23 03:12:20.117 19810-19810/? I/wpa_supplicant: P2P-GO-NEG-REQUEST fa:a9:d0:67:9c:4c dev_passwd_id=4
+04-23 03:12:20.617 820-999/? D/CaptivePortalTracker: Probably not a portal: exception java.net.SocketTimeoutException: failed to connect to /74.125.23.138 (port 80) after 10000ms
+04-23 03:12:20.617 820-999/? D/CaptivePortalTracker: Don't send network conditions - lacking user consent.
+04-23 03:12:20.627 820-999/? D/CaptivePortalTracker: Not captive network NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:12:20.627 820-999/? D/CaptivePortalTracker: notifyPortalCheckCompleted: captive=false ni=NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+04-23 03:12:20.627 820-999/? D/ConnectivityService: captivePortalCheckCompleted: ni=NetworkInfo: type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "YLab8", roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false captive=false
+04-23 03:12:20.647 19810-19810/? I/wpa_supplicant: P2P-FIND-STOPPED 
+04-23 03:12:21.097 19810-19810/? I/wpa_supplicant: P2P-GO-NEG-SUCCESS role=client freq=2412 ht40=0 peer_dev=fa:a9:d0:67:9c:4c peer_iface=fa:a9:d0:67:1c:4c wps_method=PBC
+04-23 03:12:21.097 19810-19810/? I/wpa_supplicant: rfkill: Cannot open RFKILL control device
+04-23 03:12:21.357 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: Trying to associate with fa:a9:d0:67:1c:4c (SSID='DIRECT-ma-Android_c072' freq=2412 MHz)
+04-23 03:12:21.417 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: Associated with fa:a9:d0:67:1c:4c
+04-23 03:12:21.417 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-STARTED EAP authentication started
+04-23 03:12:21.437 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-PROPOSED-METHOD vendor=14122 method=1
+04-23 03:12:21.437 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-METHOD EAP vendor 14122 method 1 (WSC) selected
+04-23 03:12:21.657 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: WPS-CRED-RECEIVED 
+04-23 03:12:21.657 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: WPS-SUCCESS 
+04-23 03:12:21.657 19810-19810/? I/wpa_supplicant: P2P-GROUP-FORMATION-SUCCESS 
+04-23 03:12:21.657 19810-19810/? I/wpa_supplicant: Restoring back wpa_s->global->p2p_group_formation to wpa_s 0xb72a0420
+04-23 03:12:21.667 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-EAP-FAILURE EAP authentication failed
+04-23 03:12:21.677 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-DISCONNECTED bssid=fa:a9:d0:67:1c:4c reason=3 locally_generated=1
+04-23 03:12:21.677 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: Trying to associate with fa:a9:d0:67:1c:4c (SSID='DIRECT-ma-Android_c072' freq=2412 MHz)
+04-23 03:12:21.717 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: Associated with fa:a9:d0:67:1c:4c
+04-23 03:12:21.737 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: WPA: Key negotiation completed with fa:a9:d0:67:1c:4c [PTK=CCMP GTK=CCMP]
+04-23 03:12:21.737 19810-19810/? I/wpa_supplicant: p2p-p2p0-0: CTRL-EVENT-CONNECTED - Connection to fa:a9:d0:67:1c:4c completed (auth) [id=0 id_str=]
+04-23 03:12:21.737 19810-19810/? I/wpa_supplicant: P2P-GROUP-STARTED p2p-p2p0-0 client ssid="DIRECT-ma-Android_c072" freq=2412 psk=e05c2c84332ee6351ecc01dc35b3768594c505b24ccf43f8988916dd115d4a52 go_dev_addr=fa:a9:d0:67:9c:4c [PERSISTENT]
+04-23 03:12:22.377 19789-19789/? E/BroadcastReceiver: Connected.
+04-23 03:12:22.377 19789-19789/? I/TDP?Main?Activity: Wi-Fi P2P connected successfully.
+04-23 03:12:22.377 19789-19789/? D/ConnectionInfoListener: Group Owner is the Pair Device
+04-23 03:12:22.377 19789-19789/? D/ConnectionInfoListener: Group Owner Address: 192.168.49.1
+04-23 03:12:22.377 19789-19789/? I/TDP?Main?Activity: Group formed and is Client.
+04-23 03:12:23.387 19789-19974/? D/Socket?Client: Start Client Socket.
+04-23 03:12:23.407 19789-19974/? D/Socket?Client: Connect to server
+04-23 03:12:23.487 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 389K, 3% free 17294K/17772K, paused 7ms+11ms, total 70ms
+04-23 03:12:23.487 19789-19974/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 10ms
+04-23 03:12:23.557 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 264K, 3% free 17415K/17772K, paused 2ms+2ms, total 16ms
+04-23 03:12:23.607 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 438K, 3% free 17412K/17904K, paused 2ms+3ms, total 14ms
+04-23 03:12:23.687 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 453K, 3% free 17433K/17936K, paused 2ms+4ms, total 16ms
+04-23 03:12:23.747 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 470K, 3% free 17427K/17952K, paused 1ms+2ms, total 13ms
+04-23 03:12:23.797 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 448K, 4% free 17410K/17952K, paused 2ms+3ms, total 14ms
+04-23 03:12:23.857 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 447K, 3% free 17430K/17952K, paused 1ms+4ms, total 15ms
+04-23 03:12:23.917 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 465K, 3% free 17432K/17952K, paused 1ms+2ms, total 14ms
+04-23 03:12:23.987 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 465K, 3% free 17430K/17952K, paused 2ms+3ms, total 15ms
+04-23 03:12:24.047 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 464K, 3% free 17431K/17952K, paused 1ms+2ms, total 13ms
+04-23 03:12:24.107 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 473K, 3% free 17440K/17960K, paused 1ms+5ms, total 17ms
+04-23 03:12:24.187 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 491K, 3% free 17450K/17988K, paused 2ms+5ms, total 21ms
+04-23 03:12:24.187 19789-19974/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+04-23 03:12:24.247 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 484K, 4% free 17431K/17988K, paused 1ms+3ms, total 13ms
+04-23 03:12:24.307 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 463K, 4% free 17430K/17988K, paused 1ms+3ms, total 14ms
+04-23 03:12:24.357 19789-19983/? I/System.out: Device Pairing:Start Socket Object Test. 1
+04-23 03:12:24.357 19789-19983/? I/System.out: TDP Calculation Started: 1461381144361
+04-23 03:12:24.367 19789-19983/? D/dalvikvm: GC_FOR_ALLOC freed 420K, 4% free 17370K/17988K, paused 13ms, total 13ms
+04-23 03:12:24.407 19789-19983/? I/System.out: Device Pairing:Start Encryption Controller. 2
+04-23 03:12:24.417 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42d04938
+04-23 03:12:24.417 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:24.497 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:24.497 19789-19983/? I/System.out: Index: 1
+04-23 03:12:24.497 19789-19983/? I/System.out: Key: msg_begin
+04-23 03:12:24.497 19789-19983/? I/System.out: Payload: $%^&Socket start$%^&
+04-23 03:12:24.537 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42cebb00
+04-23 03:12:24.537 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:24.607 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:24.607 19789-19983/? I/System.out: Index: 2
+04-23 03:12:24.607 19789-19983/? I/System.out: Key: device_pair_base_server_receipt_infomation
+04-23 03:12:24.607 19789-19983/? I/System.out: Payload: Pair Device Base Server Receipt Info
+04-23 03:12:24.617 19789-19983/? E/Device?Pairing: Round 1 Pair ID: 352584063215518
+04-23 03:12:24.617 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42cbe940
+04-23 03:12:24.617 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:27.637 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:27.637 19789-19983/? I/System.out: Index: 3
+04-23 03:12:27.637 19789-19983/? I/System.out: Key: device_pair_unix
+04-23 03:12:27.637 19789-19983/? I/System.out: Payload: Pair Device Data U
+04-23 03:12:27.637 19789-19983/? E/Device?Pairing: Round 2, Pair U: 031aee01c8dd61c8e057b66b93a34d6c7e5c0a9639
+04-23 03:12:27.637 19789-19983/? I/System.out: ##### In calculate V #####
+04-23 03:12:27.637 19789-19983/? I/System.out:       352584063215518
+04-23 03:12:27.637 19789-19983/? I/System.out: hashZero: 33353235383430363332313535313802d00e836b8fa538ed04c8738e4f8e076ac859c57203f3eff410aac03205e17e3084d2b1e83aaac1720d
+04-23 03:12:27.647 19789-19983/? I/System.out: Ppub: 02ebfa91c4d14aadbef157a2f3b9875496216e3aea
+04-23 03:12:27.647 19789-19983/? I/System.out: R: 02d00e836b8fa538ed04c8738e4f8e076ac859c572
+04-23 03:12:27.647 19789-19983/? I/System.out: P: 03f3eff410aac03205e17e3084d2b1e83aaac1720d
+04-23 03:12:27.727 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 388K, 3% free 17449K/17988K, paused 2ms+8ms, total 23ms
+04-23 03:12:27.807 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 356K, 3% free 17582K/17988K, paused 2ms+3ms, total 35ms
+04-23 03:12:27.897 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 516K, 4% free 17546K/18120K, paused 2ms+3ms, total 28ms
+04-23 03:12:27.967 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 481K, 4% free 17546K/18120K, paused 2ms+3ms, total 26ms
+04-23 03:12:28.037 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 435K, 3% free 17592K/18120K, paused 1ms+2ms, total 23ms
+04-23 03:12:28.107 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 481K, 3% free 17598K/18128K, paused 2ms+4ms, total 26ms
+04-23 03:12:28.187 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 522K, 4% free 17544K/18128K, paused 1ms+4ms, total 15ms
+04-23 03:12:28.247 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 458K, 4% free 17537K/18128K, paused 2ms+4ms, total 16ms
+04-23 03:12:28.297 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 438K, 4% free 17522K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:28.357 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 435K, 4% free 17535K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:28.417 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 446K, 4% free 17535K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:28.467 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 427K, 4% free 17515K/18128K, paused 2ms+2ms, total 14ms
+04-23 03:12:28.537 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 398K, 3% free 17591K/18128K, paused 2ms+12ms, total 24ms
+04-23 03:12:28.587 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 469K, 3% free 17591K/18128K, paused 0ms+3ms, total 14ms
+04-23 03:12:28.657 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 508K, 4% free 17542K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:28.727 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 461K, 4% free 17542K/18128K, paused 0ms+3ms, total 13ms
+04-23 03:12:28.787 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 445K, 4% free 17525K/18128K, paused 2ms+4ms, total 16ms
+04-23 03:12:28.837 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 417K, 4% free 17512K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:28.907 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 426K, 4% free 17535K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:28.977 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 463K, 4% free 17553K/18128K, paused 2ms+4ms, total 25ms
+04-23 03:12:29.037 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 469K, 4% free 17545K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:29.097 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 453K, 4% free 17541K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:29.157 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 446K, 4% free 17545K/18128K, paused 2ms+2ms, total 16ms
+04-23 03:12:29.217 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 466K, 4% free 17560K/18128K, paused 2ms+2ms, total 24ms
+04-23 03:12:29.277 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 438K, 4% free 17506K/18128K, paused 2ms+3ms, total 15ms
+04-23 03:12:29.327 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 409K, 4% free 17533K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:29.387 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 415K, 4% free 17513K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:29.447 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 427K, 4% free 17548K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:29.507 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 453K, 4% free 17550K/18128K, paused 2ms+4ms, total 22ms
+04-23 03:12:29.567 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 460K, 4% free 17565K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:29.627 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 439K, 4% free 17527K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:29.687 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 404K, 4% free 17528K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:29.747 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 401K, 4% free 17524K/18128K, paused 2ms+2ms, total 14ms
+04-23 03:12:29.807 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 432K, 4% free 17563K/18128K, paused 2ms+4ms, total 16ms
+04-23 03:12:29.877 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 473K, 4% free 17566K/18128K, paused 1ms+3ms, total 15ms
+04-23 03:12:29.937 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 447K, 4% free 17536K/18128K, paused 1ms+4ms, total 15ms
+04-23 03:12:30.007 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 442K, 4% free 17562K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:30.077 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 482K, 4% free 17577K/18128K, paused 1ms+5ms, total 23ms
+04-23 03:12:30.127 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 464K, 4% free 17541K/18128K, paused 2ms+3ms, total 15ms
+04-23 03:12:30.197 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 448K, 4% free 17561K/18128K, paused 1ms+4ms, total 22ms
+04-23 03:12:30.237 19789-19983/? I/System.out: Secret Key: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:30.237 19789-19983/? E/Device?Pairing: Sudo: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:30.237 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42ca8dd8
+04-23 03:12:30.237 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:30.267 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:30.267 19789-19983/? I/System.out: Index: 4
+04-23 03:12:30.267 19789-19983/? I/System.out: Key: device_pair_cat
+04-23 03:12:30.267 19789-19983/? I/System.out: Payload: Pair Device Data C
+04-23 03:12:30.267 19789-19983/? E/Device?Pairing: Round 3, Pair C: c22a42df3e3e2ec7b3ac24a4839822e3
+04-23 03:12:30.267 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42bed6f0
+04-23 03:12:30.267 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:30.367 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:30.367 19789-19983/? I/System.out: Index: 5
+04-23 03:12:30.367 19789-19983/? I/System.out: Key: device_pair_fsck
+04-23 03:12:30.367 19789-19983/? I/System.out: Payload: Pair Device Data F
+04-23 03:12:30.367 19789-19983/? I/System.out: %#$$^%^^%# OK OK OK OK$#$^#%^#$%&Y#%^#
+04-23 03:12:30.367 19789-19983/? I/System.out: Key: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:30.367 19789-19983/? E/DevicePairingProcess: %#$$^%#OK OK O#$%&Y#%
+                                                         Secret Key: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:30.367 19789-19789/? I/TDP?Main?Activity: Pairing success.
+04-23 03:12:30.367 19789-19983/? I/System.out: Sudo String: 00bb854bd6e8ea46dd75f3f2dedf83c4252a5ce19f
+04-23 03:12:30.367 19789-19983/? E/Device?Pairing: Round 4, Pair F: 990a97219c126b5d3ef6dc35b9436db8
+04-23 03:12:30.367 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42c71cc8
+04-23 03:12:30.367 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:30.407 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 449K, 4% free 17500K/18128K, paused 4ms+6ms, total 36ms
+04-23 03:12:31.527 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:31.527 19789-19983/? I/System.out: Index: 6
+04-23 03:12:31.527 19789-19983/? I/System.out: Key: receipt_generation_contactHistory
+04-23 03:12:31.527 19789-19983/? I/System.out: Payload: Device's Contact History
+04-23 03:12:31.527 19789-19983/? E/Device?Pairing: Round 5, Pair CH-positive: null
+04-23 03:12:31.527 19789-19983/? I/System.out: **********************QCR Calculation Info -- QCR************************
+04-23 03:12:31.527 19789-19983/? I/System.out: 	 QoS: -1.0
+04-23 03:12:31.527 19789-19983/? I/System.out: 	 Cre: 0.5
+04-23 03:12:31.527 19789-19983/? I/System.out: 	 Rat: 1
+04-23 03:12:31.527 19789-19983/? I/System.out: ***********************All Parameters Info****************************
+04-23 03:12:31.527 19789-19983/? I/System.out: 	ID: 358239053732360
+04-23 03:12:31.527 19789-19983/? I/System.out: 	preQos: -0.6	Qos: -1.0
+04-23 03:12:31.527 19789-19983/? I/System.out: 	preCre: 0.3	Cre: 0.5
+04-23 03:12:31.527 19789-19983/? I/System.out: 	Num of CH: 1
+04-23 03:12:31.527 19789-19983/? I/System.out: 	CH-IDs: [352584063215518, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+04-23 03:12:31.527 19789-19983/? I/System.out: 	CH-Positive: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+04-23 03:12:31.527 19789-19983/? I/System.out: 	CH-Total: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+04-23 03:12:31.527 19789-19983/? I/System.out: 	CH: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+04-23 03:12:31.637 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 366K, 4% free 17517K/18128K, paused 2ms+2ms, total 16ms
+04-23 03:12:31.707 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 371K, 4% free 17530K/18128K, paused 2ms+2ms, total 18ms
+04-23 03:12:31.787 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 396K, 4% free 17545K/18128K, paused 2ms+4ms, total 21ms
+04-23 03:12:31.847 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 433K, 4% free 17571K/18128K, paused 2ms+3ms, total 15ms
+04-23 03:12:31.907 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 430K, 4% free 17541K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:31.977 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 431K, 4% free 17573K/18128K, paused 1ms+4ms, total 21ms
+04-23 03:12:32.057 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 468K, 4% free 17583K/18128K, paused 2ms+3ms, total 29ms
+04-23 03:12:32.107 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 470K, 4% free 17580K/18128K, paused 1ms+2ms, total 14ms
+04-23 03:12:32.167 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 452K, 4% free 17566K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:32.237 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 458K, 3% free 17586K/18128K, paused 1ms+3ms, total 16ms
+04-23 03:12:32.297 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 484K, 3% free 17593K/18128K, paused 1ms+4ms, total 18ms
+04-23 03:12:32.367 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 479K, 4% free 17579K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:32.427 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 426K, 4% free 17538K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:32.497 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 389K, 3% free 17616K/18128K, paused 2ms+11ms, total 23ms
+04-23 03:12:32.557 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 466K, 3% free 17618K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:32.587 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42d31c28
+04-23 03:12:32.587 19789-19983/? W/System.err: Device Pairing:Wait for a message.
+04-23 03:12:33.117 820-862/? W/ProcessCpuTracker: Skipping unknown process pid 20001
+04-23 03:12:36.107 19789-19983/? I/System.out: Device Pairing-Received Message: 
+04-23 03:12:36.107 19789-19983/? I/System.out: Index: 7
+04-23 03:12:36.107 19789-19983/? I/System.out: Key: receipt_generation_signature
+04-23 03:12:36.107 19789-19983/? I/System.out: Payload: Device's Signature
+04-23 03:12:36.107 19789-19983/? E/Device?Pairing: Round 6, Pair Signature-er: 25b056b7e7184c1020a8f06a9473bb7d
+04-23 03:12:36.177 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 470K, 4% free 17534K/18128K, paused 2ms+3ms, total 22ms
+04-23 03:12:36.257 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 379K, 3% free 17636K/18128K, paused 2ms+2ms, total 32ms
+04-23 03:12:36.337 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 427K, 3% free 17594K/18128K, paused 2ms+4ms, total 21ms
+04-23 03:12:36.407 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 482K, 3% free 17596K/18128K, paused 2ms+4ms, total 26ms
+04-23 03:12:36.467 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 439K, 4% free 17546K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:36.517 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 405K, 4% free 17565K/18128K, paused 2ms+3ms, total 15ms
+04-23 03:12:36.577 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 405K, 4% free 17545K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:36.627 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 413K, 4% free 17572K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:36.687 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 419K, 4% free 17552K/18128K, paused 2ms+3ms, total 14ms
+04-23 03:12:36.747 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 427K, 4% free 17583K/18128K, paused 1ms+4ms, total 15ms
+04-23 03:12:36.807 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 444K, 4% free 17568K/18128K, paused 2ms+4ms, total 16ms
+04-23 03:12:36.857 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 418K, 4% free 17555K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:36.917 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 432K, 3% free 17585K/18128K, paused 2ms+3ms, total 16ms
+04-23 03:12:36.987 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 428K, 4% free 17544K/18128K, paused 2ms+2ms, total 15ms
+04-23 03:12:37.057 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 405K, 4% free 17566K/18128K, paused 2ms+4ms, total 21ms
+04-23 03:12:37.137 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 450K, 3% free 17594K/18128K, paused 1ms+7ms, total 20ms
+04-23 03:12:37.187 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 474K, 3% free 17589K/18128K, paused 2ms+4ms, total 16ms
+04-23 03:12:37.267 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 486K, 3% free 17607K/18136K, paused 2ms+2ms, total 28ms
+04-23 03:12:37.267 19789-19983/? D/dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 8ms
+04-23 03:12:37.317 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 478K, 4% free 17580K/18136K, paused 2ms+3ms, total 15ms
+04-23 03:12:37.387 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 418K, 4% free 17559K/18136K, paused 2ms+4ms, total 16ms
+04-23 03:12:37.457 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 390K, 4% free 17554K/18136K, paused 2ms+2ms, total 15ms
+04-23 03:12:37.517 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 386K, 4% free 17559K/18136K, paused 2ms+4ms, total 16ms
+04-23 03:12:37.587 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 424K, 3% free 17598K/18136K, paused 2ms+3ms, total 22ms
+04-23 03:12:37.637 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 439K, 4% free 17574K/18136K, paused 2ms+3ms, total 16ms
+04-23 03:12:37.697 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 440K, 3% free 17598K/18136K, paused 1ms+3ms, total 14ms
+04-23 03:12:37.767 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 466K, 3% free 17602K/18136K, paused 2ms+2ms, total 16ms
+04-23 03:12:37.837 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 477K, 3% free 17608K/18136K, paused 1ms+4ms, total 25ms
+04-23 03:12:37.907 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 439K, 3% free 17631K/18136K, paused 2ms+11ms, total 29ms
+04-23 03:12:37.967 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 426K, 3% free 17598K/18136K, paused 2ms+4ms, total 17ms
+04-23 03:12:38.057 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 470K, 3% free 17702K/18136K, paused 1ms+6ms, total 28ms
+04-23 03:12:38.117 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 523K, 4% free 17653K/18224K, paused 2ms+4ms, total 18ms
+04-23 03:12:38.187 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 521K, 4% free 17601K/18224K, paused 1ms+4ms, total 16ms
+04-23 03:12:38.247 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 474K, 4% free 17598K/18224K, paused 1ms+4ms, total 15ms
+04-23 03:12:38.327 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 456K, 4% free 17582K/18224K, paused 2ms+3ms, total 16ms
+04-23 03:12:38.397 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 415K, 4% free 17625K/18224K, paused 2ms+11ms, total 22ms
+04-23 03:12:38.447 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 438K, 4% free 17608K/18224K, paused 2ms+4ms, total 16ms
+04-23 03:12:38.527 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 481K, 4% free 17597K/18224K, paused 1ms+3ms, total 15ms
+04-23 03:12:38.597 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 471K, 4% free 17597K/18224K, paused 0ms+2ms, total 14ms
+04-23 03:12:38.657 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 474K, 4% free 17594K/18224K, paused 0ms+4ms, total 14ms
+04-23 03:12:38.717 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 478K, 4% free 17600K/18224K, paused 1ms+4ms, total 18ms
+04-23 03:12:38.777 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 435K, 4% free 17555K/18224K, paused 2ms+4ms, total 16ms
+04-23 03:12:38.837 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 398K, 4% free 17563K/18224K, paused 2ms+2ms, total 15ms
+04-23 03:12:38.917 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 451K, 4% free 17612K/18224K, paused 2ms+3ms, total 29ms
+04-23 03:12:38.967 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 458K, 4% free 17568K/18224K, paused 2ms+4ms, total 16ms
+04-23 03:12:39.037 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 427K, 4% free 17580K/18224K, paused 2ms+4ms, total 16ms
+04-23 03:12:39.107 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 453K, 4% free 17594K/18224K, paused 2ms+4ms, total 20ms
+04-23 03:12:39.137 19789-19983/? I/System.out: ***********Calc Receipt**************
+04-23 03:12:39.137 19789-19983/? I/System.out:   ID: 358239053732360
+04-23 03:12:39.137 19789-19983/? I/System.out:   Left:  0303d485e4b14060f98a58f381ba0d3b3c85c3ddc7
+04-23 03:12:39.137 19789-19983/? I/System.out:   Right: 0303d485e4b14060f98a58f381ba0d3b3c85c3ddc7
+04-23 03:12:39.137 19789-19983/? I/System.out:   xa*T2b:  033e75279ee940b9bd5b1a412c97fa24ffbd10aa9a
+04-23 03:12:39.137 19789-19983/? I/System.out:   T3:    033e75279ee940b9bd5b1a412c97fa24ffbd10aa9a
+04-23 03:12:39.177 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 454K, 4% free 17576K/18224K, paused 2ms+3ms, total 17ms
+04-23 03:12:39.237 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 447K, 4% free 17597K/18224K, paused 2ms+3ms, total 15ms
+04-23 03:12:39.307 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 428K, 4% free 17630K/18224K, paused 2ms+11ms, total 23ms
+04-23 03:12:39.377 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 424K, 3% free 17685K/18224K, paused 2ms+13ms, total 25ms
+04-23 03:12:39.437 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 509K, 4% free 17646K/18224K, paused 2ms+3ms, total 16ms
+04-23 03:12:39.507 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 479K, 4% free 17556K/18224K, paused 2ms+3ms, total 15ms
+04-23 03:12:39.577 19789-19793/? D/dalvikvm: GC_CONCURRENT freed 429K, 4% free 17595K/18224K, paused 1ms+4ms, total 20ms
+04-23 03:12:39.597 19789-19983/? I/System.out: $%%^^*&$#$@ Receipt is generated. $%%^^*&$#$@
+04-23 03:12:39.597 19789-19983/? I/System.out: Device Pairing:Send Message-com.xjtu.ylab.nick.tdpv2.pairing.SocketKeyValueObject@42d37360
+04-23 03:12:39.597 19789-19983/? W/System.err: TDP Calculation Duration: 15244

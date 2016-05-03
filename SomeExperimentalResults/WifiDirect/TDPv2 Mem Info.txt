@@ -1,0 +1,35 @@
+shell@hammerhead:/ $ dumpsys meminfo 21294                                     
+Applications Memory Usage (kB):
+Uptime: 7465959 Realtime: 169872223
+
+** MEMINFO in pid 21294 [com.xjtu.ylab.nick.tdpv2] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap     2934     2912        0        0     6020     5519      256
+  Dalvik Heap     2550     1984        0        0    18160    17508      652
+ Dalvik Other     2036     1916        0        0                           
+        Stack       72       72        0        0                           
+    Other dev     1789     1784        4        0                           
+     .so mmap     1005      372       48        0                           
+    .apk mmap       75        0       16        0                           
+    .ttf mmap       79        0        0        0                           
+    .dex mmap     2553       20     2136        0                           
+   Other mmap        5        4        0        0                           
+     Graphics    41056    41056        0        0                           
+           GL     3344     3344        0        0                           
+      Unknown       72       72        0        0                           
+        TOTAL    57570    53536     2204        0    24180    23027      908
+ 
+ Objects
+               Views:       74         ViewRootImpl:        1
+         AppContexts:        3           Activities:        1
+              Assets:        2        AssetManagers:        2
+       Local Binders:       10        Proxy Binders:       20
+    Death Recipients:        1
+     OpenSSL Sockets:        0
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+
